@@ -47,11 +47,9 @@ MpBar = NodePath("../../../CanvasLayer/MP")
 position = Vector2(128, 61)
 texture = ExtResource("6_p05dn")
 
-[node name="Sprite2D" type="Sprite2D" parent="TileMapLayer"]
-position = Vector2(97, 147)
-texture = ExtResource("6_p05dn")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 offset_left = -3.0
