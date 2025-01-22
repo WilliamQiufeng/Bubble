@@ -1,9 +1,13 @@
-[gd_scene load_steps=6 format=4 uid="uid://tnam1v3fk1e3"]
+[gd_scene load_steps=10 format=4 uid="uid://tnam1v3fk1e3"]
 
 [ext_resource type="TileSet" uid="uid://b5diheugfnvke" path="res://sprites/test.tres" id="1_iwedq"]
 [ext_resource type="SpriteFrames" uid="uid://bpusxlts2nqsp" path="res://sprites/PlayerSpriteFrames.tres" id="2_ls685"]
 [ext_resource type="Script" path="res://Scripts/Movement.cs" id="2_s56x0"]
 [ext_resource type="PackedScene" uid="uid://cr0wfkkhkvskc" path="res://bubble.tscn" id="4_l07bt"]
+[ext_resource type="Script" path="res://Scripts/Player.cs" id="4_t45rw"]
+[ext_resource type="SpriteFrames" uid="uid://8sxvvsebyeco" path="res://sprites/health-bar-frames.tres" id="5_uev5g"]
+[ext_resource type="Script" path="res://Scripts/AnimationProgressBar.cs" id="6_y8spk"]
+[ext_resource type="SpriteFrames" uid="uid://crhwmeo5xw80t" path="res://sprites/mana-bar-frames.tres" id="7_84fe2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5d186"]
 size = Vector2(16, 8)
@@ -30,15 +34,32 @@ offset = Vector2(0, 2)
 [node name="Camera2D" type="Camera2D" parent="TileMapLayer/CharacterBody2D"]
 position_smoothing_enabled = true
 
+[node name="PlayerController" type="Node" parent="TileMapLayer/CharacterBody2D" node_paths=PackedStringArray("HpBar", "MpBar")]
+script = ExtResource("4_t45rw")
+HpBar = NodePath("../../../CanvasLayer/HP")
+MpBar = NodePath("../../../CanvasLayer/MP")
+
 [node name="Bubble" parent="TileMapLayer" instance=ExtResource("4_l07bt")]
 position = Vector2(128, 61)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-offset_right = 58.0
-offset_bottom = 23.0
+offset_left = -3.0
+offset_top = 91.0
+offset_right = 55.0
+offset_bottom = 114.0
 text = "GGAGD"
+
+[node name="HP" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(29, 17)
+sprite_frames = ExtResource("5_uev5g")
+script = ExtResource("6_y8spk")
+
+[node name="MP" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(28, 35)
+sprite_frames = ExtResource("7_84fe2")
+script = ExtResource("6_y8spk")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
