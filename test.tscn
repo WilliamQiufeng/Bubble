@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://tnam1v3fk1e3"]
+[gd_scene load_steps=8 format=4 uid="uid://tnam1v3fk1e3"]
 
 [ext_resource type="Script" path="res://SceneScript.gd" id="1_7lo08"]
 [ext_resource type="TileSet" uid="uid://b5diheugfnvke" path="res://sprites/test.tres" id="1_iwedq"]
 [ext_resource type="SpriteFrames" uid="uid://bpusxlts2nqsp" path="res://sprites/PlayerSpriteFrames.tres" id="2_ls685"]
 [ext_resource type="Script" path="res://Scripts/Movement.cs" id="2_s56x0"]
 [ext_resource type="PackedScene" path="res://bubble.tscn" id="4_l07bt"]
+[ext_resource type="Texture2D" uid="uid://dbg40um6x06o2" path="res://sprites/bubble.png" id="6_p05dn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5d186"]
 size = Vector2(16, 8)
@@ -30,10 +31,16 @@ sprite_frames = ExtResource("2_ls685")
 offset = Vector2(0, 2)
 
 [node name="Camera2D" type="Camera2D" parent="TileMapLayer/CharacterBody2D"]
+zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
 [node name="Bubble" parent="TileMapLayer" instance=ExtResource("4_l07bt")]
 position = Vector2(128, 61)
+texture = ExtResource("6_p05dn")
+
+[node name="Sprite2D" type="Sprite2D" parent="TileMapLayer"]
+position = Vector2(97, 147)
+texture = ExtResource("6_p05dn")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

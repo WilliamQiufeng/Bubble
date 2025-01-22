@@ -12,7 +12,7 @@ void fragment() {
 	vec3 refraction = - texture(NORMAL_TEXTURE, UV).rgb * vec3(1.0,-1.0,1.0);
 	
 	vec4 textureRead = texture(TEXTURE, UV);
-	vec4 offsetScreenRead = textureLod(SCREEN_TEXTURE, SCREEN_UV + refraction.rg/refractionMagnitude, 0.0);
+	vec4 offsetScreenRead = texture(SCREEN_TEXTURE, SCREEN_UV + refraction.rg/refractionMagnitude);
 
 	if (textureRead.a  > .04) {
 		COLOR = offsetScreenRead;

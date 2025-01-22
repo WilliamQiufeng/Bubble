@@ -19,9 +19,7 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=512
 window/size/viewport_height=512
-window/stretch/mode="viewport"
-window/stretch/scale=2.0
-window/stretch/scale_mode="integer"
+window/stretch/mode="canvas_items"
 
 [dotnet]
 
@@ -57,4 +55,5 @@ down={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 anti_aliasing/screen_space_roughness_limiter/enabled=false
