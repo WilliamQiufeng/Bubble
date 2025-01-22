@@ -16,6 +16,11 @@ public partial class Movement : CharacterBody2D
 	public override void _PhysicsProcess(double delta)
 	{
 		GetInput();
-		MoveAndSlide();
+		// using MoveAndCollide
+		var collision = MoveAndCollide(Velocity * (float)delta);
+		if (collision != null)
+		{
+			Velocity = Velocity.Slide(collision.GetNormal());
+		}
 	}
 }

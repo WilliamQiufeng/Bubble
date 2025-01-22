@@ -1,9 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://cr0wfkkhkvskc"]
+[gd_scene load_steps=11 format=3 uid="uid://cr0wfkkhkvskc"]
 
+[ext_resource type="Script" path="res://Scripts/BubbleController.cs" id="1_j6cin"]
 [ext_resource type="Shader" path="res://bubblerefract.gdshader" id="1_p6kar"]
+[ext_resource type="Script" path="res://Scripts/BubbleEffectController.cs" id="1_rnhwi"]
 [ext_resource type="Texture2D" uid="uid://dbg40um6x06o2" path="res://sprites/bubble.png" id="2_18qn5"]
 [ext_resource type="Texture2D" uid="uid://b7rbqaeohji7w" path="res://sprites/bubble-normal.png" id="3_1paw5"]
 [ext_resource type="Shader" path="res://bubbletest.gdshader" id="4_xi0on"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xkbat"]
+radius = 17.1172
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e3i1b"]
 shader = ExtResource("1_p6kar")
@@ -18,10 +23,25 @@ shader = ExtResource("4_xi0on")
 shader_parameter/timeScale = 2.0
 shader_parameter/amplitude = 1.0
 
-[node name="Bubble" type="Sprite2D"]
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_j6cin")
+
+[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("BubbleController")]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("1_rnhwi")
+BubbleController = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_xkbat")
+
+[node name="Bubble" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_e3i1b")
 texture = SubResource("CanvasTexture_xm2o2")
 
-[node name="Floater" type="Sprite2D" parent="."]
+[node name="Floater" type="Sprite2D" parent="Bubble"]
 material = SubResource("ShaderMaterial_jlsom")
 texture = ExtResource("2_18qn5")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="OnBubbleAreaEntered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="OnBubbleAreaExited"]

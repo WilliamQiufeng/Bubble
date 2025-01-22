@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://tnam1v3fk1e3"]
+[gd_scene load_steps=11 format=4 uid="uid://tnam1v3fk1e3"]
 
 [ext_resource type="Script" path="res://SceneScript.gd" id="1_7lo08"]
 [ext_resource type="TileSet" uid="uid://b5diheugfnvke" path="res://sprites/test.tres" id="1_iwedq"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cr0wfkkhkvskc" path="res://bubble.tscn" id="4_l07bt"]
 [ext_resource type="Script" path="res://Scripts/Player.cs" id="4_t45rw"]
 [ext_resource type="SpriteFrames" uid="uid://8sxvvsebyeco" path="res://sprites/health-bar-frames.tres" id="5_uev5g"]
-[ext_resource type="Texture2D" uid="uid://dbg40um6x06o2" path="res://sprites/bubble.png" id="6_p05dn"]
 [ext_resource type="Script" path="res://Scripts/AnimationProgressBar.cs" id="6_y8spk"]
 [ext_resource type="SpriteFrames" uid="uid://crhwmeo5xw80t" path="res://sprites/mana-bar-frames.tres" id="7_84fe2"]
 
@@ -23,7 +22,7 @@ tile_set = ExtResource("1_iwedq")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="TileMapLayer"]
 position = Vector2(50, 29)
-collision_layer = 2
+collision_layer = 10
 script = ExtResource("2_s56x0")
 
 [node name="MovementCollision" type="CollisionShape2D" parent="TileMapLayer/CharacterBody2D"]
@@ -43,9 +42,9 @@ script = ExtResource("4_t45rw")
 HpBar = NodePath("../../../CanvasLayer/HP")
 MpBar = NodePath("../../../CanvasLayer/MP")
 
-[node name="Bubble" parent="TileMapLayer" instance=ExtResource("4_l07bt")]
-position = Vector2(128, 61)
-texture = ExtResource("6_p05dn")
+[node name="Node2D" parent="TileMapLayer" node_paths=PackedStringArray("Movement") instance=ExtResource("4_l07bt")]
+position = Vector2(132, 46)
+Movement = NodePath("../CharacterBody2D")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 scale = Vector2(2, 2)
@@ -67,6 +66,23 @@ script = ExtResource("6_y8spk")
 position = Vector2(28, 35)
 sprite_frames = ExtResource("7_84fe2")
 script = ExtResource("6_y8spk")
+
+[node name="PopupMenu" type="PopupMenu" parent="CanvasLayer"]
+initial_position = 2
+size = Vector2i(300, 200)
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/PopupMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/PopupMenu/PanelContainer"]
+layout_mode = 2
+text = "You ded lol"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
