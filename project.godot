@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bubble"
-run/main_scene="res://test.tscn"
+run/main_scene="res://Game.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 window/size/viewport_width=512
 window/size/viewport_height=512
 window/stretch/mode="canvas_items"
+window/stretch/scale=2.0
+window/stretch/scale_mode="integer"
 
 [dotnet]
 
@@ -29,6 +31,12 @@ project/assembly_name="Bubble"
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[global_group]
+
+Bubble=""
+TheWorldBubble=""
+FastBubble=""
 
 [input]
 

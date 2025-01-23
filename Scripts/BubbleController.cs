@@ -2,8 +2,6 @@ using Godot;
 
 namespace Bubble;
 
-public partial class BubbleController : Node2D
+public abstract partial class BubbleController : Node2D
 {
-    
-    [Export] public Movement Movement { get; set; }
 }

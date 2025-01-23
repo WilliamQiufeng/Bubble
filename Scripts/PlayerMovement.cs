@@ -2,15 +2,15 @@ namespace Bubble;
 
 using Godot;
 
-public partial class Movement : CharacterBody2D
+public partial class PlayerMovement : CharacterBody2D
 {
 	[Export]
-	public int Speed { get; set; } = 100;
+	public float Speed { get; set; } = 100;
 
 	public void GetInput()
 	{
 		var inputDirection = Input.GetVector("left", "right", "up", "down");
-		Velocity = inputDirection * Speed;
+		Velocity = inputDirection * Speed * Game.Instance.GameSpeed;
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -23,4 +23,6 @@ public partial class Movement : CharacterBody2D
 			Velocity = Velocity.Slide(collision.GetNormal());
 		}
 	}
+
+	public void Fast(float multiplier) => Speed *= multiplier;
 }

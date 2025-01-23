@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://wqr4y4ey6iqx"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerMovement.cs" id="1_wudwx"]
+[ext_resource type="SpriteFrames" uid="uid://bpusxlts2nqsp" path="res://sprites/PlayerSpriteFrames.tres" id="2_iv45a"]
+[ext_resource type="Script" path="res://Scripts/Player.cs" id="3_hjb84"]
+[ext_resource type="Script" path="res://Scripts/PlayerTheWorldEffectController.cs" id="3_p7xfx"]
+[ext_resource type="Script" path="res://Scripts/PlayerFastEffectController.cs" id="4_yg504"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5d186"]
+size = Vector2(16, 8)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(50, 29)
+collision_layer = 10
+script = ExtResource("1_wudwx")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="MovementCollision" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_5d186")
+
+[node name="MovementCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_5d186")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_iv45a")
+offset = Vector2(0, 2)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+
+[node name="PlayerController" type="Node" parent="."]
+script = ExtResource("3_hjb84")
+
+[node name="PlayerTheWorldEffectController" type="Node" parent="."]
+script = ExtResource("3_p7xfx")
+
+[node name="PlayerFastEffectManager" type="Node" parent="." node_paths=PackedStringArray("PlayerMovement")]
+script = ExtResource("4_yg504")
+PlayerMovement = NodePath("..")
+
+[connection signal="area_entered" from="Area2D" to="PlayerFastEffectManager" method="AreaEnter"]
+[connection signal="area_entered" from="Area2D" to="PlayerTheWorldEffectController" method="AreaEnter"]
+[connection signal="area_exited" from="Area2D" to="PlayerFastEffectManager" method="AreaExit"]
+[connection signal="area_exited" from="Area2D" to="PlayerTheWorldEffectController" method="AreaExit"]

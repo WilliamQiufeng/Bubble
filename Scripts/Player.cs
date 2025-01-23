@@ -5,16 +5,43 @@ namespace Bubble;
 
 public partial class Player : Node
 {
-    [Export] public float Hp { get; set; } = 1;
-    [Export] public float Mp { get; set; } = 1;
-    [Export] public AnimationProgressBar HpBar { get; set; }
-    [Export] public AnimationProgressBar MpBar { get; set; }
-    public override void _PhysicsProcess(double delta)
+    private float _hp = 1;
+    private float _mana = 1;
+
+    [Export]
+    public float Hp
     {
-        base._PhysicsProcess(delta);
-        Mp = Math.Clamp(Mp - 0.001f, 0, 1);
-        HpBar.SetProgress(Hp);
-        MpBar.SetProgress(Mp);
-        
+        get => _hp;
+        set
+        {
+            var oldValue = _hp;
+            _hp = Math.Clamp(value, 0, 1);
+            EmitSignal(SignalName.HpChange, oldValue, _hp);
+            if (Hp <= 0)
+            {
+                EmitSignal(SignalName.PlayerDeath);
+            }
+        }
     }
+
+    [Export]
+    public float Mana
+    {
+        get => _mana;
+        set
+        {
+            var oldValue = _mana;
+            _mana = Math.Clamp(value, 0, 1);
+            EmitSignal(SignalName.ManaChange, oldValue, _mana);
+        }
+    }
+
+    [Signal]
+    public delegate void PlayerDeathEventHandler();
+
+    [Signal]
+    public delegate void HpChangeEventHandler(float oldValue, float newValue);
+
+    [Signal]
+    public delegate void ManaChangeEventHandler(float oldValue, float newValue);
 }
