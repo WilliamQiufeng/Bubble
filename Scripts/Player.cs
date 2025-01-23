@@ -5,8 +5,8 @@ namespace Bubble;
 
 public partial class Player : Node
 {
-    private float _hp = 1;
-    private float _mana = 1;
+    private float _hp = 100;
+    private float _mana = 100;
 
     [Export]
     public float Hp
@@ -15,8 +15,8 @@ public partial class Player : Node
         set
         {
             var oldValue = _hp;
-            _hp = Math.Clamp(value, 0, 1);
-            EmitSignal(SignalName.HpChange, oldValue, _hp);
+            _hp = Math.Clamp(value, 0, MaxHp);
+            EmitSignal(SignalName.HpChange, oldValue / MaxHp, _hp / MaxHp);
             if (Hp <= 0)
             {
                 EmitSignal(SignalName.PlayerDeath);
@@ -31,17 +31,20 @@ public partial class Player : Node
         set
         {
             var oldValue = _mana;
-            _mana = Math.Clamp(value, 0, 1);
-            EmitSignal(SignalName.ManaChange, oldValue, _mana);
+            _mana = Math.Clamp(value, 0, MaxMana);
+            EmitSignal(SignalName.ManaChange, oldValue / MaxMana, _mana / MaxMana);
         }
     }
+
+    public int MaxHp { get; set; } = 100;
+    public int MaxMana { get; set; } = 100;
 
     public override void _Ready()
     {
         base._Ready();
         // To refresh the hp and mana bar
-        Hp = 1;
-        Mana = 1;
+        Hp = 100;
+        Mana = 100;
     }
 
     [Signal]

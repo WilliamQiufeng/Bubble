@@ -134,11 +134,15 @@ public partial class PlayerMovement : CharacterBody2D
     private void Fire()
     {
         var target = GetGlobalMousePosition();
-        var newBullet = _bubbleScene.Instantiate<Bubble>();
-        BulletContainer.AddChild(newBullet);
-        newBullet
+        var factory = new BubbleFactory()
             .AddEffect(PlayerWeaponState.CurrentEffectType)
             .MakeBullet(PlayerWeaponState.CurrentBulletType, Position, target);
+        if (Player.Mana < factory.ManaCost)
+            return;
+        var newBullet = _bubbleScene.Instantiate<Bubble>();
+        factory.Apply(newBullet);
+        Player.Mana -= factory.ManaCost;
+        BulletContainer.AddChild(newBullet);
     }
 
     public override void _PhysicsProcess(double delta)
