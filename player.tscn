@@ -39,8 +39,9 @@ position_smoothing_enabled = true
 [node name="PlayerController" type="Node" parent="."]
 script = ExtResource("3_hjb84")
 
-[node name="PlayerTheWorldEffectController" type="Node" parent="."]
+[node name="PlayerTheWorldEffectController" type="Node" parent="." node_paths=PackedStringArray("PlayerMovement")]
 script = ExtResource("3_p7xfx")
+PlayerMovement = NodePath("..")
 
 [node name="PlayerFastEffectManager" type="Node" parent="." node_paths=PackedStringArray("PlayerMovement")]
 script = ExtResource("4_yg504")

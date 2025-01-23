@@ -9,6 +9,7 @@ public record FastEffect() : Effect(EffectType.Fast);
 
 public enum EffectType
 {
+    None,
     TheWorld,
     Teleport,
     Fast
