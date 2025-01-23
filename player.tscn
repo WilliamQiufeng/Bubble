@@ -9,10 +9,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5d186"]
 size = Vector2(12.5, 8)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("AnimatedSprite")]
 position = Vector2(50, 29)
-collision_layer = 10
+collision_layer = 0
 script = ExtResource("1_wudwx")
+AnimatedSprite = NodePath("AnimatedSprite2D")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
@@ -28,6 +29,7 @@ shape = SubResource("RectangleShape2D_5d186")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_iv45a")
+animation = &"idle_towards"
 offset = Vector2(0, 2)
 
 [node name="Camera2D" type="Camera2D" parent="."]

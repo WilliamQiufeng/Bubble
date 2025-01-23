@@ -22,6 +22,9 @@ tile_set = ExtResource("3_cype7")
 
 [node name="Player" parent="TileMapLayer" groups=["Player"] instance=ExtResource("4_ab4fr")]
 
+[node name="AnimatedSprite2D" parent="TileMapLayer/Player" index="2"]
+animation = &"walk_towards"
+
 [node name="Bubbles" type="Node2D" parent="TileMapLayer"]
 
 [node name="Node2D" parent="TileMapLayer/Bubbles" groups=["Bubble"] instance=ExtResource("5_l1j2q")]
