@@ -16,6 +16,8 @@ public partial class PlayerMovement : CharacterBody2D
 
     private Player Player { get; set; }
 
+    private Vector2 DashVector { get; set; }
+
     public override void _Ready()
     {
         base._Ready();
@@ -94,6 +96,11 @@ public partial class PlayerMovement : CharacterBody2D
         {
             PlayerWeaponState.SelectedEffectTypeIndex = 3;
         }
+
+        if (Input.IsActionJustPressed("dash"))
+        {
+            DashVector = IdleDirection.Normalized() * Speed * 2;
+        }
     }
 
     public override void _Input(InputEvent @event)
@@ -115,11 +122,13 @@ public partial class PlayerMovement : CharacterBody2D
     {
         GetInput();
         // using MoveAndCollide
-        var collision = MoveAndCollide(Velocity * (float)delta);
+        var collision = MoveAndCollide((Velocity + DashVector) * (float)delta);
         if (collision != null)
         {
             Velocity = Velocity.Slide(collision.GetNormal());
         }
+
+        DashVector = DashVector.Lerp(Vector2.Zero, (float)delta * 7);
     }
 
     public void Fast(float multiplier) => Speed *= multiplier;
