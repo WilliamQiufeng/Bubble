@@ -13,13 +13,13 @@ public partial class PlayerMovement : CharacterBody2D
 
 	private Vector2 IdleDirection { get; set; } = Vector2.Down;
 
-	private PackedScene _bulletScene;
+	private PackedScene _bubbleScene;
 
 	public override void _Ready()
 	{
 		base._Ready();
 		AnimatedSprite.Play("idle_towards");
-		_bulletScene = GD.Load<PackedScene>("res://bullet.tscn");
+		_bubbleScene = GD.Load<PackedScene>("res://bubble.tscn");
 	}
 
 	public bool GetAnimationDirection(Vector2 direction, out string animation, out bool flipH)
@@ -73,8 +73,11 @@ public partial class PlayerMovement : CharacterBody2D
 		if (@event.IsActionPressed("click", true))
 		{
 			var target = GetGlobalMousePosition();
-			var newBullet = _bulletScene.Instantiate<RigidBody2D>();
+			var newBullet = _bubbleScene.Instantiate<RigidBody2D>();
+			var bulletBubbleEffectController = new BulletBubbleEffectController();
 			BulletContainer.AddChild(newBullet);
+			newBullet.AddChild(bulletBubbleEffectController);
+			newBullet.AddChild(new FastBubbleEffectController());
 			newBullet.Position = Position;
 			newBullet.LinearVelocity = (target - Position).Normalized() * 100;
 		}

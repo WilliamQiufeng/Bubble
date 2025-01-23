@@ -30,11 +30,10 @@ gravity_scale = 0.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xkbat")
 
-[node name="Area2D" type="Area2D" parent="CollisionShape2D" node_paths=PackedStringArray("Bubble", "ScaleNode", "CollisionShape") groups=["Bubble"]]
+[node name="Area2D" type="Area2D" parent="CollisionShape2D" node_paths=PackedStringArray("ScaleNode", "CollisionShape") groups=["Bubble"]]
 collision_layer = 4
 collision_mask = 12
 script = ExtResource("1_j6cin")
-Bubble = NodePath("../..")
 ScaleNode = NodePath("..")
 CollisionShape = NodePath("CollisionShape2D")
 
