@@ -36,6 +36,14 @@ public partial class Player : Node
         }
     }
 
+    public override void _Ready()
+    {
+        base._Ready();
+        // To refresh the hp and mana bar
+        Hp = 1;
+        Mana = 1;
+    }
+
     [Signal]
     public delegate void PlayerDeathEventHandler();
 

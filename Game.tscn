@@ -30,6 +30,9 @@ position = Vector2(98, 54)
 [node name="Node2D2" parent="TileMapLayer/Bubbles" groups=["Bubble"] instance=ExtResource("6_8f7tt")]
 position = Vector2(170, 53)
 
+[node name="Node2D3" parent="TileMapLayer/Bubbles" groups=["Bubble"] instance=ExtResource("6_8f7tt")]
+position = Vector2(191, 54)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
