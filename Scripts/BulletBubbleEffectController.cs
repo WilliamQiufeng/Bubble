@@ -10,7 +10,7 @@ public partial class BulletBubbleEffectController : BubbleEffectController
     {
         base._Ready();
         CollisionShape2D = GetNode<CollisionShape2D>("../CollisionShape2D");
-        CollisionShape2D.ApplyScale(Vector2.One * 0.1f);
+        CollisionShape2D.ApplyScale(Vector2.One * 0.2f);
         var timer = new Timer();
         AddChild(timer);
         timer.WaitTime = 5;

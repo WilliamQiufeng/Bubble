@@ -7,7 +7,7 @@ public partial class TheWorldBubbleEffectController : BubbleEffectController
 {
     private const float GameSpeedMultiplier = 0.5f;
     public override EffectType EffectType => EffectType.TheWorld;
-    protected override Color? BubbleColor => Color.FromHsv(201f / 360, 84 / 100f, 1);
+    protected override Color? BubbleColor => Color.FromHsv(230f / 360, 90 / 100f, 1);
 
     protected override void HandlePlayerEnter(PlayerMovement playerMovement)
     {

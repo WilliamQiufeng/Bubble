@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Godot;
 
 namespace Bubble;
@@ -10,6 +11,7 @@ public abstract partial class BubbleEffectController : Node
     protected BubbleController BubbleController { get; set; }
     protected Sprite2D Sprite { get; private set; }
     protected virtual Color? BubbleColor => null;
+    private readonly HashSet<Node2D> _deferredBodyEnters = new(); 
     public override void _Ready()
     {
         Sprite = GetNode<Sprite2D>("../CollisionShape2D/Bubble");
@@ -21,10 +23,26 @@ public abstract partial class BubbleEffectController : Node
         BubbleController.BodyExited += HandleBodyExit;
     }
 
+    public override void _PhysicsProcess(double delta)
+    {
+        base._PhysicsProcess(delta);
+        if (!BubbleController.EffectType.IsBullet() && _deferredBodyEnters.Count > 0)
+        {
+            foreach (var deferredBodyEnter in _deferredBodyEnters)
+            {
+                HandleBodyEnter(deferredBodyEnter);
+            }
+            _deferredBodyEnters.Clear();
+        }
+    }
+
     public void HandleBodyEnter(Node2D node)
     {
         if (BubbleController.EffectType.IsBullet())
+        {
+            _deferredBodyEnters.Add(node);
             return;
+        }
         if (node is PlayerMovement playerMovement)
         {
             GD.Print($"Enter {node}");
@@ -34,7 +52,10 @@ public abstract partial class BubbleEffectController : Node
     public void HandleBodyExit(Node2D node)
     {
         if (BubbleController.EffectType.IsBullet())
+        {
+            _deferredBodyEnters.Remove(node);
             return;
+        }
         if (node is PlayerMovement playerMovement)
         {
             GD.Print($"Exit {node}");

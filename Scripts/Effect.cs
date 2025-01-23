@@ -10,6 +10,7 @@ public enum EffectType
     TheWorld = 1 << 0,
     Teleport = 1 << 1,
     Fast = 1 << 2,
+    Dash = 1 << 3,
     Bullet = 1 << 30
 }
 

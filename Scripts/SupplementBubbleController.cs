@@ -5,6 +5,7 @@ namespace Bubble;
 public partial class SupplementBubbleController : BubbleEffectController
 {
     private Bubble Bubble { get; set; }
+
     public SupplementBubbleController(Vector2 targetPosition)
     {
         TargetPosition = targetPosition;
@@ -18,6 +19,7 @@ public partial class SupplementBubbleController : BubbleEffectController
     private const float Speed = 100f;
     private Timer _timer = new();
     public override EffectType EffectType => EffectType.Bullet;
+
     protected override void HandlePlayerEnter(PlayerMovement playerMovement)
     {
     }
@@ -46,6 +48,7 @@ public partial class SupplementBubbleController : BubbleEffectController
             TargetReached();
             return;
         }
+
         Bubble.ConstantForce = dp.Normalized() * Speed;
     }
 

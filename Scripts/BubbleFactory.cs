@@ -19,6 +19,9 @@ public static class BubbleFactory
             case EffectType.Fast:
                 bubble.AddChild(new FastBubbleEffectController());
                 break;
+            case EffectType.Dash:
+                bubble.AddChild(new DashBubbleEffectController());
+                break;
             case EffectType.Bullet:
                 break;
             default:

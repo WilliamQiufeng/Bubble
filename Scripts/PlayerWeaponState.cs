@@ -10,7 +10,7 @@ public partial class PlayerWeaponState : Node
     public EffectType CurrentEffectType { get; private set; }
 
     public readonly BulletType[] AvailableBulletTypes = { BulletType.Tiny, BulletType.Supplement };
-    public readonly EffectType[] AvailableEffectTypes = { EffectType.TheWorld, EffectType.Fast };
+    public readonly EffectType[] AvailableEffectTypes = { EffectType.TheWorld, EffectType.Fast, EffectType.Dash };
     private int _selectedBulletTypeIndex;
     private int _selectedEffectTypeIndex;
 

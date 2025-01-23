@@ -20,6 +20,10 @@ public partial class PlayerMovement : CharacterBody2D
 
     private Timer ShootingTimer { get; set; }
 
+    public bool CanDash { get; set; }
+
+    private Timer DashingCooldownTimer { get; set; }
+
     public override void _Ready()
     {
         base._Ready();
@@ -30,6 +34,9 @@ public partial class PlayerMovement : CharacterBody2D
         AddChild(ShootingTimer = new Timer());
         ShootingTimer.WaitTime = 0.2;
         ShootingTimer.Timeout += Fire;
+        AddChild(DashingCooldownTimer = new Timer());
+        DashingCooldownTimer.WaitTime = 0.8;
+        DashingCooldownTimer.OneShot = true;
     }
 
     public bool GetAnimationDirection(Vector2 direction, out string animation, out bool flipH)
@@ -89,21 +96,22 @@ public partial class PlayerMovement : CharacterBody2D
 
         if (Input.IsActionJustPressed("bubble_slot_1"))
         {
-            PlayerWeaponState.SelectedEffectTypeIndex = 1;
+            PlayerWeaponState.SelectedEffectTypeIndex = 0;
         }
 
         if (Input.IsActionJustPressed("bubble_slot_2"))
         {
-            PlayerWeaponState.SelectedEffectTypeIndex = 2;
+            PlayerWeaponState.SelectedEffectTypeIndex = 1;
         }
 
         if (Input.IsActionJustPressed("bubble_slot_3"))
         {
-            PlayerWeaponState.SelectedEffectTypeIndex = 3;
+            PlayerWeaponState.SelectedEffectTypeIndex = 2;
         }
 
-        if (Input.IsActionJustPressed("dash"))
+        if (CanDash && DashingCooldownTimer.TimeLeft <= 0 && Input.IsActionJustPressed("dash"))
         {
+            DashingCooldownTimer.Start();
             DashVector = IdleDirection.Normalized() * Speed * 2;
         }
     }
