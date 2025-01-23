@@ -2,7 +2,7 @@ using Godot;
 
 namespace Bubble;
 
-public partial class SupplementBubbleController : Node
+public partial class SupplementBubbleController : BubbleEffectController
 {
     private Bubble Bubble { get; set; }
     public SupplementBubbleController(Vector2 targetPosition)
@@ -17,6 +17,15 @@ public partial class SupplementBubbleController : Node
     private Vector2 TargetPosition { get; set; }
     private const float Speed = 100f;
     private Timer _timer = new();
+    public override EffectType EffectType => EffectType.Bullet;
+    protected override void HandlePlayerEnter(PlayerMovement playerMovement)
+    {
+    }
+
+    protected override void HandlePlayerExit(PlayerMovement playerMovement)
+    {
+    }
+
     public override void _Ready()
     {
         base._Ready();

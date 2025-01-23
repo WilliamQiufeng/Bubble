@@ -4,96 +4,123 @@ using Godot;
 
 public partial class PlayerMovement : CharacterBody2D
 {
-	[Export]
-	public float Speed { get; set; } = 100;
-	[Export]
-	public AnimatedSprite2D AnimatedSprite { get; set; }
-	[Export]
-	public Node2D BulletContainer { get; set; }
+    [Export] public float Speed { get; set; } = 100;
+    [Export] public AnimatedSprite2D AnimatedSprite { get; set; }
+    [Export] public Node2D BulletContainer { get; set; }
 
-	private Vector2 IdleDirection { get; set; } = Vector2.Down;
+    private Vector2 IdleDirection { get; set; } = Vector2.Down;
 
-	private PackedScene _bubbleScene;
+    private PackedScene _bubbleScene;
 
-	public override void _Ready()
-	{
-		base._Ready();
-		AnimatedSprite.Play("idle_towards");
-		_bubbleScene = GD.Load<PackedScene>("res://bubble.tscn");
-	}
+    private PlayerWeaponState PlayerWeaponState { get; set; }
 
-	public bool GetAnimationDirection(Vector2 direction, out string animation, out bool flipH)
-	{
-		if (direction.X != 0)
-		{
-			animation = "left";
-			flipH = direction.X > 0;
-			return true;
-		} 
-		if (direction.Y > 0)
-		{
-			animation = "towards";
-			flipH = false;
-			return true;
-		}
-		if(direction.Y < 0)
-		{
-			animation = "away";
-			flipH = false;
-			return true;
-		}
+    private Player Player { get; set; }
 
-		animation = "";
-		flipH = false;
+    public override void _Ready()
+    {
+        base._Ready();
+        AnimatedSprite.Play("idle_towards");
+        _bubbleScene = GD.Load<PackedScene>("res://bubble.tscn");
+        Player = GetNode<Player>("PlayerController");
+        PlayerWeaponState = GetNode<PlayerWeaponState>("PlayerWeaponState");
+    }
 
-		return false;
-	}
+    public bool GetAnimationDirection(Vector2 direction, out string animation, out bool flipH)
+    {
+        if (direction.X != 0)
+        {
+            animation = "left";
+            flipH = direction.X > 0;
+            return true;
+        }
 
-	public void GetInput()
-	{
-		var inputDirection = Input.GetVector("left", "right", "up", "down");
-		Velocity = inputDirection * Speed * (float)Game.Instance.GameSpeed;
-		if (GetAnimationDirection(inputDirection, out var animation, out var flipH))
-		{
-			AnimatedSprite.Animation = $"walk_{animation}";
-			AnimatedSprite.FlipH = flipH;
-			IdleDirection = Velocity;
-		}
-		else
-		{
-			_ = GetAnimationDirection(IdleDirection, out var idleAnimation, out var _);
-			AnimatedSprite.Animation = $"idle_{idleAnimation}";
-		}
-	}
+        if (direction.Y > 0)
+        {
+            animation = "towards";
+            flipH = false;
+            return true;
+        }
 
-	public override void _Input(InputEvent @event)
-	{
-		base._Input(@event);
-		// Use IsActionPressed to only accept single taps as input instead of mouse drags.
-		if (@event.IsActionPressed("click", true))
-		{
-			var target = GetGlobalMousePosition();
-			var newBullet = _bubbleScene.Instantiate<Bubble>();
-			BulletContainer.AddChild(newBullet);
-			// var bulletBubbleEffectController = new BulletBubbleEffectController();
-			// newBullet.AddChild(bulletBubbleEffectController);
-			newBullet.AddChild(new FastBubbleEffectController());
-			newBullet.AddChild(new SupplementBubbleController(target));
-			newBullet.Position = Position;
-			// newBullet.LinearVelocity = (target - Position).Normalized() * 100;
-		}
-	}
+        if (direction.Y < 0)
+        {
+            animation = "away";
+            flipH = false;
+            return true;
+        }
 
-	public override void _PhysicsProcess(double delta)
-	{
-		GetInput();
-		// using MoveAndCollide
-		var collision = MoveAndCollide(Velocity * (float)delta);
-		if (collision != null)
-		{
-			Velocity = Velocity.Slide(collision.GetNormal());
-		}
-	}
+        animation = "";
+        flipH = false;
 
-	public void Fast(float multiplier) => Speed *= multiplier;
+        return false;
+    }
+
+    public void GetInput()
+    {
+        var inputDirection = Input.GetVector("left", "right", "up", "down");
+        Velocity = inputDirection * Speed;
+        if (GetAnimationDirection(inputDirection, out var animation, out var flipH))
+        {
+            AnimatedSprite.Animation = $"walk_{animation}";
+            AnimatedSprite.FlipH = flipH;
+            IdleDirection = Velocity;
+        }
+        else
+        {
+            _ = GetAnimationDirection(IdleDirection, out var idleAnimation, out var _);
+            AnimatedSprite.Animation = $"idle_{idleAnimation}";
+        }
+
+        if (Input.IsActionJustPressed("last_gun"))
+        {
+            PlayerWeaponState.SelectedBulletTypeIndex--;
+        }
+
+        if (Input.IsActionJustPressed("next_gun"))
+        {
+            PlayerWeaponState.SelectedBulletTypeIndex++;
+        }
+
+        if (Input.IsActionJustPressed("bubble_slot_1"))
+        {
+            PlayerWeaponState.SelectedEffectTypeIndex = 1;
+        }
+
+        if (Input.IsActionJustPressed("bubble_slot_2"))
+        {
+            PlayerWeaponState.SelectedEffectTypeIndex = 2;
+        }
+
+        if (Input.IsActionJustPressed("bubble_slot_3"))
+        {
+            PlayerWeaponState.SelectedEffectTypeIndex = 3;
+        }
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        base._Input(@event);
+        // Use IsActionPressed to only accept single taps as input instead of mouse drags.
+        if (@event.IsActionPressed("click", true))
+        {
+            var target = GetGlobalMousePosition();
+            var newBullet = _bubbleScene.Instantiate<Bubble>();
+            BulletContainer.AddChild(newBullet);
+            newBullet
+                .AddEffect(PlayerWeaponState.CurrentEffectType)
+                .MakeBullet(PlayerWeaponState.CurrentBulletType, Position, target);
+        }
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        GetInput();
+        // using MoveAndCollide
+        var collision = MoveAndCollide(Velocity * (float)delta);
+        if (collision != null)
+        {
+            Velocity = Velocity.Slide(collision.GetNormal());
+        }
+    }
+
+    public void Fast(float multiplier) => Speed *= multiplier;
 }

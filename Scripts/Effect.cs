@@ -3,11 +3,6 @@ using Godot;
 
 namespace Bubble;
 
-public abstract record Effect(EffectType Type);
-public record TheWorldEffect() : Effect(EffectType.TheWorld);
-public record TeleportEffect(Timer Cooldown, Vector2 Position) : Effect(EffectType.Teleport);
-public record FastEffect() : Effect(EffectType.Fast);
-
 [Flags]
 public enum EffectType
 {
@@ -16,6 +11,13 @@ public enum EffectType
     Teleport = 1 << 1,
     Fast = 1 << 2,
     Bullet = 1 << 30
+}
+
+public enum BulletType
+{
+    None,
+    Tiny,
+    Supplement
 }
 
 public static class EffectTypeHelper

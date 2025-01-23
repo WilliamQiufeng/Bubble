@@ -11,6 +11,12 @@ public partial class BulletBubbleEffectController : BubbleEffectController
         base._Ready();
         CollisionShape2D = GetNode<CollisionShape2D>("../CollisionShape2D");
         CollisionShape2D.ApplyScale(Vector2.One * 0.1f);
+        var timer = new Timer();
+        AddChild(timer);
+        timer.WaitTime = 5;
+        timer.OneShot = true;
+        timer.Timeout += GetParent().QueueFree;
+        timer.Start();
     }
 
     protected override void HandlePlayerEnter(PlayerMovement playerMovement)
