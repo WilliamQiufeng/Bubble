@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtd2ilfo4j3p3"]
+
+[ext_resource type="PackedScene" uid="uid://cr0wfkkhkvskc" path="res://bubble.tscn" id="1_2184b"]
+
+[node name="Node2D" instance=ExtResource("1_2184b")]
+linear_damp_mode = 1
+
+[node name="CollisionShape2D" parent="." index="0"]
+scale = Vector2(0.1, 0.1)
+
+[node name="Area2D" parent="CollisionShape2D" index="0"]
+EffectType = 3
+IsBullet = true

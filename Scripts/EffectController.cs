@@ -23,7 +23,6 @@ public abstract partial class EffectController : Node
             return;
         GD.Print($"Bye {string.Join(",", groups)}");
         HandleBubbleCollisionExit(area);
-        
     }
     
     protected abstract void HandleBubbleCollisionExit(Area2D area);

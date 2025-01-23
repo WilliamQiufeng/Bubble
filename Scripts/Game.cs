@@ -4,7 +4,6 @@ namespace Bubble;
 
 public partial class Game : Node
 {
-    private float _gameSpeed = 1;
     public static Game Instance { get; private set; }
     public override void _EnterTree()
     {
@@ -19,12 +18,12 @@ public partial class Game : Node
     }
 
     [Export]
-    public float GameSpeed
+    public double GameSpeed
     {
-        get => _gameSpeed;
+        get => Engine.TimeScale;
         set
         {
-            _gameSpeed = value;
+            Engine.TimeScale = value;
             EmitSignal(SignalName.GameSpeedChange, value);
         }
     }

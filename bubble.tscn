@@ -7,7 +7,7 @@
 [ext_resource type="Shader" path="res://bubbletest.gdshader" id="4_xi0on"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xkbat"]
-radius = 17.1172
+radius = 16.0312
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e3i1b"]
 shader = ExtResource("1_p6kar")
@@ -22,27 +22,34 @@ shader = ExtResource("4_xi0on")
 shader_parameter/timeScale = 2.0
 shader_parameter/amplitude = 1.0
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 5
+gravity_scale = 0.0
 
-[node name="Area2D" type="Area2D" parent="." node_paths=PackedStringArray("Bubble", "CollisionShape") groups=["Bubble"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xkbat")
+
+[node name="Area2D" type="Area2D" parent="CollisionShape2D" node_paths=PackedStringArray("Bubble", "ScaleNode", "CollisionShape") groups=["Bubble"]]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_j6cin")
-Bubble = NodePath("..")
+Bubble = NodePath("../..")
+ScaleNode = NodePath("..")
 CollisionShape = NodePath("CollisionShape2D")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/Area2D"]
 shape = SubResource("CircleShape2D_xkbat")
 
-[node name="Bubble" type="Sprite2D" parent="."]
+[node name="Bubble" type="Sprite2D" parent="CollisionShape2D"]
 material = SubResource("ShaderMaterial_e3i1b")
 texture = SubResource("CanvasTexture_xm2o2")
 
-[node name="Floater" type="Sprite2D" parent="Bubble"]
+[node name="Floater" type="Sprite2D" parent="CollisionShape2D/Bubble"]
 material = SubResource("ShaderMaterial_jlsom")
 texture = ExtResource("2_18qn5")
 
-[connection signal="area_entered" from="Area2D" to="Area2D" method="OnBubbleAreaEntered"]
-[connection signal="area_exited" from="Area2D" to="Area2D" method="OnBubbleAreaExited"]
-[connection signal="body_entered" from="Area2D" to="Area2D" method="OnBubbleAreaEntered"]
-[connection signal="body_exited" from="Area2D" to="Area2D" method="OnBubbleAreaExited"]
+[connection signal="area_entered" from="CollisionShape2D/Area2D" to="CollisionShape2D/Area2D" method="OnBubbleAreaEntered"]
+[connection signal="area_exited" from="CollisionShape2D/Area2D" to="CollisionShape2D/Area2D" method="OnBubbleAreaExited"]
+[connection signal="body_entered" from="CollisionShape2D/Area2D" to="CollisionShape2D/Area2D" method="OnBubbleAreaEntered"]
+[connection signal="body_exited" from="CollisionShape2D/Area2D" to="CollisionShape2D/Area2D" method="OnBubbleAreaExited"]

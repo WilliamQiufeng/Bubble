@@ -4,8 +4,8 @@
 
 [node name="Node2D" instance=ExtResource("1_6ugtr")]
 
-[node name="Area2D" parent="." index="0" groups=["TheWorldBubble"]]
+[node name="Area2D" parent="CollisionShape2D" index="0" groups=["TheWorldBubble"]]
 EffectType = 1
 
-[node name="Bubble" parent="." index="1"]
-modulate = Color(0.46512, 0.54, 0.2592, 1)
+[node name="Bubble" parent="CollisionShape2D" index="1"]
+modulate = Color(0.16, 0.706, 1, 1)

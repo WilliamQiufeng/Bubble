@@ -8,13 +8,18 @@ public partial class PlayerMovement : CharacterBody2D
 	public float Speed { get; set; } = 100;
 	[Export]
 	public AnimatedSprite2D AnimatedSprite { get; set; }
+	[Export]
+	public Node2D BulletContainer { get; set; }
 
 	private Vector2 IdleDirection { get; set; } = Vector2.Down;
+
+	private PackedScene _bulletScene;
 
 	public override void _Ready()
 	{
 		base._Ready();
 		AnimatedSprite.Play("idle_towards");
+		_bulletScene = GD.Load<PackedScene>("res://bullet.tscn");
 	}
 
 	public bool GetAnimationDirection(Vector2 direction, out string animation, out bool flipH)
@@ -47,7 +52,7 @@ public partial class PlayerMovement : CharacterBody2D
 	public void GetInput()
 	{
 		var inputDirection = Input.GetVector("left", "right", "up", "down");
-		Velocity = inputDirection * Speed * Game.Instance.GameSpeed;
+		Velocity = inputDirection * Speed * (float)Game.Instance.GameSpeed;
 		if (GetAnimationDirection(inputDirection, out var animation, out var flipH))
 		{
 			AnimatedSprite.Animation = $"walk_{animation}";
@@ -58,6 +63,20 @@ public partial class PlayerMovement : CharacterBody2D
 		{
 			_ = GetAnimationDirection(IdleDirection, out var idleAnimation, out var _);
 			AnimatedSprite.Animation = $"idle_{idleAnimation}";
+		}
+	}
+
+	public override void _Input(InputEvent @event)
+	{
+		base._Input(@event);
+		// Use IsActionPressed to only accept single taps as input instead of mouse drags.
+		if (@event.IsActionPressed("click", true))
+		{
+			var target = GetGlobalMousePosition();
+			var newBullet = _bulletScene.Instantiate<RigidBody2D>();
+			BulletContainer.AddChild(newBullet);
+			newBullet.Position = Position;
+			newBullet.LinearVelocity = (target - Position).Normalized() * 100;
 		}
 	}
 
