@@ -73,13 +73,14 @@ public partial class PlayerMovement : CharacterBody2D
 		if (@event.IsActionPressed("click", true))
 		{
 			var target = GetGlobalMousePosition();
-			var newBullet = _bubbleScene.Instantiate<RigidBody2D>();
-			var bulletBubbleEffectController = new BulletBubbleEffectController();
+			var newBullet = _bubbleScene.Instantiate<Bubble>();
 			BulletContainer.AddChild(newBullet);
-			newBullet.AddChild(bulletBubbleEffectController);
+			// var bulletBubbleEffectController = new BulletBubbleEffectController();
+			// newBullet.AddChild(bulletBubbleEffectController);
 			newBullet.AddChild(new FastBubbleEffectController());
+			newBullet.AddChild(new SupplementBubbleController(target));
 			newBullet.Position = Position;
-			newBullet.LinearVelocity = (target - Position).Normalized() * 100;
+			// newBullet.LinearVelocity = (target - Position).Normalized() * 100;
 		}
 	}
 

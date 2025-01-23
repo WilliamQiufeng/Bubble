@@ -4,6 +4,7 @@ namespace Bubble;
 
 public partial class SupplementBubbleController : Node
 {
+    private Bubble Bubble { get; set; }
     public SupplementBubbleController(Vector2 targetPosition)
     {
         TargetPosition = targetPosition;
@@ -13,32 +14,36 @@ public partial class SupplementBubbleController : Node
     {
     }
 
-    public Vector2 TargetPosition { get; set; }
+    private Vector2 TargetPosition { get; set; }
     private const float Speed = 100f;
-    [Export] public RigidBody2D RigidBody2D { get; set; }
-    [Export] public Timer Timer { get; set; }
+    private Timer _timer = new();
     public override void _Ready()
     {
         base._Ready();
-        Timer.Timeout += TargetReached;
-        Timer.Start();
+        AddChild(_timer);
+        Bubble = GetParent<Bubble>();
+        _timer.WaitTime = 5;
+        _timer.OneShot = true;
+        _timer.Timeout += TargetReached;
+        _timer.Start();
     }
 
     public override void _PhysicsProcess(double delta)
     {
         base._PhysicsProcess(delta);
-        var dp = TargetPosition - RigidBody2D.Position;
-        if (dp.LengthSquared() < 5)
+        var dp = TargetPosition - Bubble.Position;
+        if (dp.LengthSquared() < 25)
         {
             TargetReached();
             return;
         }
-        RigidBody2D.ConstantForce = dp.Normalized() * Speed;
+        Bubble.ConstantForce = dp.Normalized() * Speed;
     }
 
     private void TargetReached()
     {
-        RigidBody2D.LinearVelocity = Vector2.Zero;
+        Bubble.LinearVelocity = Vector2.Zero;
+        Bubble.ConstantForce = Vector2.Zero;
         QueueFree();
     }
 }
