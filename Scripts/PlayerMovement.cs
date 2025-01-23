@@ -18,6 +18,8 @@ public partial class PlayerMovement : CharacterBody2D
 
     private Vector2 DashVector { get; set; }
 
+    private Timer ShootingTimer { get; set; }
+
     public override void _Ready()
     {
         base._Ready();
@@ -25,6 +27,9 @@ public partial class PlayerMovement : CharacterBody2D
         _bubbleScene = GD.Load<PackedScene>("res://bubble.tscn");
         Player = GetNode<Player>("PlayerController");
         PlayerWeaponState = GetNode<PlayerWeaponState>("PlayerWeaponState");
+        AddChild(ShootingTimer = new Timer());
+        ShootingTimer.WaitTime = 0.2;
+        ShootingTimer.Timeout += Fire;
     }
 
     public bool GetAnimationDirection(Vector2 direction, out string animation, out bool flipH)
@@ -107,15 +112,25 @@ public partial class PlayerMovement : CharacterBody2D
     {
         base._Input(@event);
         // Use IsActionPressed to only accept single taps as input instead of mouse drags.
-        if (@event.IsActionPressed("click", true))
+        if (@event.IsActionPressed("click"))
         {
-            var target = GetGlobalMousePosition();
-            var newBullet = _bubbleScene.Instantiate<Bubble>();
-            BulletContainer.AddChild(newBullet);
-            newBullet
-                .AddEffect(PlayerWeaponState.CurrentEffectType)
-                .MakeBullet(PlayerWeaponState.CurrentBulletType, Position, target);
+            Fire();
+            ShootingTimer.Start();
         }
+        else if (@event.IsActionReleased("click"))
+        {
+            ShootingTimer.Stop();
+        }
+    }
+
+    private void Fire()
+    {
+        var target = GetGlobalMousePosition();
+        var newBullet = _bubbleScene.Instantiate<Bubble>();
+        BulletContainer.AddChild(newBullet);
+        newBullet
+            .AddEffect(PlayerWeaponState.CurrentEffectType)
+            .MakeBullet(PlayerWeaponState.CurrentBulletType, Position, target);
     }
 
     public override void _PhysicsProcess(double delta)
