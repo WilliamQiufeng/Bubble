@@ -32,7 +32,7 @@ shape = SubResource("CircleShape2D_xkbat")
 
 [node name="Area2D" type="Area2D" parent="CollisionShape2D" node_paths=PackedStringArray("Bubble", "ScaleNode", "CollisionShape") groups=["Bubble"]]
 collision_layer = 4
-collision_mask = 4
+collision_mask = 12
 script = ExtResource("1_j6cin")
 Bubble = NodePath("../..")
 ScaleNode = NodePath("..")
@@ -51,5 +51,3 @@ texture = ExtResource("2_18qn5")
 
 [connection signal="area_entered" from="CollisionShape2D/Area2D" to="CollisionShape2D/Area2D" method="OnBubbleAreaEntered"]
 [connection signal="area_exited" from="CollisionShape2D/Area2D" to="CollisionShape2D/Area2D" method="OnBubbleAreaExited"]
-[connection signal="body_entered" from="CollisionShape2D/Area2D" to="CollisionShape2D/Area2D" method="OnBubbleAreaEntered"]
-[connection signal="body_exited" from="CollisionShape2D/Area2D" to="CollisionShape2D/Area2D" method="OnBubbleAreaExited"]

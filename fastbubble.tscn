@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://daslfp7trqlpk"]
+[gd_scene load_steps=3 format=3 uid="uid://daslfp7trqlpk"]
 
 [ext_resource type="PackedScene" uid="uid://cr0wfkkhkvskc" path="res://bubble.tscn" id="1_867nc"]
+[ext_resource type="Script" path="res://Scripts/FastBubbleEffectController.cs" id="2_tny6u"]
 
 [node name="Node2D" instance=ExtResource("1_867nc")]
 
@@ -9,3 +10,9 @@ EffectType = 3
 
 [node name="Bubble" parent="CollisionShape2D" index="1"]
 modulate = Color(0.7305, 0.23, 1, 1)
+
+[node name="Node" type="Node" parent="." index="1"]
+script = ExtResource("2_tny6u")
+
+[connection signal="body_entered" from="CollisionShape2D/Area2D" to="Node" method="HandleBodyEnter"]
+[connection signal="body_exited" from="CollisionShape2D/Area2D" to="Node" method="HandleBodyExit"]
