@@ -62,8 +62,8 @@ public class BubbleFactory
         {
             EffectType.TheWorld => 10,
             EffectType.Teleport => 10,
-            EffectType.Fast => 3,
-            EffectType.Dash => 5,
+            EffectType.Fast => 5,
+            EffectType.Dash => 7,
             _ => throw new ArgumentOutOfRangeException(nameof(effectType), effectType, null)
         };
         return this;

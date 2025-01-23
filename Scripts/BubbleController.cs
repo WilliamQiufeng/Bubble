@@ -46,7 +46,7 @@ public partial class BubbleController : Area2D
             return;
         GD.Print($"{EffectType} hit with {otherBubbleController.EffectType}");
         if (!otherBubbleController.EffectType.IsSameType(EffectType) ||
-            EffectType.IsBullet())
+            EffectType.IsBullet() && !otherBubbleController.EffectType.IsBullet())
             return;
         otherBubbleController.Bubble.QueueFree();
         GD.Print("Previous area: " + Area);

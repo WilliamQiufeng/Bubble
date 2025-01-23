@@ -39,12 +39,22 @@ public partial class Player : Node
     public int MaxHp { get; set; } = 100;
     public int MaxMana { get; set; } = 100;
 
+    public float ManaRegenRate { get; set; } = 3;
+    public float HpRegenRate { get; set; } = 1;
+
     public override void _Ready()
     {
         base._Ready();
         // To refresh the hp and mana bar
         Hp = 100;
         Mana = 100;
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        base._PhysicsProcess(delta);
+        Hp += (float)(HpRegenRate * delta / Game.Instance.GameSpeed);
+        Mana += (float)(ManaRegenRate * delta / Game.Instance.GameSpeed);
     }
 
     [Signal]

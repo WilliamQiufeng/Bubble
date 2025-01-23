@@ -5,6 +5,8 @@ namespace Bubble;
 public partial class DashBubbleEffectController : BubbleEffectController
 {
     public override EffectType EffectType => EffectType.Dash;
+    protected override Color? BubbleColor => Color.FromHsv(60f / 360, 90f / 100, 1);
+
     public override void _Ready()
     {
         base._Ready();
