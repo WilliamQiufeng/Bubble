@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://tsfm2wopjhsr"]
+
+[ext_resource type="PackedScene" uid="uid://cr0wfkkhkvskc" path="res://bubble.tscn" id="1_c82qm"]
+[ext_resource type="Script" path="res://Scripts/SupplementBubbleController.cs" id="2_y4r1i"]
+
+[node name="Node2D" instance=ExtResource("1_c82qm")]
+
+[node name="Node" type="Node" parent="." index="1" node_paths=PackedStringArray("RigidBody2D", "Timer")]
+script = ExtResource("2_y4r1i")
+RigidBody2D = NodePath("..")
+Timer = NodePath("../Timer")
+
+[node name="Timer" type="Timer" parent="." index="2"]
+process_callback = 0
+wait_time = 5.0
+one_shot = true
