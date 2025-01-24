@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://gwgjspymt36n"]
+
+[ext_resource type="FontFile" uid="uid://dhx7a45n50vym" path="res://Assets/Misc/Fonts/ExoBold.otf" id="1_k8wtp"]
+[ext_resource type="FontFile" uid="uid://cscm0bpfxlyyl" path="res://Assets/Misc/Fonts/ExoExtraBold.ttf" id="2_fg10y"]
+[ext_resource type="Script" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/DialogueBox/RubyText.gd" id="3_b208r"]
+
+[node name="RubyText" type="RichTextLabel"]
+offset_right = 250.0
+offset_bottom = 25.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/normal_font = ExtResource("1_k8wtp")
+theme_override_fonts/bold_font = ExtResource("2_fg10y")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "iudex"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_b208r")

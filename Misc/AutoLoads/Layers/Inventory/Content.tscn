@@ -1,0 +1,94 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="AudioStream" uid="uid://fn4mb7m5gulv" path="res://Assets/Audio/Effects/Use.wav" id="1"]
+[ext_resource type="AudioStream" uid="uid://c5repf42jndb8" path="res://Assets/Audio/Effects/ShakeLow.wav" id="2"]
+[ext_resource type="Texture2D" uid="uid://c06wyssix8jvp" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/Inventory/SelectionFrame.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://35f678x10nmd" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/Inventory/Inventory.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://by4xyl8kykug2" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/Inventory/ConfirmButtonGlow.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://bv3bftyytlka2" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/Inventory/CancelButtonGlow.png" id="6"]
+[ext_resource type="FontFile" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/Inventory/InventoryFont.tres" id="7"]
+[ext_resource type="AudioStream" uid="uid://bk8tdpnor5do" path="res://Assets/Audio/Effects/Cancel.wav" id="8"]
+[ext_resource type="AudioStream" uid="uid://byv68q1tis3ux" path="res://Assets/Audio/Effects/Confirm.wav" id="9"]
+[ext_resource type="Script" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/Inventory/Content.gd" id="10"]
+
+
+[node name="Content" type="Node2D" groups=["inventory"]]
+position = Vector2( 520, 0 )
+script = ExtResource( 10 )
+
+[node name="Page" type="Sprite2D" parent="."]
+position = Vector2( 700, 400 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
+
+[node name="ItemName" type="Node2D" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ItemName"]
+offset_left = 1008.0
+offset_top = 134.0
+offset_right = 1400.0
+offset_bottom = 214.0
+theme_override_colors/default_color = Color( 0.517647, 0.235294, 0, 1 )
+theme_override_fonts/normal_font = ExtResource( 7 )
+bbcode_enabled = true
+text = "[center]Taco"
+text = "Taco"
+fit_content_height = true
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="Node2D" parent="."]
+scale = Vector2( 0.4, 0.4 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Description"]
+offset_left = 2590.0
+offset_top = 533.0
+offset_right = 3430.0
+offset_bottom = 1115.0
+theme_override_colors/default_color = Color( 0.517647, 0.235294, 0, 1 )
+theme_override_fonts/normal_font = ExtResource( 7 )
+bbcode_enabled = true
+text = "[center]Taco's description, don't know how many lines I can fit, that's why I'm testing it; I'm trying to fit as many lines as possible to see how much space the description can take."
+text = "Taco's description, don't know how many lines I can fit, that's why I'm testing it; I'm trying to fit as many lines as possible to see how much space the description can take."
+fit_content_height = true
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Items" type="Node2D" parent="."]
+
+[node name="SelectionFrame" type="Sprite2D" parent="."]
+position = Vector2( 1072, 456 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+
+[node name="ConfirmButtonGlow" type="Sprite2D" parent="."]
+visible = false
+position = Vector2( 700, 400 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 5 )
+
+[node name="CancelButtonGlow" type="Sprite2D" parent="."]
+visible = false
+position = Vector2( 700, 400 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 6 )
+
+[node name="UsePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+bus = "Effects"
+
+[node name="ConfirmPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+bus = "Effects"
+
+[node name="CancelPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+bus = "Effects"
+
+[node name="ShakeLowPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+bus = "Effects"

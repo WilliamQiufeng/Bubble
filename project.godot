@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 [autoload]
 
 Game="*res://GameAutoLoad.tscn"
+G="*res://Misc/AutoLoads/Globe.gd"
+Focus="*res://Misc/AutoLoads/Focus.gd"
+Scenes="*res://Misc/AutoLoads/Scenes.gd"
+T="*res://Misc/AutoLoads/Time/Time.gd"
+Layers="*res://Misc/AutoLoads/Layers/Layers.tscn"
 
 [debug]
 

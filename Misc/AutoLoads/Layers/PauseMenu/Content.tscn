@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://cr68pk2tlkr6h"]
+
+[ext_resource type="Texture2D" uid="uid://bb2w7awechktt" path="res://Assets/Standalone/Abstract/Pointer/Pointer.png" id="1"]
+[ext_resource type="AudioStream" uid="uid://psaaohh5o3m" path="res://Assets/Audio/Effects/ShakeQuick.wav" id="2"]
+[ext_resource type="FontFile" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/PauseMenu/PauseMenuFont.tres" id="3"]
+[ext_resource type="Script" path="res://Assets/Standalone/Abstract/Pointer/Pointer.gd" id="4"]
+
+[sub_resource type="Animation" id="1"]
+resource_name = "show"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1oavt"]
+_data = {
+"show": SubResource("1")
+}
+
+[node name="Content" type="Node2D" groups=["pauseMenu"]]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1400.0
+offset_bottom = 800.0
+color = Color(0, 0, 0, 0.647059)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=["updateFree"]]
+libraries = {
+"": SubResource("AnimationLibrary_1oavt")
+}
+autoplay = "show"
+
+[node name="Buttons" type="Node2D" parent="."]
+position = Vector2(0, 70)
+
+[node name="Resume" type="RichTextLabel" parent="Buttons"]
+offset_left = 500.0
+offset_top = 211.0
+offset_right = 900.0
+offset_bottom = 311.0
+theme_override_fonts/normal_font = ExtResource("3")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center]RESUME"
+scroll_active = false
+
+[node name="ExitToMenu" type="RichTextLabel" parent="Buttons"]
+offset_left = 300.0
+offset_top = 311.0
+offset_right = 1100.0
+offset_bottom = 439.0
+theme_override_fonts/normal_font = ExtResource("3")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center]EXIT TO MENU"
+scroll_active = false
+
+[node name="QuitGame" type="RichTextLabel" parent="Buttons"]
+offset_left = 300.0
+offset_top = 411.0
+offset_right = 1100.0
+offset_bottom = 492.0
+theme_override_fonts/normal_font = ExtResource("3")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center]QUIT GAME"
+scroll_active = false
+
+[node name="Pointer" type="Sprite2D" parent="."]
+position = Vector2(-100, 305)
+scale = Vector2(4, 4)
+texture = ExtResource("1")
+script = ExtResource("4")
+
+[node name="ShakeQuickPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2")
+autoplay = true
+bus = &"Effects"

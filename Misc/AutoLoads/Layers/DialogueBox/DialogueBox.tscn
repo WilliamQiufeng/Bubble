@@ -1,0 +1,193 @@
+[gd_scene load_steps=10 format=3 uid="uid://cn1suio6g5q8u"]
+
+[ext_resource type="Texture2D" uid="uid://dbi4nas3hedby" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/DialogueBox/dialogueBox.png" id="2"]
+[ext_resource type="Script" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/DialogueBox/DialogueBox.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://c120ktt8xdudc" path="res://Assets/Standalone/Dynamic/Characters/Zipped/Kolt/Sprites/Faces/Default.png" id="4"]
+[ext_resource type="FontFile" uid="uid://dhx7a45n50vym" path="res://Assets/Misc/Fonts/ExoBold.otf" id="4_migat"]
+[ext_resource type="Texture2D" uid="uid://ck61056luegdn" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/DialogueBox/advanceMarker.png" id="5"]
+[ext_resource type="FontFile" uid="uid://cscm0bpfxlyyl" path="res://Assets/Misc/Fonts/ExoExtraBold.ttf" id="5_c8gj1"]
+[ext_resource type="Texture2D" uid="uid://uq7v1uh72uso" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/DialogueBox/OptionSelector.png" id="6"]
+[ext_resource type="AudioStream" uid="uid://jf57max3dbfo" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/DialogueBox/Text.wav" id="7"]
+
+[sub_resource type="FontFile" id="FontFile_a54s0"]
+fallbacks = Array[Font]([ExtResource("5_c8gj1")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/32/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/28/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/24/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/26/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/25/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/23/0 = Vector2(0, 0)
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+cache/0/32/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/32/0/kerning_overrides/32/0 = Vector2(0, 0)
+cache/0/32/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/32/0/kerning_overrides/28/0 = Vector2(0, 0)
+cache/0/32/0/kerning_overrides/24/0 = Vector2(0, 0)
+cache/0/32/0/kerning_overrides/26/0 = Vector2(0, 0)
+cache/0/32/0/kerning_overrides/25/0 = Vector2(0, 0)
+cache/0/32/0/kerning_overrides/23/0 = Vector2(0, 0)
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/32/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/28/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/24/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/26/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/25/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/23/0 = Vector2(0, 0)
+cache/0/28/0/ascent = 0.0
+cache/0/28/0/descent = 0.0
+cache/0/28/0/underline_position = 0.0
+cache/0/28/0/underline_thickness = 0.0
+cache/0/28/0/scale = 1.0
+cache/0/28/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/28/0/kerning_overrides/32/0 = Vector2(0, 0)
+cache/0/28/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/28/0/kerning_overrides/28/0 = Vector2(0, 0)
+cache/0/28/0/kerning_overrides/24/0 = Vector2(0, 0)
+cache/0/28/0/kerning_overrides/26/0 = Vector2(0, 0)
+cache/0/28/0/kerning_overrides/25/0 = Vector2(0, 0)
+cache/0/28/0/kerning_overrides/23/0 = Vector2(0, 0)
+cache/0/24/0/ascent = 0.0
+cache/0/24/0/descent = 0.0
+cache/0/24/0/underline_position = 0.0
+cache/0/24/0/underline_thickness = 0.0
+cache/0/24/0/scale = 1.0
+cache/0/24/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/24/0/kerning_overrides/32/0 = Vector2(0, 0)
+cache/0/24/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/24/0/kerning_overrides/28/0 = Vector2(0, 0)
+cache/0/24/0/kerning_overrides/24/0 = Vector2(0, 0)
+cache/0/24/0/kerning_overrides/26/0 = Vector2(0, 0)
+cache/0/24/0/kerning_overrides/25/0 = Vector2(0, 0)
+cache/0/24/0/kerning_overrides/23/0 = Vector2(0, 0)
+cache/0/26/0/ascent = 0.0
+cache/0/26/0/descent = 0.0
+cache/0/26/0/underline_position = 0.0
+cache/0/26/0/underline_thickness = 0.0
+cache/0/26/0/scale = 1.0
+cache/0/26/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/26/0/kerning_overrides/32/0 = Vector2(0, 0)
+cache/0/26/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/26/0/kerning_overrides/28/0 = Vector2(0, 0)
+cache/0/26/0/kerning_overrides/24/0 = Vector2(0, 0)
+cache/0/26/0/kerning_overrides/26/0 = Vector2(0, 0)
+cache/0/26/0/kerning_overrides/25/0 = Vector2(0, 0)
+cache/0/26/0/kerning_overrides/23/0 = Vector2(0, 0)
+cache/0/25/0/ascent = 0.0
+cache/0/25/0/descent = 0.0
+cache/0/25/0/underline_position = 0.0
+cache/0/25/0/underline_thickness = 0.0
+cache/0/25/0/scale = 1.0
+cache/0/25/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/25/0/kerning_overrides/32/0 = Vector2(0, 0)
+cache/0/25/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/25/0/kerning_overrides/28/0 = Vector2(0, 0)
+cache/0/25/0/kerning_overrides/24/0 = Vector2(0, 0)
+cache/0/25/0/kerning_overrides/26/0 = Vector2(0, 0)
+cache/0/25/0/kerning_overrides/25/0 = Vector2(0, 0)
+cache/0/25/0/kerning_overrides/23/0 = Vector2(0, 0)
+cache/0/23/0/ascent = 0.0
+cache/0/23/0/descent = 0.0
+cache/0/23/0/underline_position = 0.0
+cache/0/23/0/underline_thickness = 0.0
+cache/0/23/0/scale = 1.0
+cache/0/23/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/23/0/kerning_overrides/32/0 = Vector2(0, 0)
+cache/0/23/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/23/0/kerning_overrides/28/0 = Vector2(0, 0)
+cache/0/23/0/kerning_overrides/24/0 = Vector2(0, 0)
+cache/0/23/0/kerning_overrides/26/0 = Vector2(0, 0)
+cache/0/23/0/kerning_overrides/25/0 = Vector2(0, 0)
+cache/0/23/0/kerning_overrides/23/0 = Vector2(0, 0)
+
+[node name="DialogueBox" type="Node2D" groups=["dialogueBox"]]
+script = ExtResource("3")
+labelPath = NodePath("TextLabel")
+optionSelectorPath = NodePath("OptionSelector")
+nameTagPath = NodePath("NameTag")
+faceSpritePath = NodePath("Face")
+advanceMarkerPath = NodePath("AdvanceMarker")
+voicePlayerPath = NodePath("TextAudio")
+
+[node name="Box" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2")
+
+[node name="AdvanceMarker" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("5")
+
+[node name="TextLabel" type="RichTextLabel" parent="." groups=["dialogueLabel"]]
+clip_contents = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -413.0
+offset_top = -133.0
+offset_right = 566.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/line_separation = 14
+theme_override_fonts/normal_font = ExtResource("4_migat")
+theme_override_fonts/bold_font = ExtResource("5_c8gj1")
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "There's half an hour, I need to fill this dialogue box with random texts so that I can test the line heights and other parameters whatever. It's alright! But not so quickly can he throw away the sacred pole with what I assume to be"
+scroll_active = false
+visible_characters_behavior = 1
+
+[node name="NameTag" type="RichTextLabel" parent="."]
+clip_contents = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -552.0
+offset_top = -203.0
+offset_right = -320.0
+offset_bottom = -171.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = SubResource("FontFile_a54s0")
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "KATHERINE"
+scroll_active = false
+
+[node name="Face" type="Sprite2D" parent="."]
+position = Vector2(-494, -74)
+scale = Vector2(6, 6)
+texture = ExtResource("4")
+
+[node name="OptionSelector" type="Sprite2D" parent="."]
+position = Vector2(-401, -123)
+scale = Vector2(4, 4)
+texture = ExtResource("6")
+
+[node name="TextAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7")
+volume_db = 8.0
+bus = &"Effects"
