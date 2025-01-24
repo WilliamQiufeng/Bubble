@@ -40,11 +40,14 @@ script = ExtResource("2_smpfk")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/Area2D"]
 shape = SubResource("CircleShape2D_xkbat")
 
-[node name="Bubble" type="Sprite2D" parent="CollisionShape2D"]
+[node name="BackBufferCopy" type="BackBufferCopy" parent="CollisionShape2D"]
+copy_mode = 2
+
+[node name="Bubble" type="Sprite2D" parent="CollisionShape2D/BackBufferCopy"]
 material = SubResource("ShaderMaterial_e3i1b")
 texture = SubResource("CanvasTexture_xm2o2")
 
-[node name="Floater" type="Sprite2D" parent="CollisionShape2D/Bubble"]
+[node name="Floater" type="Sprite2D" parent="CollisionShape2D/BackBufferCopy/Bubble"]
 material = SubResource("ShaderMaterial_jlsom")
 texture = ExtResource("2_18qn5")
 
