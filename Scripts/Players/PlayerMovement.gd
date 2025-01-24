@@ -2,21 +2,19 @@ class_name PlayerMovement
 extends CharacterBody2D
 
 @export var speed: float = 100
-@export var animated_sprite: AnimatedSprite2D
 @export var bullet_container: Node2D
 
 var idle_direction: Vector2 = Vector2.DOWN
 @onready var bubble_scene: PackedScene = preload("res://bubble.tscn")
 @onready var player_weapon_state: Node = $PlayerWeaponState
 @onready var player: Node = $PlayerController
+@onready var animation_movement : AnimationMovement = $AnimationMovement
 var dash_vector: Vector2 = Vector2.ZERO
 var shooting_timer: Timer
 var can_dash: bool = false
 var dashing_cooldown_timer: Timer
 
 func _ready():
-	animated_sprite.play("idle_towards")
-	
 	shooting_timer = Timer.new()
 	shooting_timer.wait_time = 0.2
 	shooting_timer.connect("timeout", fire)
@@ -27,27 +25,16 @@ func _ready():
 	dashing_cooldown_timer.one_shot = true
 	add_child(dashing_cooldown_timer)
 
-func get_animation_direction(direction: Vector2) -> Array:
-	if direction.x != 0:
-		return ["left", direction.x > 0]
-	elif direction.y > 0:
-		return ["towards", false]
-	elif direction.y < 0:
-		return ["away", false]
-	return ["", false]
-
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
-	var animation_data = get_animation_direction(input_direction)
 	
-	if animation_data[0] != "":
-		animated_sprite.animation = "walk_" + animation_data[0]
-		animated_sprite.flip_h = animation_data[1]
-		idle_direction = velocity
+	if velocity != Vector2.ZERO:
+		animation_movement.set_dir(velocity.normalized())
+		animation_movement.move()
+		idle_direction = velocity.normalized()
 	else:
-		var idle_data = get_animation_direction(idle_direction)
-		animated_sprite.animation = "idle_" + idle_data[0]
+		animation_movement.idle()
 	
 	if Input.is_action_just_pressed("last_gun"):
 		player_weapon_state.selected_bullet_type_index -= 1
@@ -63,7 +50,7 @@ func get_input():
 	
 	if can_dash and dashing_cooldown_timer.time_left <= 0 and Input.is_action_just_pressed("dash"):
 		dashing_cooldown_timer.start()
-		dash_vector = idle_direction.normalized() * speed * 2
+		dash_vector = idle_direction * speed * 2
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("click"):

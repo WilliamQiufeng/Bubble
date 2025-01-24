@@ -17,7 +17,8 @@ func move(dir: Vector2):
 	if dir == Vector2.ZERO:
 		animation_movement.idle()
 	else:
-		animation_movement.set_dir(dir_unit)
+		if melee_timer.is_stopped():
+			animation_movement.set_dir(dir_unit)
 		animation_movement.move()
 	velocity = dir_unit * speed
 

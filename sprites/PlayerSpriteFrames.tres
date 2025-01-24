@@ -195,7 +195,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_k0r4y")
 }],
 "loop": true,
-"name": &"walk_away",
+"name": &"move_away",
 "speed": 10.0
 }, {
 "frames": [{
@@ -218,7 +218,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_1dhnp")
 }],
 "loop": true,
-"name": &"walk_left",
+"name": &"move_left",
 "speed": 10.0
 }, {
 "frames": [{
@@ -241,6 +241,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_yobpy")
 }],
 "loop": true,
-"name": &"walk_towards",
+"name": &"move_towards",
 "speed": 10.0
 }]
