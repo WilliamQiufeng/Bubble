@@ -6,6 +6,9 @@ func _get_effect_type():
 
 var collision_shape_2d: CollisionShape2D
 
+func set_bubble_appearance():
+	pass
+
 func _ready() -> void:
 	super._ready()
 	collision_shape_2d = $"../CollisionShape2D"

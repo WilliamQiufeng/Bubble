@@ -13,6 +13,9 @@ var bubble: Bubble
 func _get_effect_type() -> Constants.EffectType:
 	return Constants.EffectType.BULLET
 
+func set_bubble_appearance():
+	pass
+
 func _ready() -> void:
 	super._ready()
 	add_child(timer)

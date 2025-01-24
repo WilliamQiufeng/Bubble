@@ -18,12 +18,16 @@ func _get_effect_type() -> Constants.EffectType: return Constants.EffectType.NON
 func get_bubble_color() -> Color:
 	return Color.WHITE
 
+func set_bubble_appearance():
+	sprite.modulate = get_bubble_color()
+	print("Color = ", sprite.modulate)
+	
+
 # Deferred body enters
 var deferred_body_enters: Array = []
 
 func _ready() -> void:
-	sprite.modulate = get_bubble_color()
-	print("Color = ", sprite.modulate)
+	set_bubble_appearance()
 
 	bubble_controller = $"../CollisionShape2D/Area2D"
 	bubble_controller.connect("body_entered", _on_body_entered)
