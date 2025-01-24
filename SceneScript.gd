@@ -2,7 +2,10 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print("loaded scene")
+	print("Loaded game scene")
+	await G.createTimer(3).timeout
+	#Scenes.switchScene("res://bubble.tscn")
+	await Layers.dialogueBox.setAndDisplayQueueAndEnd(["Hello"])
 
 func _physics_process(delta: float) -> void:
 	pass

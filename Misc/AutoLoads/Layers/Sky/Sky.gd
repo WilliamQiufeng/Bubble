@@ -68,7 +68,7 @@ func _physics_process(delta):
 				add_child(l)
 				l.position = Vector2(randi()%1400,320)
 				await G.createTimer(0.5+randf()).timeout
-				Audio.playEffect(preload("res://Assets/Audio/Effects/Thunder.wav"),-randf()*8,0.75+randf()/4)
+				Audio.playEffect(preload("res://Misc/Effects/Thunder.wav"),-randf()*8,0.75+randf()/4)
 	tint = G.moveColorToward(tint,targetTint,0.01)
 #	tint = tint.linear_interpolate(targetTint,pow(0.1,weatherSpeed))
 	tintWeight = move_toward(tintWeight,targetTintWeight,weatherSpeed*0.1)

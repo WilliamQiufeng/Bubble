@@ -1,9 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://b6qqqf3agipt1"]
 
-[ext_resource type="Script" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/Cinematics/Canvases/Canvases.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://df6k7lff3or1c" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/Cinematics/Canvases/Images/KoltRays.png" id="2"]
-[ext_resource type="FontFile" uid="uid://cjd4jb733kpr4" path="res://Assets/Misc/Fonts/DPComic.ttf" id="3_sy7pm"]
-
+[ext_resource type="Script" path="res://Misc/AutoLoads/Layers/Cinematics/Canvases/Canvases.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://df6k7lff3or1c" path="res://Misc/AutoLoads/Layers/Cinematics/Canvases/Images/KoltRays.png" id="2"]
+[ext_resource type="FontFile" uid="uid://cjd4jb733kpr4" path="res://Misc/Fonts/DPComic.ttf" id="3_sy7pm"]
 
 [node name="Canvases" type="Node2D" groups=["canvases"]]
 script = ExtResource("1")

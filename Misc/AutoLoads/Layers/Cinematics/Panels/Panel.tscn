@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/Cinematics/Panels/Panel.gd" id="1"]
-[ext_resource type="AudioStream" uid="uid://cup53bp8bdog3" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/Cinematics/Panels/Panel.wav" id="2"]
+[ext_resource type="Script" path="res://Misc/AutoLoads/Layers/Cinematics/Panels/Panel.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://cup53bp8bdog3" path="res://Misc/AutoLoads/Layers/Cinematics/Panels/Panel.wav" id="2"]
 
 [node name="Panel" type="Sprite2D"]
 script = ExtResource( 1 )

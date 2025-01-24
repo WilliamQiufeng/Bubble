@@ -5,12 +5,12 @@ var active = false
 
 var CONTENT_SCENE:PackedScene = preload("Content.tscn")
 
-func _physics_process(delta):
+#func _physics_process(delta):
 	#leave room for closing animation by checking child count
-	if G.justPressed("menu1"):
-		if active && Focus.isFocused(self):
-			Audio.playEffect(preload("res://Assets/Audio/Effects/ShakeLow.wav"))
-			deactivate()
+	#if G.justPressed("menu1"):
+		#if active && Focus.isFocused(self):
+			#Audio.playEffect(preload("res://Misc/Effects/ShakeLow.wav"))
+			#deactivate()
 #		if Focus.isFocused(G.player) && !active:
 #			activate()
 #		elif active && Focus.isFocused(self):

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://nuoj1vrqrghc"]
 
-[ext_resource type="Script" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/Cinematics/Bars/CinematicBars.gd" id="1"]
+[ext_resource type="Script" path="res://Misc/AutoLoads/Layers/Cinematics/Bars/CinematicBars.gd" id="1"]
 
 [node name="CinematicBars" type="Node2D" groups=["cinematicBars"]]
 script = ExtResource("1")

@@ -8,7 +8,7 @@ extends Node2D
 #LayerN100
 @onready var sky:Node2D = $LayerN100/Sky
 #Layer 5
-@onready var hud:Node2D = $Layer5/Hud
+@onready var hud:Node2D = $Layer5/HUD
 @onready var interactionHints:Node2D = $Layer5/InteractionHints
 @onready var cinematicBars:Node2D = $Layer5/CinematicBars
 @onready var dialogueBox:DialogueBox = $Layer5/DialogueBox

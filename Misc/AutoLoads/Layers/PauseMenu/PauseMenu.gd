@@ -14,7 +14,7 @@ func _ready():
 	T.addToNoTimeZone(self)
 
 func _process(delta):
-	if Scenes.current().sceneType == "world":
+	if true: #WORK
 		if G.justPressed("escape") && !pausing && !Scenes.switchingScene && !is_instance_valid(content):
 			pause()
 		if !is_instance_valid(content) || !Focus.isFocused(self): return
