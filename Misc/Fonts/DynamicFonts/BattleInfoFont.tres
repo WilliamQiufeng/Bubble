@@ -1,0 +1,7 @@
+[gd_resource type="FontFile" load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Misc/Fonts/DPComic.ttf" type="FontFile" id=1]
+
+[resource]
+outline_color = Color( 0.709804, 0.709804, 0.709804, 1 )
+font_data = ExtResource( 1 )

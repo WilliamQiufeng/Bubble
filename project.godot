@@ -14,7 +14,7 @@ config/name="Bubble"
 run/main_scene="res://Game.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="bubble"
-config/features=PackedStringArray("4.3", "C#", "Forward Plus")
+config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -25,6 +25,8 @@ Focus="*res://Misc/AutoLoads/Focus.gd"
 Scenes="*res://Misc/AutoLoads/Scenes.gd"
 T="*res://Misc/AutoLoads/Time/Time.gd"
 Layers="*res://Misc/AutoLoads/Layers/Layers.tscn"
+Audio="*res://Misc/AutoLoads/Audio.gd"
+Story="*res://Misc/AutoLoads/Story.gd"
 
 [debug]
 
@@ -35,7 +37,6 @@ file_logging/enable_file_logging=true
 window/size/viewport_width=512
 window/size/viewport_height=512
 window/stretch/mode="canvas_items"
-window/stretch/scale=2.0
 window/stretch/scale_mode="integer"
 
 [dotnet]

@@ -27,7 +27,7 @@ func deactivate():
 	var content:Node2D = get_child(0)
 	if is_instance_valid(content):
 		content.targetAlphaC = 0
-		Audio.playEffect(preload("res://Assets/Audio/Effects/ShakeLow.wav"))
+		Audio.playEffect(preload("res://Misc/Effects/ShakeLow.wav"))
 
 func abort():
 	deactivate()

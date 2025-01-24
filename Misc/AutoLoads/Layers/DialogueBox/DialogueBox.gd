@@ -76,6 +76,12 @@ func _ready():
 	modulate.a = 0
 	await dialogueEnded
 
+
+func _on_button_pressed() -> void:
+	if Focus.isFocused(self) && args.ignoreInput == "false":
+		if canSkip(): return skipDisplay()
+		if queueIndex<len(queue): displayQueue()
+	
 func _physics_process(delta):
 	modulate.a = move_toward(modulate.a,int(displaying),0.2)
 	if !displaying: return

@@ -8,7 +8,7 @@ const DEFAULT_VECTOR2:Vector2 = Vector2.INF
 const SCENES_PATH:String = "res://Assets/Scenes/"
 const CHARACTERS_PATH:String = "res://Assets/Standalone/Dynamic/Characters/"
 const SONGS_PATH:String = "res://Assets/Audio/Songs/"
-const EFFECTS_PATH:String = "res://Assets/Audio/Effects/"
+const EFFECTS_PATH:String = "res://Misc/Effects/"
 #const ITEMS_PATH:String = "res://Assets/Standalone/Abstract/Items/"
 
 
@@ -19,6 +19,8 @@ var sceneNodes:Array[Node] = []
 var callOnAllNodes:Array[Callable] = []
 
 var notificationCenter:Dictionary = {}
+
+var DEBUGGING = true
 
 #READY & PROCESS
 #initializes and updates

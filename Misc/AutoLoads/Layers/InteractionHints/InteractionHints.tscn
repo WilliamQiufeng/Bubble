@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bpkusesk060wd"]
 
-[ext_resource type="Script" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/InteractionHints/InteractionHints.gd" id="1"]
+[ext_resource type="Script" path="res://Misc/AutoLoads/Layers/InteractionHints/InteractionHints.gd" id="1"]
 
 [node name="InteractionHints" type="Node2D"]
 script = ExtResource("1")

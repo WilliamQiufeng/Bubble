@@ -1,17 +1,17 @@
 [gd_scene load_steps=13 format=3 uid="uid://bydgigp3m5t3d"]
 
-[ext_resource type="Script" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/Layers.gd" id="1"]
-[ext_resource type="Script" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/PauseMenu/PauseMenu.gd" id="2"]
-[ext_resource type="Script" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/Inventory/Inventory.gd" id="4"]
-[ext_resource type="PackedScene" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/Cinematics/Panels/Panels.tscn" id="6"]
-[ext_resource type="PackedScene" uid="uid://nuoj1vrqrghc" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/Cinematics/Bars/CinematicBars.tscn" id="7"]
-[ext_resource type="PackedScene" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/Cinematics/Transitions/Transitions.tscn" id="8"]
-[ext_resource type="PackedScene" uid="uid://b6qqqf3agipt1" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/Cinematics/Canvases/Canvases.tscn" id="9"]
-[ext_resource type="PackedScene" uid="uid://wym2l50h7ugg" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/Hud/Hud.tscn" id="10"]
-[ext_resource type="PackedScene" uid="uid://cn1suio6g5q8u" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/DialogueBox/DialogueBox.tscn" id="11"]
-[ext_resource type="PackedScene" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/Sky/Sky.tscn" id="12"]
-[ext_resource type="PackedScene" uid="uid://bpkusesk060wd" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/InteractionHints/InteractionHints.tscn" id="13"]
-[ext_resource type="Script" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/ToDoList/ToDoList.gd" id="14"]
+[ext_resource type="Script" path="res://Misc/AutoLoads/Layers/Layers.gd" id="1"]
+[ext_resource type="Script" path="res://Misc/AutoLoads/Layers/PauseMenu/PauseMenu.gd" id="2"]
+[ext_resource type="Script" path="res://Misc/AutoLoads/Layers/Inventory/Inventory.gd" id="4"]
+[ext_resource type="PackedScene" path="res://Misc/AutoLoads/Layers/Cinematics/Panels/Panels.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://nuoj1vrqrghc" path="res://Misc/AutoLoads/Layers/Cinematics/Bars/CinematicBars.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://Misc/AutoLoads/Layers/Cinematics/Transitions/Transitions.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://b6qqqf3agipt1" path="res://Misc/AutoLoads/Layers/Cinematics/Canvases/Canvases.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://wym2l50h7ugg" path="res://Misc/AutoLoads/Layers/Hud/Hud.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://cn1suio6g5q8u" path="res://Misc/AutoLoads/Layers/DialogueBox/DialogueBox.tscn" id="11"]
+[ext_resource type="PackedScene" uid="uid://jccue731r3ju" path="res://Misc/AutoLoads/Layers/Sky/Sky.tscn" id="12"]
+[ext_resource type="PackedScene" uid="uid://bpkusesk060wd" path="res://Misc/AutoLoads/Layers/InteractionHints/InteractionHints.tscn" id="13"]
+[ext_resource type="Script" path="res://Misc/AutoLoads/Layers/ToDoList/ToDoList.gd" id="14"]
 
 [node name="Layers" type="Node2D"]
 script = ExtResource("1")
@@ -24,7 +24,7 @@ layer = -100
 [node name="Layer5" type="CanvasLayer" parent="."]
 layer = 5
 
-[node name="Hud" parent="Layer5" instance=ExtResource("10")]
+[node name="HUD" parent="Layer5" instance=ExtResource("10")]
 
 [node name="InteractionHints" parent="Layer5" instance=ExtResource("13")]
 
@@ -37,13 +37,12 @@ script = ExtResource("14")
 [node name="CinematicBars" parent="Layer5" instance=ExtResource("7")]
 
 [node name="DialogueBox" parent="Layer5" instance=ExtResource("11")]
-position = Vector2(700, 800)
+position = Vector2(256, 514)
 
 [node name="Layer10" type="CanvasLayer" parent="."]
 layer = 10
 
 [node name="Panels" parent="Layer10" instance=ExtResource("6")]
-position = Vector2(700, 400)
 
 [node name="Canvases" parent="Layer10" instance=ExtResource("9")]
 process_mode = 3
@@ -55,6 +54,7 @@ layer = 15
 
 [node name="Transitions" parent="Layer15" instance=ExtResource("8")]
 visible = false
+script = null
 
 [node name="PauseMenu" type="Node2D" parent="Layer15" groups=["pauseMenu"]]
 process_mode = 3

@@ -105,3 +105,4 @@ func getCurrentScenePath() -> String:
 func getCurrentScene() -> Node2D:
 	var root = get_tree().get_root()
 	return root.get_child(root.get_child_count() - 1)
+func current() -> Node2D: return currentScene

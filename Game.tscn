@@ -26,6 +26,9 @@ bullet_container = NodePath("../Bubbles")
 [node name="AnimatedSprite2D" parent="TileMapLayer/Player" index="2"]
 animation = &"walk_towards"
 
+[node name="Camera2D" parent="TileMapLayer/Player" index="3"]
+zoom = Vector2(2, 2)
+
 [node name="Enemies" type="Node2D" parent="TileMapLayer"]
 
 [node name="Enemy" parent="TileMapLayer/Enemies" instance=ExtResource("4_4twxf")]
