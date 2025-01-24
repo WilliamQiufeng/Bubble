@@ -7,13 +7,13 @@ const CONTENT_SCENE:PackedScene = preload("Content.tscn")
 #This node listens to inputs, it instantiates via activate() the actual content on some input
 #on some other input, it frees the content via deactivate()
 
-func _physics_process(delta):
-	if G.justPressed("menu2"):
-		if !active && Focus.isFocused(G.player):
-			activate()
-		elif active && Focus.isFocused(self):
-			assert(is_instance_valid(get_child(0)),"Tried deactivating invalid content")
-			deactivate()
+#func _physics_process(delta):
+	#if G.justPressed("menu2"):
+		#if !active && Focus.isFocused(G.player):
+			#activate()
+		#elif active && Focus.isFocused(self):
+			#assert(is_instance_valid(get_child(0)),"Tried deactivating invalid content")
+			#deactivate()
 
 func activate():
 	if !G.playerInSceneDeferred(): return
