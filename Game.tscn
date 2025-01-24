@@ -20,7 +20,6 @@ tile_set = ExtResource("3_cype7")
 
 [node name="Player" parent="TileMapLayer" node_paths=PackedStringArray("bullet_container") instance=ExtResource("4_ab4fr")]
 position = Vector2(196, 190)
-collision_layer = 8
 bullet_container = NodePath("../Bubbles")
 
 [node name="AnimatedSprite2D" parent="TileMapLayer/Player" index="2"]

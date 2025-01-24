@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0vincv0a17xv"]
+[gd_scene load_steps=10 format=3 uid="uid://c0vincv0a17xv"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/enemy.gd" id="1_kcr3m"]
 [ext_resource type="SpriteFrames" uid="uid://cb8ii7th20pjg" path="res://sprites/craftpix/enemy_frames_1.tres" id="1_yhytp"]
@@ -10,8 +10,10 @@
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_4vi0j"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2f6ym"]
-radius = 20.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_8doui"]
+radius = 80.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wa0fb"]
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
 collision_layer = 8
@@ -23,25 +25,39 @@ shape = SubResource("RectangleShape2D_wrl0t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_yhytp")
-animation = &"idle_towards"
+animation = &"hit_away"
 
 [node name="BTPlayer" type="BTPlayer" parent="."]
 behavior_tree = ExtResource("3_7k7hh")
 blackboard_plan = SubResource("BlackboardPlan_4vi0j")
 
-[node name="PlayerTracker" type="ShapeCast2D" parent="."]
-shape = SubResource("CircleShape2D_2f6ym")
-target_position = Vector2(0, 100)
+[node name="TargetTracker" type="ShapeCast2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_8doui")
+target_position = Vector2(0, 20)
 collision_mask = 3
 script = ExtResource("4_mqxyr")
 
-[node name="Timer" type="Timer" parent="PlayerTracker"]
+[node name="Timer" type="Timer" parent="TargetTracker"]
 process_callback = 0
-wait_time = 0.5
+wait_time = 0.2
 autostart = true
 
-[node name="Sprite2D" type="Sprite2D" parent="PlayerTracker"]
+[node name="ForgetTimer" type="Timer" parent="TargetTracker"]
+process_callback = 0
+wait_time = 0.4
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="TargetTracker"]
 visible = false
 texture = ExtResource("5_ntujr")
 
-[connection signal="timeout" from="PlayerTracker/Timer" to="PlayerTracker" method="check_raycast"]
+[node name="AttackRange" type="ShapeCast2D" parent="."]
+position = Vector2(0, 9)
+shape = SubResource("CircleShape2D_wa0fb")
+target_position = Vector2(0, 23)
+collision_mask = 3
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="detect_attack"]
+[connection signal="timeout" from="TargetTracker/Timer" to="TargetTracker" method="check_raycast"]
+[connection signal="timeout" from="TargetTracker/ForgetTimer" to="TargetTracker" method="forget"]

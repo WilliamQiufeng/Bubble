@@ -12,6 +12,12 @@ extends Node
 # Signal for when the game speed changes
 signal game_speed_change(new_speed: float)
 
+var player_movement: PlayerMovement:
+	get: return get_tree().get_nodes_in_group(&"Player")[0]
+
+var player: Player:
+	get: return player_movement.player
+
 # Method to control the game speed
 func set_the_world(active: bool) -> void:
 	game_speed = 1.0 if active else 0.5

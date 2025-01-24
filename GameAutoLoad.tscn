@@ -4,3 +4,4 @@
 
 [node name="Game" type="Node"]
 script = ExtResource("1_ue6mv")
+game_speed = 1.0

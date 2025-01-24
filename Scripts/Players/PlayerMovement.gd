@@ -11,7 +11,7 @@ var idle_direction: Vector2 = Vector2.DOWN
 @onready var player: Node = $PlayerController
 var dash_vector: Vector2 = Vector2.ZERO
 var shooting_timer: Timer
-var can_dash: bool = true
+var can_dash: bool = false
 var dashing_cooldown_timer: Timer
 
 func _ready():
