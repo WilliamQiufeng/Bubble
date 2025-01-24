@@ -29,7 +29,6 @@ animation = &"walk_towards"
 
 [node name="Enemy" parent="TileMapLayer/Enemies" instance=ExtResource("4_4twxf")]
 position = Vector2(235, 188)
-collision_layer = 8
 
 [node name="Bubbles" type="Node2D" parent="TileMapLayer"]
 
