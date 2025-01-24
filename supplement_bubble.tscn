@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://tsfm2wopjhsr"]
 
 [ext_resource type="PackedScene" uid="uid://cr0wfkkhkvskc" path="res://bubble.tscn" id="1_c82qm"]
-[ext_resource type="Script" path="res://Scripts/SupplementBubbleController.gd" id="2_y4r1i"]
+[ext_resource type="Script" path="res://Scripts/Bubbles/SupplementBubbleController.gd" id="2_y4r1i"]
 
 [node name="Node2D" instance=ExtResource("1_c82qm")]
 

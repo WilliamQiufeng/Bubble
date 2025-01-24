@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://wqr4y4ey6iqx"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_aqc0d"]
+[ext_resource type="Script" path="res://Scripts/Players/PlayerMovement.gd" id="1_aqc0d"]
 [ext_resource type="SpriteFrames" uid="uid://bpusxlts2nqsp" path="res://sprites/PlayerSpriteFrames.tres" id="2_iv45a"]
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="3_hjb84"]
-[ext_resource type="Script" path="res://Scripts/PlayerWeaponState.gd" id="4_twixg"]
+[ext_resource type="Script" path="res://Scripts/Players/Player.gd" id="3_hjb84"]
+[ext_resource type="Script" path="res://Scripts/Players/PlayerWeaponState.gd" id="4_twixg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5d186"]
 size = Vector2(12.5, 8)
