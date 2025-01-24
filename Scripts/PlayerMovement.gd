@@ -1,3 +1,4 @@
+class_name PlayerMovement
 extends CharacterBody2D
 
 @export var speed: float = 100
@@ -5,9 +6,9 @@ extends CharacterBody2D
 @export var bullet_container: Node2D
 
 var idle_direction: Vector2 = Vector2.DOWN
-var bubble_scene: PackedScene
-var player_weapon_state: Node
-var player: Node
+@onready var bubble_scene: PackedScene = preload("res://bubble.tscn")
+@onready var player_weapon_state: Node = $PlayerWeaponState
+@onready var player: Node = $PlayerController
 var dash_vector: Vector2 = Vector2.ZERO
 var shooting_timer: Timer
 var can_dash: bool = true
@@ -15,9 +16,6 @@ var dashing_cooldown_timer: Timer
 
 func _ready():
 	animated_sprite.play("idle_towards")
-	bubble_scene = preload("res://bubble.tscn")
-	player = $PlayerController
-	player_weapon_state = $PlayerWeaponState
 	
 	shooting_timer = Timer.new()
 	shooting_timer.wait_time = 0.2
@@ -83,7 +81,7 @@ func fire() -> void:
 	if player.mana < factory.mana_cost:
 		return
 	
-	var new_bullet = bubble_scene.instance()
+	var new_bullet = bubble_scene.instantiate()
 	factory.apply(new_bullet)
 	player.mana -= factory.mana_cost
 	bullet_container.add_child(new_bullet)

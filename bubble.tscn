@@ -1,9 +1,9 @@
 [gd_scene load_steps=11 format=3 uid="uid://cr0wfkkhkvskc"]
 
-[ext_resource type="Script" path="res://Scripts/BubbleController.cs" id="1_j6cin"]
 [ext_resource type="Shader" path="res://bubblerefract.gdshader" id="1_p6kar"]
-[ext_resource type="Script" path="res://Scripts/Bubble.cs" id="1_u4fww"]
+[ext_resource type="Script" path="res://Scripts/Bubble.gd" id="1_u4fww"]
 [ext_resource type="Texture2D" uid="uid://dbg40um6x06o2" path="res://sprites/bubble.png" id="2_18qn5"]
+[ext_resource type="Script" path="res://Scripts/BubbleController.gd" id="2_smpfk"]
 [ext_resource type="Texture2D" uid="uid://b7rbqaeohji7w" path="res://sprites/bubble-normal.png" id="3_1paw5"]
 [ext_resource type="Shader" path="res://bubbletest.gdshader" id="4_xi0on"]
 
@@ -32,12 +32,10 @@ script = ExtResource("1_u4fww")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xkbat")
 
-[node name="Area2D" type="Area2D" parent="CollisionShape2D" node_paths=PackedStringArray("ScaleNode", "CollisionShape") groups=["Bubble"]]
+[node name="Area2D" type="Area2D" parent="CollisionShape2D" groups=["Bubble"]]
 collision_layer = 4
 collision_mask = 12
-script = ExtResource("1_j6cin")
-ScaleNode = NodePath("..")
-CollisionShape = NodePath("CollisionShape2D")
+script = ExtResource("2_smpfk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/Area2D"]
 shape = SubResource("CircleShape2D_xkbat")
@@ -50,5 +48,5 @@ texture = SubResource("CanvasTexture_xm2o2")
 material = SubResource("ShaderMaterial_jlsom")
 texture = ExtResource("2_18qn5")
 
-[connection signal="area_entered" from="CollisionShape2D/Area2D" to="CollisionShape2D/Area2D" method="OnBubbleAreaEntered"]
-[connection signal="area_exited" from="CollisionShape2D/Area2D" to="CollisionShape2D/Area2D" method="OnBubbleAreaExited"]
+[connection signal="area_entered" from="CollisionShape2D/Area2D" to="CollisionShape2D/Area2D" method="on_bubble_area_entered"]
+[connection signal="area_exited" from="CollisionShape2D/Area2D" to="CollisionShape2D/Area2D" method="on_bubble_area_exited"]

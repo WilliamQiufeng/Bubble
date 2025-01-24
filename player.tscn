@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_aqc0d"]
 [ext_resource type="SpriteFrames" uid="uid://bpusxlts2nqsp" path="res://sprites/PlayerSpriteFrames.tres" id="2_iv45a"]
-[ext_resource type="Script" path="res://Scripts/Player.cs" id="3_hjb84"]
-[ext_resource type="Script" path="res://Scripts/PlayerWeaponState.cs" id="4_twixg"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="3_hjb84"]
+[ext_resource type="Script" path="res://Scripts/PlayerWeaponState.gd" id="4_twixg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5d186"]
 size = Vector2(12.5, 8)
@@ -36,6 +36,8 @@ position_smoothing_enabled = true
 
 [node name="PlayerController" type="Node" parent="."]
 script = ExtResource("3_hjb84")
+hp = 100.0
+mana = 100.0
 
 [node name="PlayerWeaponState" type="Node" parent="."]
 script = ExtResource("4_twixg")

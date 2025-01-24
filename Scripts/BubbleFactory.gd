@@ -20,17 +20,17 @@ func set_mana_cost(value: float) -> void:
 func apply(bubble: Node2D) -> BubbleFactory:
 	for effect_type in effect_types:
 		match effect_type:
-			EffectType.NONE:
+			Constants.EffectType.NONE:
 				pass
-			EffectType.THE_WORLD:
+			Constants.EffectType.THE_WORLD:
 				bubble.add_child(TheWorldBubbleEffectController.new())
-			EffectType.TELEPORT:
+			Constants.EffectType.TELEPORT:
 				pass
-			EffectType.FAST:
+			Constants.EffectType.FAST:
 				bubble.add_child(FastBubbleEffectController.new())
-			EffectType.DASH:
+			Constants.EffectType.DASH:
 				bubble.add_child(DashBubbleEffectController.new())
-			EffectType.BULLET:
+			Constants.EffectType.BULLET:
 				pass
 			_:
 				push_error("Unexpected EffectType: %s" % effect_type)
@@ -38,14 +38,14 @@ func apply(bubble: Node2D) -> BubbleFactory:
 	bubble.position = position
 
 	match bullet_type:
-		BulletType.NONE:
+		Constants.BulletType.NONE:
 			pass
-		BulletType.TINY:
+		Constants.BulletType.TINY:
 			bubble.add_child(BulletBubbleEffectController.new())
 			bubble.linear_velocity = (target - position).normalized() * 100
-		BulletType.SUPPLEMENT:
-			var b = SupplementBubbleController.new()
-			b.TargetPosition = target
+		Constants.BulletType.SUPPLEMENT:
+			var b = SupplementBubbleEffectController.new()
+			b.target_position = target
 			bubble.add_child(b)
 		_:
 			push_error("Unexpected BulletType: %s" % bullet_type)
@@ -55,13 +55,13 @@ func apply(bubble: Node2D) -> BubbleFactory:
 func add_effect(effect_type: int) -> BubbleFactory:
 	effect_types.append(effect_type)
 	match effect_type:
-		EffectType.THE_WORLD:
+		Constants.EffectType.THE_WORLD:
 			mana_cost += 10
-		EffectType.TELEPORT:
+		Constants.EffectType.TELEPORT:
 			mana_cost += 10
-		EffectType.FAST:
+		Constants.EffectType.FAST:
 			mana_cost += 5
-		EffectType.DASH:
+		Constants.EffectType.DASH:
 			mana_cost += 7
 		_:
 			push_error("Unexpected EffectType: %s" % effect_type)
@@ -73,29 +73,13 @@ func make_bullet(bullet_type: int, position: Vector2, target: Vector2) -> Bubble
 	self.target = target
 
 	match bullet_type:
-		BulletType.NONE:
+		Constants.BulletType.NONE:
 			mana_cost *= 0
-		BulletType.TINY:
+		Constants.BulletType.TINY:
 			mana_cost *= 0.1
-		BulletType.SUPPLEMENT:
+		Constants.BulletType.SUPPLEMENT:
 			mana_cost *= 1
 		_:
 			push_error("Unexpected BulletType: %s" % bullet_type)
 
 	return self
-
-# Enum-like classes for EffectType and BulletType
-enum EffectType {
-	NONE,
-	THE_WORLD,
-	TELEPORT,
-	FAST,
-	DASH,
-	BULLET
-}
-
-enum BulletType {
-	NONE,
-	TINY,
-	SUPPLEMENT
-}
