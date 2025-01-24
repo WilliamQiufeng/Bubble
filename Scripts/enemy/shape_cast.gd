@@ -1,5 +1,5 @@
-class_name PlayerTracker
 extends ShapeCast2D
+#class_name PlayerTracker
 
 @onready var timer: Timer = $Timer
 @export var max_point_count = 10

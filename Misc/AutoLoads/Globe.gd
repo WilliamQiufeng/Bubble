@@ -54,34 +54,6 @@ func _physics_process(delta):
 	for k in bin: nts.erase(k)
 	bin.clear()
 	diagnose()
-	if T.timer%100 == 0:
-		for cn in characterBeacons:
-			var b = characterBeacons[cn]
-			if characterInScene(cn): #if character is in scene
-				var c = characters[cn]
-				if !is_instance_valid(c): continue
-				c.destination = b[0]
-				c.destinationPosition = b[1]
-				if Scenes.isCurrentScenePath(b[0]): #if already at beacon destination
-					if c.isStatic():
-						c.pathfind(b[1],"walk",1)
-						if (c.global_position-b[1]).length() < 8: bin.append(cn)
-				else: #else, pathfind to a spawnpoint
-					var sps = getSpawnPoints()
-					var atSp:bool = false
-					for s in sps:
-						if (c.global_position-sps[randi()%len(sps)].global_position).length()<20:
-							moveCharacter(cn,b[0],"none",b[1])
-							c.queue_free()
-							atSp = true
-					if atSp: continue
-					if c.isStatic(): c.pathfind(sps[randi()%len(sps)].global_position,"walk",1)
-			else: #if character is not in scene
-				if Scenes.isCurrentScenePath(b[0]):
-					moveCharacter(cn,b[0],"random")
-				else: moveCharacter(cn,b[0],"none",b[1])
-		for k in bin: characterBeacons.erase(k)
-	diagnose()
 	
 	for n in allNodes:
 		for c in callOnAllNodes:
@@ -100,54 +72,17 @@ func _physics_process(delta):
 		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (!((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN))) else Window.MODE_WINDOWED
 
 signal trigger
-func _unhandled_key_input(event):
-	if !event.pressed: return
-	if event.keycode == KEY_E:
-		if !DEBUGGING: return
-		#getPlayer().global_position.x = 31.117
-		#getPlayer().global_position.x = 33.933
-		getPlayer().pathfind(Vector2(-55,-32),"walk")
-		#safeCall(getCharacter("johnny"),"queue_free")
-		#player.pathfind(Vector2(870,525),"walk")
-#		player.pathfind(player.global_position+Vector2(200,0),"sprint")
-	if event.keycode == KEY_A:
-		if !DEBUGGING: return
-	if event.keycode == KEY_S:
-		if !DEBUGGING: return
-		GameData.onSaveWorld()
-		GameData.saveData(GameData.world)
-		Layers.alert("Game progress saved",false)
-	if event.keycode == KEY_R:
-		if !DEBUGGING: return
-	if event.keycode == KEY_T:
-		if !DEBUGGING: return
-		trigger.emit()
-		pass
-#		assignPlayerCharacter("corsair")
-	if event.keycode == KEY_G:
-		if !DEBUGGING: return
-		Story.advanceTime(10)
-	if event.keycode == KEY_U:
-		if !DEBUGGING: return
 #TRIGGERS
 #triggers some function or some action
 func __________TRIGGERS(): pass
 func updateVars() -> void:
 	allNodes = getAllNodes()
-	var p = getPlayer()
-	if p is Node2D: player = p
-	else: player = null
-	characters.clear()
-	for c in getNodes("character"): characters[c.characterName] = c
-	cameraBox = getCameraBox()
-func diagnose():
-	if !DEBUGGING: return
+func diagnose(): return
 func logMessage(s:String,level:int=0) -> void: #for diagnostic purposes
 	diagnose()
-	if !LOGGING: return
 	for i in level:
 		s = " --- " + s
-	print(s)
+	#print(s)
 func emitAndLogMessage(s:Signal,level:int=0):
 	logMessage("Emit signal: "+ s.get_name() + " from " + str(s.get_object()) + " to " + str(s.get_connections()))
 	s.emit()
@@ -185,87 +120,11 @@ func safeCall(node,function): if is_instance_valid(node) && node.has_method(func
 func setTimer(seconds:float,persistent:bool=false)->Object: return createTimer(seconds,true,T.TZ.NONE,persistent)
 func createTimer(seconds:float,oneshot:bool=true,timeZone:int=T.TZ.WORLD,persistent:bool=false)->Object:
 	return T.createTimer(s2f(seconds),oneshot,timeZone,persistent)
-func createSignalSet(signalList: Array[Signal], minReceptionCount: int = 1):
-	return Obj_SignalSet.new(signalList, minReceptionCount)
-func playerValidSignal() -> Signal:
-	return createMonitor(func(): return playerInSceneDeferred()).quotaReached
-func createMonitor(quotaVerifier:Callable,durability:int=1) -> Ref_Monitor:
-	var m = Ref_Monitor.new()
-	m.quotaVerifier = quotaVerifier
-	m.durability = durability #-1 means infinite
-	monitors.append(m)
-	return m
-func quotaReachedSignal(quotaVerifier:Callable,durability:int=1) -> Signal:
-	return createMonitor(quotaVerifier,durability).quotaReached
-func createNodeTracker(node):
-	nts[node] = Ref_NodeTracker.new(node)
 func trackNode(node,interval:int=1,directionInterval:int=5):
 	var tracker = nts[node]
 	tracker.interval = interval
 	tracker.directionInterval = directionInterval
 	return tracker
-func assignPlayer(newPlayer:Node2D,forceUpdateCameraTarget:bool=true):
-	var cameraBox:Node2D = G.getCameraBox()
-	if !playerInScene(): return
-	var oldPlayer:Node2D = getPlayer()
-	if oldPlayer != newPlayer:
-		player = newPlayer
-		oldPlayer.remove_from_group("player")
-		newPlayer.add_to_group("player")
-		Focus.replaceFocus(oldPlayer,newPlayer)
-	else:
-		newPlayer.add_to_group("player")
-		Focus.queueFocus(newPlayer)
-	# update camera target to the new player if camera target is at default (or forced update)
-	if Scenes.current().cameraBoxDefaultTarget == DEFAULT_VECTOR2 || forceUpdateCameraTarget: cameraBox.target = newPlayer
-func assignPlayerCharacter(characterName:String,updateCameraTarget:bool=true,switchScene:bool=true):
-	if Scenes.switchingScene: await Scenes.sceneSwitched
-	var cameraBox:Node2D = G.getCameraBox()
-	var oldPlayer = getPlayer()
-	var newPlayer = getCharacter(characterName)
-	if newPlayer == null: return #if the new character character is not active
-	if oldPlayer is Node2D: oldPlayer.remove_from_group("player")
-	elif oldPlayer is Dictionary: eraseAll(oldPlayer["@groups"],"player")
-	if newPlayer is Node2D:
-		player = newPlayer
-		newPlayer.add_to_group("player")
-		if !Focus.replaceFocus(oldPlayer,newPlayer): Focus.queueFocus(newPlayer)
-		if updateCameraTarget: cameraBox.targetPlayer()
-	else:
-		player = null
-		newPlayer["@groups"].append("player")
-		Focus.removeFocus(oldPlayer)
-#		if updateCameraTarget: cameraBox.targetCurrentPosition()
-		if switchScene: Scenes.switchScene(newPlayer.destination,{},true)
-func moveCharacter(characterName:String,destination:String,destinationSpawnPoint:String="random",destinationPosition:Vector2=DEFAULT_VECTOR2) -> void:
-	var character = getCharacter(characterName)
-	assert(character != null,'Character by name "'+characterName+'" not found anywhere, has not seen yet?')
-	character.destinationSpawnPoint = destinationSpawnPoint
-	character.destinationPosition = destinationPosition
-	var oldDestination = character.destination
-	character.destination = destination
-	if character is Node2D: #char already in current scene
-		if destination == Scenes.getCurrentScenePath(): return
-	elif character is Dictionary: #char is off scene, so load in
-		if destination == Scenes.getCurrentScenePath(): GameData.loadCharacter(characterName,false)
-	if oldDestination == destination:
-		assert(!(character is Dictionary),"not ok to move before if, so remove below WORRY")
-		return # WORRY ok to move before the if? (IMPROVE rather)
-	character.animationOverride = "" #WORRY undesirable behavior
-	character.locomotionQueue.clear() #avoid saving locomotion queue across scenes
-	if character is Dictionary: GameData.world.characters[characterName] = character
-	else: GameData.world.characters[characterName] = getProperties(character) #character is Dict would fail reserved key names assertion
-	notify("moveCharacter",{"character":character})
-	removeCharacterBeacon(characterName) #remove fragile beacons
-func moveCharacterAndSwitchScene(characterName:String,destination:String,destinationSpawnPoint:String="random",destinationPosition:Vector2=DEFAULT_VECTOR2,transitionData:Dictionary={}):
-	moveCharacter(characterName,destination,destinationSpawnPoint,destinationPosition)
-	Scenes.switchToCharacter(characterName,transitionData)
-func addCharacterBeacon(characterName:String,destination:String,destinationPosition:Vector2,fragile:bool=true):
-	if !(fragile && characterBeacons.has(characterName)): characterBeacons[characterName] = [destination,destinationPosition,fragile]
-func removeCharacterBeacon(characterName:String,fragileOnly:bool=true):
-	if characterBeacons.has(characterName)&&(characterBeacons[characterName][2] || !fragileOnly):
-		characterBeacons.erase(characterName)
-func setSceneBgm(scenePath:String,bgmPath:String): GameData.world.scenes[scenePath].bgm = bgmPath
 func deprecateInputAction(action:String) -> void: inputActionFrames[action] = -1 #block until release
 func deprecateAllInputActions() -> void: for action in inputActionFrames: inputActionFrames[action] = -1
 func smartPlayAnimatedSprite(animatedSprite:AnimatedSprite2D,animation:String):
@@ -288,33 +147,8 @@ func inputActionNotDeprecated(action:String): return inputActionFrames[action] >
 func getNode(group:String) -> Node: return getNodes(group)[0] #returns the first node in the given group
 func getNodes(group:String) -> Array[Node]: #returns all nodes (not queued for freeing) in the given group
 	return get_tree().get_nodes_in_group(group).filter(func(n): return !n.is_queued_for_deletion())
-func getCharacterFolderPath(characterName:String):
-	if GameData.world.characters.has(characterName): return GameData.world.characters[characterName].folderPath
-	return getCharacter(characterName).folderPath
-func getCharacter(characterName:String):
-	var chs:Array = getNodes("ch_"+characterName)
-	if len(chs)>0 && chs[0].get_script()!=null: return chs[0]
-	if GameData.world.characters.has(characterName): return GameData.world.characters[characterName]
-	return null
-func characterExists(characterName:String): return getCharacter(characterName)!=null
-func characterSaved(characterName:String): return GameData.world.characters.has(characterName)
-func characterInScene(characterName:String) -> bool:
-	var chs:Array = getNodes("ch_"+characterName)
-	return len(chs)>0 && chs[0].get_script()!=null
-func characterInSceneDeferred(characterName:String) -> bool: return getCharacter(characterName) in characters
-func playerInScene() -> bool: return len(getNodes("player"))>0
-func playerInSceneDeferred() -> bool: return is_instance_valid(player) #check before using player
-func playerExists() -> bool: return getPlayer() != null
-func playerOffScene() -> bool: return getPlayer() is Dictionary
 func cameraBoxExists() -> bool: return len(getNodes("cameraBox"))>0
-func getPlayer(offSceneOnly:bool=false):
-	if !offSceneOnly && playerInScene(): return getNode("player")#gets the current player
-	for cn in GameData.world.characters: #check if player off scene
-		var c = GameData.world.characters[cn]
-		if "player" in c["@groups"]: return c
-	return null #player nowhere
 func fps() -> int: return Engine.get_frames_per_second()#returns current fps
-func getManager() -> SceneManager: return getNode("sceneManager")#gets the curent scene manager
 func getAllNodes() -> Array[Node]: return getSubNodes(get_tree().get_root())
 func getSubNodes(node:Node) -> Array[Node]: #the node + all descendents
 	var r:Array[Node] = []
@@ -344,13 +178,6 @@ func getSpawnPoints() -> Array:
 				r.append(n)
 				break
 	return r
-func getOffSceneMemoryNodes(scenePath:String, group:String="@none"):
-	var r:Array = []
-	for m in GameData.world.memoryNodes[scenePath]:
-		if group in m["@groups"] || group=="@none": r.append(m)
-	return r
-func getOffSceneMemoryNode(scenePath:String, group:String="@none"):
-	return getOffSceneMemoryNodes(scenePath, group)[0]
 
 #OPERATIONS
 #operates on and returns some values
@@ -428,8 +255,6 @@ func setGlobalZIndex(node:Node2D,globalZIndex:int) -> void:
 		return
 	node.z_index = globalZIndex - getGlobalZIndex(node.get_parent())
 func getFrame(animatedSprite:AnimatedSprite2D) -> Texture2D: return animatedSprite.sprite_frames.get_frame_texture(animatedSprite.animation,animatedSprite.frame)
-func animationFinishedOrLoopedSignal(animatedSprite:AnimatedSprite2D) -> Signal:
-	return createSignalSet([animatedSprite.animation_finished,animatedSprite.animation_looped]).received
 func getProperties(variant,keepAllObjects:bool=true): #keepAllObjects for only 1 layer
 	if variant == null || (variant is Object && !is_instance_valid(variant)): return null
 	var r
