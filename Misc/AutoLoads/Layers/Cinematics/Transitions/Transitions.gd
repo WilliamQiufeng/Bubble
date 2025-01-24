@@ -15,6 +15,3 @@ func play(animation,speed):
 	transitionPlayer.play(animation,-1,speed,speed<0)
 	transitionPlayer.advance(0) #forces update, fixes animation flicker bug
 	return transitionPlayer
-
-
-

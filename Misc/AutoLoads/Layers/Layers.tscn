@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Misc/AutoLoads/Layers/Inventory/Inventory.gd" id="4"]
 [ext_resource type="PackedScene" path="res://Misc/AutoLoads/Layers/Cinematics/Panels/Panels.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://nuoj1vrqrghc" path="res://Misc/AutoLoads/Layers/Cinematics/Bars/CinematicBars.tscn" id="7"]
-[ext_resource type="PackedScene" path="res://Misc/AutoLoads/Layers/Cinematics/Transitions/Transitions.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://bkkrqrj4fxyul" path="res://Misc/AutoLoads/Layers/Cinematics/Transitions/Transitions.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://b6qqqf3agipt1" path="res://Misc/AutoLoads/Layers/Cinematics/Canvases/Canvases.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://wym2l50h7ugg" path="res://Misc/AutoLoads/Layers/Hud/Hud.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://cn1suio6g5q8u" path="res://Misc/AutoLoads/Layers/DialogueBox/DialogueBox.tscn" id="11"]
@@ -57,3 +57,4 @@ process_mode = 3
 script = ExtResource("2")
 
 [node name="Transitions" parent="Layer15" instance=ExtResource("8")]
+visible = false

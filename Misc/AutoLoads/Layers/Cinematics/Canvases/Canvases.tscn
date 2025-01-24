@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://df6k7lff3or1c" path="res://Misc/AutoLoads/Layers/Cinematics/Canvases/Images/KoltRays.png" id="2"]
 [ext_resource type="FontFile" uid="uid://cjd4jb733kpr4" path="res://Misc/Fonts/DPComic.ttf" id="3_sy7pm"]
 
-
 [node name="Canvases" type="Node2D" groups=["canvases"]]
 script = ExtResource("1")
 
