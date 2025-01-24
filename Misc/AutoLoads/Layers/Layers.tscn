@@ -52,10 +52,8 @@ z_index = 15
 [node name="Layer15" type="CanvasLayer" parent="."]
 layer = 15
 
-[node name="Transitions" parent="Layer15" instance=ExtResource("8")]
-visible = false
-script = null
-
 [node name="PauseMenu" type="Node2D" parent="Layer15" groups=["pauseMenu"]]
 process_mode = 3
 script = ExtResource("2")
+
+[node name="Transitions" parent="Layer15" instance=ExtResource("8")]

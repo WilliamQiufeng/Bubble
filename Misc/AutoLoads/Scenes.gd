@@ -71,11 +71,10 @@ func _deferredSwitchScene(sceneInstance):
 		G.logMessage("Switch scene deferred: sceneInstance == null",1)
 		return
 	G.logMessage("Switch scene deferred",1)
-	G.notify("exitScene",{"callSave":transitionData.callSave})
+	G.notify("exitScene",{"callSave":false})
 	G.emitAndLogMessage(sceneExit,1)
 	#take down the current scene
 	G.allNodes.clear()
-	G.characters.clear()
 	currentScene.free()
 	currentScene = sceneInstance
 	G.allNodes = G.getAllNodes()
@@ -87,7 +86,7 @@ func _deferredSwitchScene(sceneInstance):
 	G.updateVars()
 	#call nodes to ready up for scene
 	sceneEntered.emit()
-	G.call_deferred("notify","enteredScene",{"callLoad":transitionData.callLoad})
+	G.call_deferred("notify","enteredScene",{"callLoad":false})
 	if transitionData.transition != "":
 		if transitionData.revealTransition == "same": transitionData.revealTransition = transitionData.transition
 		await Layers.transitions.play(transitionData.revealTransition,-transitionData.revealSpeed).animation_finished
