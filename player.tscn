@@ -41,3 +41,7 @@ mana = 100.0
 
 [node name="PlayerWeaponState" type="Node" parent="."]
 script = ExtResource("4_twixg")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 32)
+collision_mask = 16

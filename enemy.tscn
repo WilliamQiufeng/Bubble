@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0vincv0a17xv"]
+[gd_scene load_steps=11 format=3 uid="uid://c0vincv0a17xv"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/enemy.gd" id="1_kcr3m"]
 [ext_resource type="SpriteFrames" uid="uid://cb8ii7th20pjg" path="res://sprites/craftpix/enemy_frames_1.tres" id="1_yhytp"]
 [ext_resource type="BehaviorTree" uid="uid://ddtwc6gutesaa" path="res://ai/trees/enemy_1.tres" id="3_7k7hh"]
 [ext_resource type="Script" path="res://Scripts/Enemy/shape_cast.gd" id="4_mqxyr"]
 [ext_resource type="Texture2D" uid="uid://bt2wj2k8b13u3" path="res://sprites/player.png" id="5_ntujr"]
+[ext_resource type="Script" path="res://Scripts/AnimationMovement.gd" id="6_8os3h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrl0t"]
 
@@ -15,10 +16,10 @@ radius = 80.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wa0fb"]
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("animation_movement")]
 collision_layer = 8
 script = ExtResource("1_kcr3m")
-sprite = NodePath("AnimatedSprite2D")
+animation_movement = NodePath("AnimationMovement")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wrl0t")
@@ -52,12 +53,23 @@ autostart = true
 visible = false
 texture = ExtResource("5_ntujr")
 
-[node name="AttackRange" type="ShapeCast2D" parent="."]
+[node name="AttackRange" type="ShapeCast2D" parent="TargetTracker"]
 position = Vector2(0, 9)
 shape = SubResource("CircleShape2D_wa0fb")
 target_position = Vector2(0, 23)
 collision_mask = 3
 
-[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="detect_attack"]
+[node name="AnimationMovement" type="Node" parent="." node_paths=PackedStringArray("character", "sprite", "orientation_node")]
+script = ExtResource("6_8os3h")
+character = NodePath("..")
+sprite = NodePath("../AnimatedSprite2D")
+orientation_node = NodePath("../TargetTracker")
+
+[node name="MeleeTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.4
+one_shot = true
+
 [connection signal="timeout" from="TargetTracker/Timer" to="TargetTracker" method="check_raycast"]
 [connection signal="timeout" from="TargetTracker/ForgetTimer" to="TargetTracker" method="forget"]
+[connection signal="timeout" from="MeleeTimer" to="." method="detect_attack"]

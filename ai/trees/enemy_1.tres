@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=28 format=3 uid="uid://ddtwc6gutesaa"]
+[gd_resource type="BehaviorTree" load_steps=30 format=3 uid="uid://ddtwc6gutesaa"]
 
 [ext_resource type="Script" path="res://ai/tasks/choose_random_position.gd" id="1_gyu8h"]
 [ext_resource type="Script" path="res://ai/tasks/move_to_position.gd" id="2_chuip"]
@@ -65,13 +65,19 @@ target = Vector2(0, 0)
 [sub_resource type="BTDynamicSequence" id="BTDynamicSequence_ylqmx"]
 children = [SubResource("BTAction_fug54")]
 
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_j4jjy"]
+text = "Attack"
+
 [sub_resource type="BTAction" id="BTAction_6abq2"]
 script = ExtResource("5_cn2qa")
 tolerance = 300.0
 
+[sub_resource type="BTSequence" id="BTSequence_u8g7n"]
+children = [SubResource("BTConsolePrint_j4jjy"), SubResource("BTAction_6abq2")]
+
 [sub_resource type="BTCooldown" id="BTCooldown_euu4n"]
 duration = 1.0
-children = [SubResource("BTAction_6abq2")]
+children = [SubResource("BTSequence_u8g7n")]
 
 [sub_resource type="BTRepeat" id="BTRepeat_w2fi7"]
 forever = true
