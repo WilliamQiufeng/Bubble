@@ -6,7 +6,7 @@ extends CharacterBody2D
 
 var idle_direction: Vector2 = Vector2.DOWN
 @onready var player_weapon_state: Node = $PlayerWeaponState
-@onready var player: Node = $PlayerController
+@onready var player: Player = $PlayerController
 @onready var animation_movement : AnimationMovement = $AnimationMovement
 @onready var interaction_raycast = $InteractionRayCast
 var dash_vector: Vector2 = Vector2.ZERO

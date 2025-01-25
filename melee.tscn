@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn4hm4mk6ps1u"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy/Melee.gd" id="1_amhmt"]
+
+[node name="Melee" type="Node"]
+script = ExtResource("1_amhmt")
+
+[node name="MeleeTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.4
+one_shot = true
+
+[connection signal="timeout" from="MeleeTimer" to="." method="detect_attack"]

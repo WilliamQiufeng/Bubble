@@ -26,7 +26,7 @@ shape = SubResource("RectangleShape2D_wrl0t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_yhytp")
-animation = &"hit_away"
+animation = &"idle_towards"
 
 [node name="BTPlayer" type="BTPlayer" parent="."]
 behavior_tree = ExtResource("3_7k7hh")
@@ -65,11 +65,5 @@ character = NodePath("..")
 sprite = NodePath("../AnimatedSprite2D")
 orientation_node = NodePath("../TargetTracker")
 
-[node name="MeleeTimer" type="Timer" parent="."]
-process_callback = 0
-wait_time = 0.4
-one_shot = true
-
 [connection signal="timeout" from="TargetTracker/Timer" to="TargetTracker" method="check_raycast"]
 [connection signal="timeout" from="TargetTracker/ForgetTimer" to="TargetTracker" method="forget"]
-[connection signal="timeout" from="MeleeTimer" to="." method="detect_attack"]
