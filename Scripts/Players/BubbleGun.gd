@@ -17,11 +17,12 @@ func _input(event: InputEvent):
 		player_weapon_state.selected_effect_type_index = 1
 	elif event.is_action_pressed("bubble_slot_3"):
 		player_weapon_state.selected_effect_type_index = 2
-	if event.is_action_pressed("click"):
+	if event.is_action_pressed("click") and shooting_timer.is_stopped():
 		fire()
+		shooting_timer.one_shot = false
 		shooting_timer.start()
 	elif event.is_action_released("click"):
-		shooting_timer.stop()
+		shooting_timer.one_shot = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
