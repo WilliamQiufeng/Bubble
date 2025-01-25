@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var speed = 40
 @export var hp = 100
 @onready var hp_bar = $AnimatedSprite2D/HpBar
+@onready var navigation_agent = $NavigationAgent2D
 var is_dead = false
 
 func _ready():
@@ -32,9 +33,7 @@ func _is_attacking():
 	return animation_movement.is_attacking()
 
 func _physics_process(delta):
-	var collision: KinematicCollision2D = move_and_collide(velocity * delta)
-	if collision:
-		velocity = velocity.slide(collision.get_normal())
+	move_and_slide()
 
 func move(dir: Vector2):
 	if is_dead:

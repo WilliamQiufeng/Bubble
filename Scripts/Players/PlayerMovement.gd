@@ -44,9 +44,8 @@ func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
 	get_input()
-	var collision = move_and_collide((velocity + dash_vector) * delta)
-	if collision:
-		velocity = velocity.slide(collision.get_normal())
+	velocity += dash_vector
+	move_and_slide()
 	dash_vector = dash_vector.lerp(Vector2.ZERO, delta * 7)
 
 func fast(multiplier: float) -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c0vincv0a17xv"]
+[gd_scene load_steps=14 format=3 uid="uid://c0vincv0a17xv"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/enemy.gd" id="1_kcr3m"]
 [ext_resource type="SpriteFrames" uid="uid://cb8ii7th20pjg" path="res://sprites/craftpix/enemy_frames_1.tres" id="1_yhytp"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scripts/Enemy/shape_cast.gd" id="4_mqxyr"]
 [ext_resource type="Texture2D" uid="uid://bt2wj2k8b13u3" path="res://sprites/player.png" id="5_ntujr"]
 [ext_resource type="Script" path="res://Scripts/AnimationMovement.gd" id="6_8os3h"]
+[ext_resource type="Script" path="res://Scripts/Enemy/VisionChecker.gd" id="9_xbjnj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrl0t"]
 size = Vector2(14, 15)
@@ -79,11 +80,20 @@ shape = SubResource("CircleShape2D_wa0fb")
 target_position = Vector2(0, 23)
 collision_mask = 3
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0.508567, 0.95, 0.304, 1)
+
 [node name="AnimationMovement" type="Node" parent="." node_paths=PackedStringArray("character", "sprite", "orientation_node")]
 script = ExtResource("6_8os3h")
 character = NodePath("..")
 sprite = NodePath("../AnimatedSprite2D")
 orientation_node = NodePath("../TargetTracker")
+
+[node name="VisionChecker" type="Node" parent="."]
+script = ExtResource("9_xbjnj")
 
 [connection signal="timeout" from="TargetTracker/Timer" to="TargetTracker" method="check_raycast"]
 [connection signal="timeout" from="TargetTracker/ForgetTimer" to="TargetTracker" method="forget"]
