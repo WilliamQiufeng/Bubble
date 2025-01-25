@@ -9,7 +9,7 @@ func _ready():
 	self.borderless = true
 	for i in range(3):
 		var texture_box: TextureButton = texture_boxes[i]
-		texture_box.texture_normal = load(upgrades[i].texture_path)  # Load the texture using the sprite_path property
+		texture_box.get_child(0).texture = load(upgrades[i].texture_path)  # Load the texture using the sprite_path property
 		texture_box.connect("pressed", upgrades[i].upgrade)
 		# Add the texture box as a child of the current node
 		texture_box.add_child(upgrades[i])
