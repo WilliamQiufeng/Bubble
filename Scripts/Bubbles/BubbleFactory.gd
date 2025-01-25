@@ -7,6 +7,8 @@ var effect_types: Array = []
 var bullet_type: int
 var position: Vector2
 var target: Vector2
+var is_player_bullet: bool = false
+var damage: float = 20
 
 func _init():
 	mana_cost = 0
@@ -17,7 +19,7 @@ func get_mana_cost() -> float:
 func set_mana_cost(value: float) -> void:
 	mana_cost = value
 
-func apply(bubble: Node2D) -> BubbleFactory:
+func apply(bubble: Bubble) -> BubbleFactory:
 	for effect_type in effect_types:
 		match effect_type:
 			Constants.EffectType.NONE:
@@ -45,13 +47,15 @@ func apply(bubble: Node2D) -> BubbleFactory:
 		Constants.BulletType.TINY:
 			bubble.add_child(BulletBubbleEffectController.new())
 			bubble.linear_velocity = (target - position).normalized() * 100
+			if is_player_bullet:
+				bubble.add_child(PlayerBulletEffectController.new())
 		Constants.BulletType.SUPPLEMENT:
 			var b = SupplementBubbleEffectController.new()
 			b.target_position = target
 			bubble.add_child(b)
 		_:
 			push_error("Unexpected BulletType: %s" % bullet_type)
-
+	bubble.damage = damage
 	return self
 
 func add_effect(effect_type: int) -> BubbleFactory:
@@ -86,4 +90,9 @@ func make_bullet(bullet_type: int, position: Vector2, target: Vector2) -> Bubble
 		_:
 			push_error("Unexpected BulletType: %s" % bullet_type)
 
+	return self
+
+func originate_from_player(enemy_damage: float) -> BubbleFactory:
+	is_player_bullet = true
+	damage = enemy_damage
 	return self

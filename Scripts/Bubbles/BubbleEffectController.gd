@@ -13,6 +13,8 @@ var mana:float = 100
 # Abstract methods (to be implemented by subclasses)
 func _handle_player_enter(player_movement: PlayerMovement) -> void: pass
 func _handle_player_exit(player_movement: PlayerMovement) -> void: pass
+func _handle_enemy_enter(enemy: Enemy) -> void: pass
+func _handle_enemy_exit(enemy: Enemy) -> void: pass
 func _get_effect_type() -> Constants.EffectType: return Constants.EffectType.NONE
 
 # Optional bubble color
@@ -48,6 +50,8 @@ func _on_body_entered(node: Node2D) -> void:
 	if node is PlayerMovement:
 		print("Enter ", node)
 		_handle_player_enter(node)
+	if node is Enemy:
+		_handle_enemy_enter(node)
 
 func _on_body_exited(node: Node2D) -> void:
 	if Constants.is_bullet(effect_type):
@@ -57,3 +61,5 @@ func _on_body_exited(node: Node2D) -> void:
 	if node is PlayerMovement:
 		print("Exit ", node)
 		_handle_player_exit(node)
+	if node is Enemy:
+		_handle_enemy_exit(node)
