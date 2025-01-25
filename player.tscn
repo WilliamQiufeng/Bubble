@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://wqr4y4ey6iqx"]
+[gd_scene load_steps=9 format=3 uid="uid://wqr4y4ey6iqx"]
 
 [ext_resource type="Script" path="res://Scripts/Players/PlayerMovement.gd" id="1_aqc0d"]
 [ext_resource type="SpriteFrames" uid="uid://bpusxlts2nqsp" path="res://sprites/PlayerSpriteFrames.tres" id="2_iv45a"]
 [ext_resource type="Script" path="res://Scripts/Players/Player.gd" id="3_hjb84"]
 [ext_resource type="Script" path="res://Scripts/Players/PlayerWeaponState.gd" id="4_twixg"]
 [ext_resource type="Script" path="res://Scripts/AnimationMovement.gd" id="5_11j5d"]
+[ext_resource type="Script" path="res://Scripts/Players/BubbleGun.gd" id="6_udbq8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5d186"]
 size = Vector2(12.5, 8)
@@ -60,3 +61,11 @@ orientation_node = NodePath("../RayCast2D")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone"]
 position = Vector2(9, 3)
 shape = SubResource("RectangleShape2D_owmo4")
+
+[node name="BubbleGun" type="Node2D" parent="."]
+script = ExtResource("6_udbq8")
+
+[node name="ShootingTimer" type="Timer" parent="BubbleGun"]
+wait_time = 0.2
+
+[connection signal="timeout" from="BubbleGun/ShootingTimer" to="BubbleGun" method="fire"]

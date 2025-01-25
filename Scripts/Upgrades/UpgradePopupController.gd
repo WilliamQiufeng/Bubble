@@ -13,6 +13,7 @@ func _ready():
 		texture_box.connect("pressed", upgrades[i].upgrade)
 		# Add the texture box as a child of the current node
 		self.add_child(texture_box)
+		texture_box.add_child(upgrades[i])
 	
 	#self.resizable = false
 	# Connect signals for all buttons

@@ -26,6 +26,5 @@ collision_mask = 2
 rotation = 3.14159
 shape = SubResource("RectangleShape2D_pg3mw")
 
-[node name="ManaUpgrade" type="Node" parent="." node_paths=PackedStringArray("collision_object")]
+[node name="ManaUpgrade" type="Node" parent="."]
 script = ExtResource("3_4m1ue")
-collision_object = NodePath("../Banner/Body")
