@@ -20,6 +20,12 @@ enum WeaponType {
 	RANGE
 }
 
+enum EnemyType {
+	NONE = 0,
+	GOBLIN = 1 << 0,
+	WIZARD = 1 << 1
+}
+
 static func is_bullet(effect_type: EffectType) -> bool:
 	return (effect_type & EffectType.BULLET) != 0
 

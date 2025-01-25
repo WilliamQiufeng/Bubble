@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://tnam1v3fk1e3"]
+[gd_scene load_steps=14 format=4 uid="uid://tnam1v3fk1e3"]
 
 [ext_resource type="Script" path="res://SceneScript.gd" id="1_cu1t1"]
 [ext_resource type="TileSet" uid="uid://b5diheugfnvke" path="res://sprites/test.tres" id="3_cype7"]
@@ -11,6 +11,8 @@
 [ext_resource type="SpriteFrames" uid="uid://8sxvvsebyeco" path="res://sprites/health-bar-frames.tres" id="7_lgjr3"]
 [ext_resource type="Script" path="res://Scripts/AnimationProgressBar.gd" id="8_dsa6g"]
 [ext_resource type="SpriteFrames" uid="uid://crhwmeo5xw80t" path="res://sprites/mana-bar-frames.tres" id="9_c1y8d"]
+[ext_resource type="Script" path="res://Scripts/Level/Spawner.gd" id="9_winy3"]
+[ext_resource type="PackedScene" uid="uid://bxtuafboulrkn" path="res://spawn_marker.tscn" id="10_pux3m"]
 
 [node name="Root" type="Node2D"]
 script = ExtResource("1_cu1t1")
@@ -50,6 +52,14 @@ position = Vector2(100, 61)
 
 [node name="TheWorldBubbleEffectController" type="Node" parent="TileMapLayer/Bubbles/Bubble"]
 script = ExtResource("6_wh7vc")
+
+[node name="Spawner" type="Node2D" parent="TileMapLayer"]
+position = Vector2(208, 97)
+script = ExtResource("9_winy3")
+
+[node name="Marker2D" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
+spawnable_enemies = 3
+probability = 0.01
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
