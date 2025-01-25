@@ -5,7 +5,7 @@ uniform sampler2D SCREEN_TEXTURE: hint_screen_texture, filter_linear_mipmap;
 uniform float refractionMagnitude = 30.0;
 
 void fragment() {
-	
+
 	//// Possibly a more accurate way to do refraction? Uncomment and see how you like it (and comment out below refraction)
 	////vec3 refraction = -refract(vec3(0,0,-1), texture(NORMAL_TEXTURE, UV).rgb, 1.1) *2.0;
 	//
