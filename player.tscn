@@ -32,7 +32,7 @@ shape = SubResource("RectangleShape2D_5d186")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_iv45a")
-animation = &"idle_towards"
+animation = &"die_away"
 offset = Vector2(0, 2)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -68,4 +68,5 @@ script = ExtResource("6_udbq8")
 [node name="ShootingTimer" type="Timer" parent="BubbleGun"]
 wait_time = 0.2
 
+[connection signal="player_death" from="PlayerController" to="." method="handle_death"]
 [connection signal="timeout" from="BubbleGun/ShootingTimer" to="BubbleGun" method="fire"]
