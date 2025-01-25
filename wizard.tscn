@@ -10,14 +10,17 @@ radius = 200.0
 
 [node name="Enemy" instance=ExtResource("1_j5hk6")]
 
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(1, -2.5)
+
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = ExtResource("2_66q0r")
+animation = &"die_away"
 
 [node name="BTPlayer" parent="." index="2"]
 behavior_tree = ExtResource("3_ed8ky")
 
 [node name="TargetTracker" parent="." index="3"]
-visible = true
 shape = SubResource("CircleShape2D_jy3w7")
 
 [node name="MagicBullet" type="Node" parent="." index="5"]

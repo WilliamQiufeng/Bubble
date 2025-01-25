@@ -54,6 +54,7 @@ Bubble=""
 TheWorldBubble=""
 FastBubble=""
 Player=""
+PlayerBullet=""
 
 [input]
 
@@ -149,6 +150,7 @@ sword={
 2d_physics/layer_3="Bubble"
 2d_physics/layer_4="Entity"
 2d_physics/layer_5="Interactable"
+2d_physics/layer_6="PlayerBullet"
 
 [rendering]
 

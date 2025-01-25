@@ -7,7 +7,7 @@ extends Area2D
 @onready var animation: AnimationPlayer = $"../../AnimationPlayer"
 var to_be_deleted = false
 
-var bubble: Node2D
+@onready var bubble: Bubble = $"../.."
 
 func _delete(_name: StringName):
 	bubble.queue_free()
@@ -26,9 +26,6 @@ func get_effect_type() -> Constants.EffectType:
 		if child is BubbleEffectController:
 			effect_type |= child.effect_type
 	return effect_type
-
-func _ready() -> void:
-	bubble = owner as Node2D
 
 func get_area() -> float:
 	return collision_shape.shape.get_rect().get_area() * scale_node.scale.x

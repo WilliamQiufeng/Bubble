@@ -10,12 +10,14 @@ class AnimationCommand:
 @export var sprite : AnimatedSprite2D
 @export var idle_anim = &"idle_{type}"
 @export var move_anim = &"move_{type}"
+@export var die_anim = &"die_{type}"
 @export var hit_anim_prefix = &"hit_"
 @export var orientation_node : Node2D
 
 var deferred_anim_prefix : StringName = &""
 var flip_h = false
 var dir_str = "towards"
+var dead = false
 
 func _ready():
 	sprite.play()
@@ -53,6 +55,8 @@ func _play_deferred():
 	deferred_anim_prefix = &""
 
 func _play(name: StringName):
+	if dead:
+		return
 	sprite.play(name)
 	sprite.flip_h = flip_h
 
@@ -70,3 +74,10 @@ func move():
 
 func play(template: StringName):
 	_play_format(template)
+
+func die():
+	if dead:
+		return
+	sprite.stop()
+	_play_format(die_anim)
+	dead = true

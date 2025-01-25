@@ -1,13 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://c0vincv0a17xv"]
+[gd_scene load_steps=13 format=3 uid="uid://c0vincv0a17xv"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/enemy.gd" id="1_kcr3m"]
 [ext_resource type="SpriteFrames" uid="uid://cb8ii7th20pjg" path="res://sprites/craftpix/enemy_frames_1.tres" id="1_yhytp"]
 [ext_resource type="BehaviorTree" uid="uid://ddtwc6gutesaa" path="res://ai/trees/enemy_1.tres" id="3_7k7hh"]
+[ext_resource type="Texture2D" uid="uid://ewwnvn2axcnk" path="res://sprites/enemy_hp_border.png" id="3_sysld"]
+[ext_resource type="Texture2D" uid="uid://bidt5y0m0bcfi" path="res://sprites/enemy_hp_filler.png" id="4_esgen"]
 [ext_resource type="Script" path="res://Scripts/Enemy/shape_cast.gd" id="4_mqxyr"]
 [ext_resource type="Texture2D" uid="uid://bt2wj2k8b13u3" path="res://sprites/player.png" id="5_ntujr"]
 [ext_resource type="Script" path="res://Scripts/AnimationMovement.gd" id="6_8os3h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrl0t"]
+size = Vector2(14, 15)
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_4vi0j"]
 
@@ -18,6 +21,7 @@ radius = 80.0
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("animation_movement")]
 collision_layer = 8
+collision_mask = 33
 script = ExtResource("1_kcr3m")
 animation_movement = NodePath("AnimationMovement")
 
@@ -27,6 +31,22 @@ shape = SubResource("RectangleShape2D_wrl0t")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_yhytp")
 animation = &"idle_towards"
+
+[node name="HpBar" type="TextureProgressBar" parent="AnimatedSprite2D"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -47.0
+offset_right = 8.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+texture_under = ExtResource("3_sysld")
+texture_progress = ExtResource("4_esgen")
 
 [node name="BTPlayer" type="BTPlayer" parent="."]
 behavior_tree = ExtResource("3_7k7hh")
