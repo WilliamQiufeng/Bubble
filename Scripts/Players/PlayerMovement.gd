@@ -15,6 +15,9 @@ var idle_direction: Vector2 = Vector2.DOWN
 
 var dash_vector: Vector2 = Vector2.ZERO
 var is_dead: bool = false
+
+func _ready():
+	Sfx.affect(RefSfxTrail,{"target":$AnimatedSprite2D,"container":get_parent()}) # sample code to apply trail sfx
 		   
 
 func get_input():
