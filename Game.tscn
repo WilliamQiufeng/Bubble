@@ -31,6 +31,9 @@ animation = &"walk_towards"
 [node name="Camera2D" parent="TileMapLayer/Player" index="3"]
 zoom = Vector2(2, 2)
 
+[node name="BubbleGun" parent="TileMapLayer/Player" index="8" node_paths=PackedStringArray("bullet_container")]
+bullet_container = NodePath("../../Bubbles")
+
 [node name="Enemies" type="Node2D" parent="TileMapLayer"]
 
 [node name="Enemy" parent="TileMapLayer/Enemies" instance=ExtResource("4_4twxf")]

@@ -8,6 +8,8 @@ func _ready():
 	Game.player_movement.interact.connect(_check_interact)
 
 func _exit_tree():
+	if len(Game.nodes_in_group(&"Player")) == 0:
+		return
 	Game.player_movement.interact.disconnect(_check_interact)
 	
 
