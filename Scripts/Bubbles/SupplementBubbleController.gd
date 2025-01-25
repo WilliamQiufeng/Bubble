@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 		_target_reached()
 		return
 
-	bubble.constant_force = dp.normalized() * SPEED
+	bubble.linear_velocity = dp.normalized() * SPEED
 
 func _handle_player_enter(player_movement: PlayerMovement) -> void:
 	pass

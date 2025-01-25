@@ -2,9 +2,11 @@ class_name AnimationMovement
 extends Node
 
 class AnimationCommand:
-	func _init(name: StringName, flip_h: bool):
-		self.name = name
+	var flip_h: bool
+	var dir_str: StringName
+	func _init(flip_h: bool, dir_str: StringName):
 		self.flip_h = flip_h
+		self.dir_str = dir_str
 
 @export var character: CharacterBody2D
 @export var sprite : AnimatedSprite2D
@@ -38,6 +40,9 @@ func find_dir_str(angle: float):
 		dir_str = "away"
 	elif angle >= 3 * pi4 and angle < 5 * pi4:
 		dir_str = "left"
+	direction_changed.emit(AnimationCommand.new(flip_h, dir_str))
+
+signal direction_changed(cur_state: AnimationCommand)
 
 func is_attacking():
 	return sprite.is_playing() and sprite.animation.begins_with(hit_anim_prefix)

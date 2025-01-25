@@ -1,14 +1,9 @@
 class_name DashSkill
 extends Skill
 
-func _ready():
-	player = Game.player_movement as PlayerMovement
-
-func _init():
-	set_trigger_key("dash")
-	set_bubble_cost(10)
-	set_cooldown(1)
+func get_trigger_key(): return &"dash"
+func get_bubble_cost(): return 10
+func get_cooldown(): return 1
 
 func use_skill():
-	print("dashing")
 	player.dash_vector += player.idle_direction * player.speed * 2

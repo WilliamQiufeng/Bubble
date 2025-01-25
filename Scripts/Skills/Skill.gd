@@ -1,41 +1,39 @@
 class_name Skill
 extends Node
 
-var trigger_key: String = "dash"
-var bubble_cost: float = 10
+var trigger_key: StringName = get_trigger_key()
+var bubble_cost: float = get_bubble_cost()
 var bubble: BubbleEffectController
-var cooldown: Timer = Timer.new()
-var player: Node
+@onready var cooldown: Timer = Timer.new()
+var player: PlayerMovement:
+	get: return Game.player_movement
 
-func set_trigger_key(key:String):
-	trigger_key = key
-
-func set_bubble_cost(cost:float):
-	bubble_cost = cost
-
-func set_cooldown(cd:float):
+func _ready():
 	cooldown.one_shot = true
-	cooldown.wait_time = cd
+	cooldown.wait_time = get_cooldown()
 	add_child(cooldown)
+
+func get_trigger_key() -> StringName:
+	return &"none"
+
+func get_bubble_cost() -> float:
+	return 0
+
+func get_cooldown() -> float:
+	return 1
 
 # Calls use skill whenever the trigger key is pressed
 func _physics_process(delta: float) -> void:
-	
 	if bubble == null:
 		print("no bubbles")
 		return
 		
 	if Input.is_action_just_pressed(trigger_key):
 		print("cooldown is ", cooldown.time_left)
-		if cooldown.time_left <= 0:
-			if bubble.mana > bubble_cost:
-				print("using skill from ", bubble)
-				use_skill()
-				cooldown.start()
-			else:
-				print("skill no mana")
-		else:
-			print("skill in cd")
+		if cooldown.is_stopped() and bubble.mana > bubble_cost:
+			print("using skill from ", bubble)
+			use_skill()
+			cooldown.start()
 
 func set_bubble(_bubble:BubbleEffectController) -> void:
 	bubble =  _bubble

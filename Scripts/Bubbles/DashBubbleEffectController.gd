@@ -1,7 +1,7 @@
 class_name DashBubbleEffectController
 extends BubbleEffectController
 
-var dash_skill:DashSkill
+var dash_skill: DashSkill
 
 func get_texture_path() -> String:
 	return "res://Scripts/Bubbles/Sprites/BubbleMovement.png"
@@ -22,9 +22,9 @@ func _ready() -> void:
 # Handle player entering the bubble
 func _handle_player_enter(player_movement: PlayerMovement) -> void:
 	print("giving dash skill")
-	player_movement.owner.add_child(dash_skill)
+	player_movement.add_child(dash_skill)
 
 # Handle player exiting the bubble
 func _handle_player_exit(player_movement: PlayerMovement) -> void:
 	print("removing dash skill")
-	player_movement.owner.remove_child(dash_skill)
+	player_movement.remove_child(dash_skill)
