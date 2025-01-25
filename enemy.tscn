@@ -26,7 +26,7 @@ shape = SubResource("RectangleShape2D_wrl0t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_yhytp")
-animation = &"hit_away"
+animation = &"die_left"
 
 [node name="BTPlayer" type="BTPlayer" parent="."]
 behavior_tree = ExtResource("3_7k7hh")

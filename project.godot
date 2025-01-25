@@ -14,7 +14,7 @@ config/name="Bubble"
 run/main_scene="res://Game.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="bubble"
-config/features=PackedStringArray("4.3", "C#", "Forward Plus")
+config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
