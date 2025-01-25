@@ -8,7 +8,7 @@ var attack_animation: AnimationPlayer
 func _ready():
 	player = Game.player_movement
 	attack_range = Game.attack_range
-	attack_animation = attack_range.get_child(1)
+	attack_animation = Game.player_movement.attack_animation
 	connect(attack_range.area_entered.get_name(), hit)
 
 func _init():
@@ -18,11 +18,13 @@ func _init():
 
 func use_skill():
 	print("using sword ", "\n", "\n", "\n", "\n", "\n", "\n", "\n", "\n", "\n")
-	#move sword
-	attack_range.get_child(0).global_position = player.get_position() + player.idle_direction*0.2
+	#moves sword to movement direction
+	attack_range.get_node("CollisionShape2D").global_position = player.get_position() + player.idle_direction*10
 	
+	#plays attack animation
 	attack_animation.play("Attack")
 
+#detects enemy hit
 func hit(area:Area2D):
 	if area.is_in_group("Enemy"):
 		print("hit enemy")

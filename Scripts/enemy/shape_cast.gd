@@ -1,4 +1,4 @@
-class_name TargetTracker1
+class_name TargetTracker
 extends ShapeCast2D
 
 @onready var raycast_timer: Timer = $Timer
