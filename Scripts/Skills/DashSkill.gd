@@ -1,8 +1,6 @@
 class_name DashSkill
 extends Skill
 
-signal dash(float)
-
 func _ready():
 	player = Game.player_movement as PlayerMovement
 
