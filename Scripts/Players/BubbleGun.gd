@@ -18,7 +18,8 @@ func _input(event: InputEvent):
 	elif event.is_action_pressed("bubble_slot_3"):
 		player_weapon_state.selected_effect_type_index = 2
 	if event.is_action_pressed("click") and shooting_timer.is_stopped():
-		fire()
+		if player_weapon_state.current_bullet_type != Constants.BulletType.SUPPLEMENT:
+			fire()
 		shooting_timer.one_shot = false
 		shooting_timer.start()
 	elif event.is_action_released("click"):
