@@ -10,14 +10,13 @@ position = Vector2i(0, 36)
 size = Vector2i(400, 180)
 script = ExtResource("1_gmsue")
 
-[node name="LineEdit" type="LineEdit" parent="."]
-anchors_preset = 10
+[node name="Label" type="RichTextLabel" parent="."]
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 31.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-text = "Select your upgrade"
-alignment = 1
-editable = false
+grow_vertical = 2
+text = "							Select your upgrade"
 
 [node name="GridContainer" type="GridContainer" parent="."]
 anchors_preset = 15
