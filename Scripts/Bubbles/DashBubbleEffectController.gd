@@ -20,7 +20,6 @@ func _ready() -> void:
 func _handle_player_enter(player_movement: PlayerMovement) -> void:
 	print("giving dash skill")
 	player_movement.owner.add_child(dash_skill)
-	dash_skill.dash.connect(player_movement.OnDash)
 
 # Handle player exiting the bubble
 func _handle_player_exit(player_movement: PlayerMovement) -> void:

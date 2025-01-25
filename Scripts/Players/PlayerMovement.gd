@@ -10,14 +10,9 @@ var idle_direction: Vector2 = Vector2.DOWN
 @onready var animation_movement : AnimationMovement = $AnimationMovement
 @onready var interaction_raycast = $InteractionRayCast
 var dash_vector: Vector2 = Vector2.ZERO
-var can_dash: bool = false
-var dashing_cooldown_timer: Timer
 
 func _ready():
-	dashing_cooldown_timer = Timer.new()
-	dashing_cooldown_timer.wait_time = 0.8
-	dashing_cooldown_timer.one_shot = true
-	add_child(dashing_cooldown_timer)
+	pass
 	
 
 func get_input():
@@ -40,9 +35,6 @@ func get_input():
 func _input(event: InputEvent) -> void:
 	pass
 
-
-func OnDash(mag: float):
-	dash_vector += idle_direction * speed * mag
 
 func _physics_process(delta: float) -> void:
 	get_input()

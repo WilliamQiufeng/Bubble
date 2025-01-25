@@ -5,6 +5,7 @@ var trigger_key: String = "dash"
 var bubble_cost: float = 10
 var bubble: BubbleEffectController
 var cooldown: Timer = Timer.new()
+var player: Node
 
 func set_trigger_key(key:String):
 	trigger_key = key

@@ -3,6 +3,9 @@ extends Skill
 
 signal dash(float)
 
+func _ready():
+	player = Game.player_movement as PlayerMovement
+
 func _init():
 	set_trigger_key("dash")
 	set_bubble_cost(10)
@@ -10,4 +13,4 @@ func _init():
 
 func use_skill():
 	print("dashing")
-	dash.emit(2)
+	player.dash_vector += player.idle_direction * player.speed * 2
