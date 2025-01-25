@@ -15,7 +15,7 @@ func _tick(delta):
 	var next_pos = navigation_agent.get_next_path_position()
 	var dir: Vector2 = agent.global_position.direction_to(next_pos)
 	var dist_sq_to_player = (target - agent.global_position).length_squared()
-	if dist_sq_to_player > tolerance:
+	if dist_sq_to_player > tolerance or not agent.can_reach_player():
 		agent.move(dir)
 	else:
 		agent.move(Vector2.ZERO)
