@@ -31,6 +31,7 @@ func _ready():
 	T.addToNoTimeZone(self)
 	for a in InputMap.get_actions(): inputActionFrames[a] = 0
 	TranslationServer.set_locale("en") #english as default
+	
 
 var monitors:Array = []
 var nts:Dictionary = {}
