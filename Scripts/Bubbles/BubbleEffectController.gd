@@ -18,13 +18,17 @@ func _handle_enemy_enter(enemy: Enemy) -> void: pass
 func _handle_enemy_exit(enemy: Enemy) -> void: pass
 func _get_effect_type() -> Constants.EffectType: return Constants.EffectType.NONE
 
+func get_texture_path() -> String:
+	return "res://Scripts/Bubbles/bubble.png"
+
 # Optional bubble color
 func get_bubble_color() -> Color:
 	return Color.WHITE
 
 func set_bubble_appearance():
-	sprite.modulate = get_bubble_color()
-	print("Color = ", sprite.modulate)
+	#sprite.modulate = get_bubble_color()
+	#print("Color = ", sprite.modulate)
+	pass
 	
 
 # Deferred body enters

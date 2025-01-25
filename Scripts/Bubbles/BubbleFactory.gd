@@ -20,28 +20,30 @@ func set_mana_cost(value: float) -> void:
 	mana_cost = value
 
 func apply(bubble: Bubble) -> BubbleFactory:
+	var controller: BubbleEffectController
 	for effect_type in effect_types:
 		match effect_type:
 			Constants.EffectType.NONE:
 				pass
 			Constants.EffectType.THE_WORLD:
-				bubble.add_child(TheWorldBubbleEffectController.new())
+				controller = TheWorldBubbleEffectController.new()
 			Constants.EffectType.TELEPORT:
-				bubble.add_child(TeleportBubbleEffectController.new())
-				Game.teleport_bubbles.append(bubble)
+				controller = TeleportBubbleEffectController.new()
 			Constants.EffectType.FAST:
-				bubble.add_child(FastBubbleEffectController.new())
+				controller = FastBubbleEffectController.new()
 			Constants.EffectType.DASH:
-				bubble.add_child(DashBubbleEffectController.new())
+				controller = DashBubbleEffectController.new()
 			Constants.EffectType.BULLET:
 				pass
 			Constants.EffectType.ANTI:
-				bubble.add_child(AntiBubbleEffectController.new())
+				controller = AntiBubbleEffectController.new()
 			Constants.EffectType.SWORD:
-				bubble.add_child(SwordBubbleEffectController.new())
+				controller = SwordBubbleEffectController.new()
 			_:
 				push_error("Unexpected EffectType: %s" % effect_type)
-		
+	print(controller.get_texture_path())
+	bubble.add_child(controller)
+	bubble.change_sprite(controller.get_texture_path())
 	bubble.position = position
 
 	match bullet_type:

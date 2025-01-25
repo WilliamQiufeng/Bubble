@@ -3,6 +3,9 @@ extends BubbleEffectController
 
 var dash_skill:DashSkill
 
+func get_texture_path() -> String:
+	return "res://Scripts/Bubbles/Sprites/BubbleMovement.png"
+	
 # Override properties
 func _get_effect_type() -> Constants.EffectType:
 	return Constants.EffectType.DASH

@@ -4,6 +4,10 @@ extends BubbleEffectController
 # Constants
 const GAME_SPEED_MULTIPLIER: float = 0.5
 
+func get_texture_path() -> String:
+	var rand_index: int = randi_range(0, 5)
+	return "res://Scripts/Bubbles/Sprites/BubbleClock" + str(rand_index) + ".png"
+
 # Override properties
 func _get_effect_type() -> Constants.EffectType:
 	return Constants.EffectType.THE_WORLD

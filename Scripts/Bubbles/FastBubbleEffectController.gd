@@ -4,6 +4,9 @@ extends BubbleEffectController
 # Constants
 const FAST_MULTIPLIER: float = 1.3
 
+func get_texture_path() -> String:
+	return "res://Scripts/Bubbles/Sprites/BubbleMovement.png"
+
 # Override properties
 func _get_effect_type() -> Constants.EffectType:
 	return Constants.EffectType.FAST
