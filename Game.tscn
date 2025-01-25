@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://b5diheugfnvke" path="res://sprites/test.tres" id="3_cype7"]
 [ext_resource type="PackedScene" uid="uid://cr0wfkkhkvskc" path="res://bubble.tscn" id="4_4of4y"]
 [ext_resource type="PackedScene" uid="uid://wqr4y4ey6iqx" path="res://player.tscn" id="4_ab4fr"]
-[ext_resource type="PackedScene" uid="uid://4l5jwqk1uaum" path="res://goblin.tscn" id="5_hmcur"]
+[ext_resource type="PackedScene" uid="uid://dmnhnhgq6ls81" path="res://goblin.tscn" id="5_hmcur"]
 [ext_resource type="Script" path="res://Scripts/Bubbles/FastBubbleEffectController.gd" id="6_shgmp"]
 [ext_resource type="PackedScene" uid="uid://cujntyyisr5rt" path="res://wizard.tscn" id="6_tqrox"]
 [ext_resource type="Script" path="res://Scripts/Bubbles/TheWorldBubbleEffectController.gd" id="6_wh7vc"]
@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/AnimationProgressBar.gd" id="8_dsa6g"]
 [ext_resource type="SpriteFrames" uid="uid://crhwmeo5xw80t" path="res://sprites/mana-bar-frames.tres" id="9_c1y8d"]
 [ext_resource type="Script" path="res://Scripts/Level/Spawner.gd" id="9_winy3"]
-[ext_resource type="PackedScene" path="res://spawn_marker.tscn" id="10_pux3m"]
+[ext_resource type="PackedScene" uid="uid://bxtuafboulrkn" path="res://spawn_marker.tscn" id="10_pux3m"]
 
 [node name="Root" type="Node2D"]
 script = ExtResource("1_cu1t1")
