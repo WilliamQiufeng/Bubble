@@ -31,6 +31,7 @@ func _ready():
 	T.addToNoTimeZone(self)
 	for a in InputMap.get_actions(): inputActionFrames[a] = 0
 	TranslationServer.set_locale("en") #english as default
+	get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (!((get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN) or (get_window().mode == Window.MODE_FULLSCREEN))) else Window.MODE_WINDOWED
 	
 
 var monitors:Array = []
