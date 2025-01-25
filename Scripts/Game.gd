@@ -18,6 +18,8 @@ func nodes_in_group(group_name: StringName) -> Array[Node]:
 var player_movement: PlayerMovement:
 	get: return nodes_in_group(&"Player")[0] as PlayerMovement
 
+var teleport_bubbles = []
+
 var player: Player:
 	get: return player_movement.player
 
