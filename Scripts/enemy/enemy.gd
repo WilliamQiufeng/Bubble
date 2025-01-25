@@ -5,7 +5,12 @@ extends CharacterBody2D
 @onready var target_tracker = $TargetTracker
 @export var speed = 40
 @export var hp = 100
+@onready var hp_bar = $AnimatedSprite2D/HpBar
 var is_dead = false
+
+func _ready():
+	hp_bar.max_value = hp
+	hp_bar.value = hp
 
 func _die():
 	if is_dead:
@@ -18,6 +23,7 @@ func _die():
 
 func _get_damage(amount: float):
 	hp -= amount
+	hp_bar.value = max(0, hp)
 	if hp <= 0:
 		_die()
 	
