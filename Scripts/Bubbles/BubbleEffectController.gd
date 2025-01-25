@@ -5,7 +5,8 @@ extends Node
 # Abstract properties
 var effect_type: Constants.EffectType:
 	get: return _get_effect_type()
-var mana:float = 100
+var mana:int: 
+	get: return bubble_controller.get_area()
 
 @onready var bubble_controller: BubbleController
 @onready var sprite: Sprite2D = $"../CollisionShape2D/BackBufferCopy/Bubble"
