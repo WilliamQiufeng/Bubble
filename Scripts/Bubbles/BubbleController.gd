@@ -4,8 +4,12 @@ extends Area2D
 # Properties
 @onready var scale_node: Node2D = $".."
 @onready var collision_shape: CollisionShape2D = $".."
+@onready var animation: AnimationPlayer = $AnimationPlayer
 
 var bubble: Node2D
+
+func delete():
+	animation.play("Bubble")
 
 func get_effect_type() -> Constants.EffectType:
 	var effect_type = Constants.EffectType.NONE

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://wqr4y4ey6iqx"]
+[gd_scene load_steps=8 format=3 uid="uid://wqr4y4ey6iqx"]
 
 [ext_resource type="Script" path="res://Scripts/Players/PlayerMovement.gd" id="1_aqc0d"]
 [ext_resource type="SpriteFrames" uid="uid://bpusxlts2nqsp" path="res://sprites/PlayerSpriteFrames.tres" id="2_iv45a"]
@@ -8,6 +8,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5d186"]
 size = Vector2(12.5, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_owmo4"]
+size = Vector2(9, 8)
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(50, 29)
@@ -51,3 +54,9 @@ script = ExtResource("5_11j5d")
 character = NodePath("..")
 sprite = NodePath("../AnimatedSprite2D")
 orientation_node = NodePath("../RayCast2D")
+
+[node name="AttackZone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone"]
+position = Vector2(9, 3)
+shape = SubResource("RectangleShape2D_owmo4")

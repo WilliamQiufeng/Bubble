@@ -48,9 +48,6 @@ func get_input():
 	elif Input.is_action_just_pressed("bubble_slot_3"):
 		player_weapon_state.selected_effect_type_index = 2
 	
-	if can_dash and dashing_cooldown_timer.time_left <= 0 and Input.is_action_just_pressed("dash"):
-		dashing_cooldown_timer.start()
-		dash_vector = idle_direction * speed * 2
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("click"):
@@ -72,6 +69,9 @@ func fire() -> void:
 	factory.apply(new_bullet)
 	player.mana -= factory.mana_cost
 	bullet_container.add_child(new_bullet)
+
+func OnDash(mag: float):
+	dash_vector += idle_direction * speed * mag
 
 func _physics_process(delta: float) -> void:
 	get_input()
