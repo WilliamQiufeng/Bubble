@@ -1,9 +1,35 @@
-[gd_scene load_steps=2 format=3 uid="uid://7beywoj6223j"]
+[gd_scene load_steps=3 format=3 uid="uid://7beywoj6223j"]
 
 [ext_resource type="Script" path="res://Scripts/Upgrades/UpgradePopupController.gd" id="1_gmsue"]
+[ext_resource type="Texture2D" uid="uid://ddgu5kc34j6hl" path="res://sprites/banner.png" id="2_jdwrw"]
 
 [node name="UpgradePopup" type="Window"]
 transparent_bg = true
 position = Vector2i(0, 36)
 size = Vector2i(400, 150)
 script = ExtResource("1_gmsue")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+columns = 3
+
+[node name="UpgradeButton1" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("2_jdwrw")
+
+[node name="UpgradeButton2" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("2_jdwrw")
+
+[node name="UpgradeButton3" type="TextureButton" parent="GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("2_jdwrw")
