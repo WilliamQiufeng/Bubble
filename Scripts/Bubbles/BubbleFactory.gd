@@ -27,7 +27,7 @@ func apply(bubble: Bubble) -> BubbleFactory:
 			Constants.EffectType.THE_WORLD:
 				bubble.add_child(TheWorldBubbleEffectController.new())
 			Constants.EffectType.TELEPORT:
-				pass
+				bubble.add_child(TeleportBubbleEffectController.new())
 			Constants.EffectType.FAST:
 				bubble.add_child(FastBubbleEffectController.new())
 			Constants.EffectType.DASH:

@@ -4,7 +4,7 @@ extends Window # Use Control if your root is a Control node
 
 # Called when the scene is loaded
 func _ready():
-	var upgrades = [ManaUpgrade.new(), HealthUpgrade.new(), ManaUpgrade.new()]
+	var upgrades = [ManaUpgrade.new(), HealthUpgrade.new(), HealthRegenUpdate.new()]
 	var texture_boxes = upgrade_button_container.get_children()
 	self.borderless = true
 	for i in range(3):
@@ -13,11 +13,6 @@ func _ready():
 		texture_box.connect("pressed", upgrades[i].upgrade)
 		# Add the texture box as a child of the current node
 		texture_box.add_child(upgrades[i])
-	
-	#self.resizable = false
-	# Connect signals for all buttons
-	#$Button2.connect("pressed", Callable(self, "_on_button_pressed"))
-	#$Button3.connect("pressed", Callable(self, "_on_button_pressed"))
 
 # Function to handle button presses
 func _on_button_pressed():
