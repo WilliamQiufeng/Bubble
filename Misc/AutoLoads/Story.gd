@@ -18,6 +18,8 @@ func _ready():
 	process_mode = PROCESS_MODE_ALWAYS
 	T.addToNoTimeZone(self)
 	G.followNotification(notif_exitScene,"exitScene")
+	resetAutoLoad()
+	Layers.sky.updateSkyBackground()
 
 func _physics_process(delta):
 	G.diagnose()
@@ -36,7 +38,7 @@ func _physics_process(delta):
 func resetDateTimeVars():
 	canAdvanceTime = true
 	timePaused = false
-	time = clock2time([12,0])
+	time = clock2time([0,0])
 	date = 0
 	blockers.clear()
 #date and time management

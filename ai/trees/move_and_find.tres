@@ -1,0 +1,54 @@
+[gd_resource type="BehaviorTree" load_steps=16 format=3 uid="uid://b5516whl11iqr"]
+
+[ext_resource type="Script" path="res://ai/tasks/choose_random_position.gd" id="1_uai20"]
+[ext_resource type="Script" path="res://ai/tasks/move_to_position.gd" id="2_ieynt"]
+[ext_resource type="Script" path="res://ai/tasks/find_target.gd" id="3_4fbsx"]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_3c4ru"]
+text = "Random move"
+
+[sub_resource type="BTAction" id="BTAction_1svko"]
+script = ExtResource("1_uai20")
+min_range = 40.0
+max_range = 100.0
+position_var = &"pos"
+direction_var = &"dir"
+
+[sub_resource type="BTAction" id="BTAction_4st1j"]
+script = ExtResource("2_ieynt")
+target_pos_var = &"pos"
+dir_var = &"dir"
+speed = 40
+tolerance = 100
+
+[sub_resource type="BTWait" id="BTWait_1lsp8"]
+duration = 2.0
+
+[sub_resource type="BTSequence" id="BTSequence_d5ivw"]
+children = [SubResource("BTAction_4st1j"), SubResource("BTWait_1lsp8")]
+
+[sub_resource type="BTTimeLimit" id="BTTimeLimit_eg7iy"]
+time_limit = 3.0
+children = [SubResource("BTSequence_d5ivw")]
+
+[sub_resource type="BTSequence" id="BTSequence_38366"]
+custom_name = "RandomMoveSequence"
+children = [SubResource("BTConsolePrint_3c4ru"), SubResource("BTAction_1svko"), SubResource("BTTimeLimit_eg7iy")]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_r5w8r"]
+text = "Find Target"
+
+[sub_resource type="BTAction" id="BTAction_mh30m"]
+script = ExtResource("3_4fbsx")
+
+[sub_resource type="BTSequence" id="BTSequence_8bcv6"]
+children = [SubResource("BTConsolePrint_r5w8r"), SubResource("BTAction_mh30m")]
+
+[sub_resource type="BTInvert" id="BTInvert_k7r8f"]
+children = [SubResource("BTSequence_8bcv6")]
+
+[sub_resource type="BTDynamicSequence" id="BTDynamicSequence_toxvi"]
+children = [SubResource("BTSequence_38366"), SubResource("BTInvert_k7r8f")]
+
+[resource]
+root_task = SubResource("BTDynamicSequence_toxvi")

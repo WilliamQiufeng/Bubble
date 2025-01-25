@@ -37,6 +37,9 @@ func find_dir_str(angle: float):
 	elif angle >= 3 * pi4 and angle < 5 * pi4:
 		dir_str = "left"
 
+func is_attacking():
+	return sprite.is_playing() and sprite.animation.begins_with(hit_anim_prefix)
+
 func set_dir(dir: Vector2):
 	var dir_unit = dir.normalized()
 	var angle = dir_unit.angle_to(Vector2.RIGHT)
@@ -54,7 +57,7 @@ func _play(name: StringName):
 	sprite.flip_h = flip_h
 
 func _play_format(template: StringName):
-	if sprite.is_playing() and sprite.animation.begins_with(hit_anim_prefix):
+	if is_attacking():
 		deferred_anim_prefix = template
 		return
 	_play(template.format({"type": dir_str}))

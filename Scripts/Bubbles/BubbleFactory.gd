@@ -32,6 +32,8 @@ func apply(bubble: Node2D) -> BubbleFactory:
 				bubble.add_child(DashBubbleEffectController.new())
 			Constants.EffectType.BULLET:
 				pass
+			Constants.EffectType.ANTI:
+				bubble.add_child(AntiBubbleEffectController.new())
 			_:
 				push_error("Unexpected EffectType: %s" % effect_type)
 		
@@ -63,6 +65,8 @@ func add_effect(effect_type: int) -> BubbleFactory:
 			mana_cost += 5
 		Constants.EffectType.DASH:
 			mana_cost += 7
+		Constants.EffectType.ANTI:
+			mana_cost -= 3
 		_:
 			push_error("Unexpected EffectType: %s" % effect_type)
 	return self

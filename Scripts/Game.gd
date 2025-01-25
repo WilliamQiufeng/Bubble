@@ -12,8 +12,11 @@ extends Node
 # Signal for when the game speed changes
 signal game_speed_change(new_speed: float)
 
+func nodes_in_group(group_name: StringName) -> Array[Node]:
+	return get_tree().get_nodes_in_group(group_name)
+
 var player_movement: PlayerMovement:
-	get: return get_tree().get_nodes_in_group(&"Player")[0]
+	get: return nodes_in_group(&"Player")[0] as PlayerMovement
 
 var player: Player:
 	get: return player_movement.player

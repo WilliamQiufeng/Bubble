@@ -5,7 +5,8 @@ func _ready() -> void:
 	print("Loaded game scene")
 	await G.createTimer(3).timeout
 	#Scenes.switchScene("res://bubble.tscn")
-	await Layers.dialogueBox.setAndDisplayQueueAndEnd(["Hello"])
+	await Layers.dialogueBox.setAndDisplayQueueAndEnd(["@{ignoreInput:true}Hello","hello twice"])
+	Layers.dialogueBox.displayQueue()
 
 func _physics_process(delta: float) -> void:
 	pass

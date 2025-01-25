@@ -1,0 +1,63 @@
+[gd_resource type="BehaviorTree" load_steps=20 format=3 uid="uid://g71iu7gamk2m"]
+
+[ext_resource type="BehaviorTree" uid="uid://b5516whl11iqr" path="res://ai/trees/move_and_find.tres" id="1_lpsxv"]
+[ext_resource type="Script" path="res://ai/tasks/chase_player.gd" id="2_vft1k"]
+[ext_resource type="Script" path="res://ai/tasks/load_attack.gd" id="3_pu8wu"]
+[ext_resource type="Script" path="res://ai/tasks/attack.gd" id="3_rorfg"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_eureb"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_1d1fb"]
+
+[sub_resource type="BTSubtree" id="BTSubtree_n2iy3"]
+subtree = ExtResource("1_lpsxv")
+blackboard_plan = SubResource("BlackboardPlan_1d1fb")
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_dekc7"]
+text = "Chase"
+
+[sub_resource type="BTAction" id="BTAction_hkriy"]
+script = ExtResource("2_vft1k")
+tolerance = 4000.0
+target = Vector2(0, 0)
+
+[sub_resource type="BTDynamicSequence" id="BTDynamicSequence_3ba06"]
+children = [SubResource("BTAction_hkriy")]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_qnibc"]
+text = "Attack"
+
+[sub_resource type="BTAction" id="BTAction_7j8fh"]
+script = ExtResource("3_pu8wu")
+attack_name = NodePath("MagicBullet")
+node_name = &"Attack"
+
+[sub_resource type="BTAction" id="BTAction_dj8cd"]
+script = ExtResource("3_rorfg")
+tolerance = 10000.0
+attack_node_name = &"Attack"
+
+[sub_resource type="BTSequence" id="BTSequence_7gt0q"]
+children = [SubResource("BTConsolePrint_qnibc"), SubResource("BTAction_7j8fh"), SubResource("BTAction_dj8cd")]
+
+[sub_resource type="BTCooldown" id="BTCooldown_4l5kb"]
+duration = 1.0
+children = [SubResource("BTSequence_7gt0q")]
+
+[sub_resource type="BTRepeat" id="BTRepeat_ovxxv"]
+forever = true
+children = [SubResource("BTCooldown_4l5kb")]
+
+[sub_resource type="BTParallel" id="BTParallel_tsikq"]
+children = [SubResource("BTDynamicSequence_3ba06"), SubResource("BTRepeat_ovxxv")]
+
+[sub_resource type="BTSequence" id="BTSequence_kjsxt"]
+custom_name = "Chase"
+children = [SubResource("BTConsolePrint_dekc7"), SubResource("BTParallel_tsikq")]
+
+[sub_resource type="BTSelector" id="BTSelector_4k0ut"]
+children = [SubResource("BTSubtree_n2iy3"), SubResource("BTSequence_kjsxt")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_eureb")
+root_task = SubResource("BTSelector_4k0ut")

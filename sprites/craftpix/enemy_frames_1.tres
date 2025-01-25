@@ -369,7 +369,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_layve")
 }],
 "loop": false,
-"name": &"hit_away",
+"name": &"hit_melee_away",
 "speed": 5.0
 }, {
 "frames": [{
@@ -386,7 +386,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_raocb")
 }],
 "loop": false,
-"name": &"hit_left",
+"name": &"hit_melee_left",
 "speed": 5.0
 }, {
 "frames": [{
@@ -403,7 +403,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_060dn")
 }],
 "loop": false,
-"name": &"hit_towards",
+"name": &"hit_melee_towards",
 "speed": 5.0
 }, {
 "frames": [{

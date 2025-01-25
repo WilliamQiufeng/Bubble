@@ -1,58 +1,17 @@
-[gd_resource type="BehaviorTree" load_steps=30 format=3 uid="uid://ddtwc6gutesaa"]
+[gd_resource type="BehaviorTree" load_steps=20 format=3 uid="uid://ddtwc6gutesaa"]
 
-[ext_resource type="Script" path="res://ai/tasks/choose_random_position.gd" id="1_gyu8h"]
-[ext_resource type="Script" path="res://ai/tasks/move_to_position.gd" id="2_chuip"]
-[ext_resource type="Script" path="res://ai/tasks/find_target.gd" id="3_joeg4"]
+[ext_resource type="BehaviorTree" uid="uid://b5516whl11iqr" path="res://ai/trees/move_and_find.tres" id="1_ga5g4"]
+[ext_resource type="Script" path="res://ai/tasks/load_attack.gd" id="3_2y41n"]
 [ext_resource type="Script" path="res://ai/tasks/chase_player.gd" id="4_3ld78"]
 [ext_resource type="Script" path="res://ai/tasks/attack.gd" id="5_cn2qa"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_xqqg2"]
 
-[sub_resource type="BTConsolePrint" id="BTConsolePrint_202g1"]
-text = "Random move"
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_piujy"]
 
-[sub_resource type="BTAction" id="BTAction_idkus"]
-script = ExtResource("1_gyu8h")
-min_range = 40.0
-max_range = 100.0
-position_var = &"pos"
-direction_var = &"dir"
-
-[sub_resource type="BTAction" id="BTAction_6mah3"]
-script = ExtResource("2_chuip")
-target_pos_var = &"pos"
-dir_var = &"dir"
-speed = 40
-tolerance = 100
-
-[sub_resource type="BTWait" id="BTWait_aal1x"]
-duration = 2.0
-
-[sub_resource type="BTSequence" id="BTSequence_r6tnn"]
-children = [SubResource("BTAction_6mah3"), SubResource("BTWait_aal1x")]
-
-[sub_resource type="BTTimeLimit" id="BTTimeLimit_0goao"]
-time_limit = 3.0
-children = [SubResource("BTSequence_r6tnn")]
-
-[sub_resource type="BTSequence" id="BTSequence_jjcp7"]
-custom_name = "RandomMoveSequence"
-children = [SubResource("BTConsolePrint_202g1"), SubResource("BTAction_idkus"), SubResource("BTTimeLimit_0goao")]
-
-[sub_resource type="BTConsolePrint" id="BTConsolePrint_a8elm"]
-text = "Find Target"
-
-[sub_resource type="BTAction" id="BTAction_bqhxw"]
-script = ExtResource("3_joeg4")
-
-[sub_resource type="BTSequence" id="BTSequence_5ytf8"]
-children = [SubResource("BTConsolePrint_a8elm"), SubResource("BTAction_bqhxw")]
-
-[sub_resource type="BTInvert" id="BTInvert_aqji6"]
-children = [SubResource("BTSequence_5ytf8")]
-
-[sub_resource type="BTDynamicSequence" id="BTDynamicSequence_da3rr"]
-children = [SubResource("BTSequence_jjcp7"), SubResource("BTInvert_aqji6")]
+[sub_resource type="BTSubtree" id="BTSubtree_6e355"]
+subtree = ExtResource("1_ga5g4")
+blackboard_plan = SubResource("BlackboardPlan_piujy")
 
 [sub_resource type="BTConsolePrint" id="BTConsolePrint_83yxl"]
 text = "Chase"
@@ -68,12 +27,18 @@ children = [SubResource("BTAction_fug54")]
 [sub_resource type="BTConsolePrint" id="BTConsolePrint_j4jjy"]
 text = "Attack"
 
+[sub_resource type="BTAction" id="BTAction_75tdg"]
+script = ExtResource("3_2y41n")
+attack_name = NodePath("Melee")
+node_name = &"Attack"
+
 [sub_resource type="BTAction" id="BTAction_6abq2"]
 script = ExtResource("5_cn2qa")
 tolerance = 300.0
+attack_node_name = &"Attack"
 
 [sub_resource type="BTSequence" id="BTSequence_u8g7n"]
-children = [SubResource("BTConsolePrint_j4jjy"), SubResource("BTAction_6abq2")]
+children = [SubResource("BTConsolePrint_j4jjy"), SubResource("BTAction_75tdg"), SubResource("BTAction_6abq2")]
 
 [sub_resource type="BTCooldown" id="BTCooldown_euu4n"]
 duration = 1.0
@@ -91,7 +56,7 @@ custom_name = "Chase"
 children = [SubResource("BTConsolePrint_83yxl"), SubResource("BTParallel_qlv11")]
 
 [sub_resource type="BTSelector" id="BTSelector_v8ht7"]
-children = [SubResource("BTDynamicSequence_da3rr"), SubResource("BTSequence_wfdbe")]
+children = [SubResource("BTSubtree_6e355"), SubResource("BTSequence_wfdbe")]
 
 [resource]
 blackboard_plan = SubResource("BlackboardPlan_xqqg2")
