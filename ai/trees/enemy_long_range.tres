@@ -1,6 +1,6 @@
-[gd_resource type="BehaviorTree" load_steps=20 format=3 uid="uid://g71iu7gamk2m"]
+[gd_resource type="BehaviorTree" load_steps=20 format=3 uid="uid://bf5y4g6fhsyp2"]
 
-[ext_resource type="BehaviorTree" uid="uid://b5516whl11iqr" path="res://ai/trees/move_and_find.tres" id="1_lpsxv"]
+[ext_resource type="BehaviorTree" uid="uid://0hgdix03veud" path="res://ai/trees/move_and_find.tres" id="1_lpsxv"]
 [ext_resource type="Script" path="res://ai/tasks/chase_player.gd" id="2_vft1k"]
 [ext_resource type="Script" path="res://ai/tasks/load_attack.gd" id="3_pu8wu"]
 [ext_resource type="Script" path="res://ai/tasks/attack.gd" id="3_rorfg"]
