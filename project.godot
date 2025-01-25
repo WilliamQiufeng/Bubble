@@ -55,6 +55,7 @@ TheWorldBubble=""
 FastBubble=""
 Player=""
 PlayerBullet=""
+Enemy=""
 
 [input]
 

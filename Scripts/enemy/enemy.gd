@@ -39,9 +39,10 @@ func _is_attacking():
 func _physics_process(delta):
 	move_and_slide()
 
+func knockback(dir:Vector2, mg:float):
+	velocity += dir * mg
+
 func move(dir: Vector2):
-	if is_dead:
-		return
 	var anim_str : StringName
 	var dir_unit = dir.normalized()
 	if dir == Vector2.ZERO:

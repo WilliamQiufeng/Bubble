@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cujntyyisr5rt"]
+[gd_scene load_steps=7 format=3 uid="uid://cujntyyisr5rt"]
 
 [ext_resource type="PackedScene" uid="uid://c0vincv0a17xv" path="res://enemy.tscn" id="1_j5hk6"]
 [ext_resource type="SpriteFrames" uid="uid://cb3sv0tdf64qu" path="res://sprites/craftpix/enemy_long_range_frames.tres" id="2_66q0r"]
@@ -8,7 +8,10 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_jy3w7"]
 radius = 200.0
 
-[node name="Enemy" instance=ExtResource("1_j5hk6")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4fway"]
+size = Vector2(8, 14)
+
+[node name="Enemy" groups=["Enemy"] instance=ExtResource("1_j5hk6")]
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(1, -2.5)
@@ -29,5 +32,11 @@ script = ExtResource("3_5yih0")
 [node name="ChargeTimer" type="Timer" parent="MagicBullet" index="0"]
 wait_time = 0.6
 one_shot = true
+
+[node name="Area2D" type="Area2D" parent="." index="6" groups=["Enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_4fway")
 
 [connection signal="timeout" from="MagicBullet/ChargeTimer" to="MagicBullet" method="release_bubble"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dn4hm4mk6ps1u"]
+[gd_scene load_steps=2 format=3 uid="uid://c8vxs024bkulg"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy/Melee.gd" id="1_amhmt"]
 
