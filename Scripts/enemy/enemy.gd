@@ -7,7 +7,11 @@ extends CharacterBody2D
 @export var hp = 100
 @onready var hp_bar = $AnimatedSprite2D/HpBar
 @onready var navigation_agent = $NavigationAgent2D
+@onready var vision_checker = $VisionChecker
 var is_dead = false
+
+func can_reach_player() -> bool:
+	return vision_checker.check(Game.player_movement)
 
 func _ready():
 	hp_bar.max_value = hp

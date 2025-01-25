@@ -3,7 +3,7 @@ extends ShapeCast2D
 
 @onready var raycast_timer: Timer = $Timer
 @onready var forget_timer: Timer = $ForgetTimer
-@export var max_point_count = 30
+@export var max_point_count = 100
 @export var group_name: StringName = &"Player"
 var player_endpoints: Array[Vector2] = []
 @onready var vision_checker = $"../VisionChecker"
