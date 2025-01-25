@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpybgqph3sknn"]
+
+[ext_resource type="Script" path="res://Scripts/Players/Sword.gd" id="1_jk4n6"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_akv8s"]
+
+[node name="Sword" type="Node2D"]
+script = ExtResource("1_jk4n6")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(3.505, 0)
+scale = Vector2(9.495, 12)
+texture = SubResource("ViewportTexture_akv8s")
+
+[node name="SwingTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true

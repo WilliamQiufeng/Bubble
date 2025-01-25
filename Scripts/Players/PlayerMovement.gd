@@ -9,6 +9,10 @@ var idle_direction: Vector2 = Vector2.DOWN
 @onready var player: Player = $PlayerController
 @onready var animation_movement : AnimationMovement = $AnimationMovement
 @onready var interaction_raycast = $InteractionRayCast
+@onready var attack_range = $InteractionRayCast/AttackRange
+@onready var sword = $Sword
+
+
 var dash_vector: Vector2 = Vector2.ZERO
 var is_dead: bool = false
 
@@ -38,7 +42,6 @@ func handle_death():
 
 func _input(event: InputEvent) -> void:
 	pass
-
 
 func _physics_process(delta: float) -> void:
 	if is_dead:

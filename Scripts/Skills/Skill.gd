@@ -5,7 +5,8 @@ var trigger_key: StringName = get_trigger_key()
 var bubble_cost: float = get_bubble_cost()
 var bubble: BubbleEffectController
 @onready var cooldown: Timer = Timer.new()
-var player: Node
+var player: PlayerMovement:
+	get: return Game.player_movement
 
 func _ready():
 	cooldown.one_shot = true

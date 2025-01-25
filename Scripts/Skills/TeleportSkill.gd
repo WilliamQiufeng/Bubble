@@ -3,7 +3,7 @@ extends Skill
 
 func get_trigger_key(): return &"teleport"
 func get_bubble_cost(): return 20
-func get_cooldown(): 3
+func get_cooldown(): return 3
 
 func use_skill():
 	var mouse_pos = Game.player_movement.get_global_mouse_position()
