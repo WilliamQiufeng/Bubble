@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cr0wfkkhkvskc"]
+[gd_scene load_steps=15 format=3 uid="uid://cr0wfkkhkvskc"]
 
 [ext_resource type="Shader" path="res://bubblerefract.gdshader" id="1_p6kar"]
 [ext_resource type="Script" path="res://Scripts/Bubbles/Bubble.gd" id="1_u4fww"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Bubbles/BubbleController.gd" id="2_smpfk"]
 [ext_resource type="Texture2D" uid="uid://b7rbqaeohji7w" path="res://Scripts/Bubbles/bubble-normal.png" id="3_1paw5"]
 [ext_resource type="Shader" path="res://bubbletest.gdshader" id="4_xi0on"]
+[ext_resource type="Texture2D" uid="uid://c84ioy463b1iq" path="res://sprites/bubble_explosion.png" id="7_4boxq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xkbat"]
 radius = 16.0312
@@ -22,6 +23,102 @@ normal_texture = ExtResource("3_1paw5")
 shader = ExtResource("4_xi0on")
 shader_parameter/timeScale = 2.0
 shader_parameter/amplitude = 1.0
+
+[sub_resource type="Animation" id="Animation_t3mjo"]
+resource_name = "Bubble"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackBufferCopy/BubbleExplosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7, 8, 8, 8, 8, 8, 8, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BackBufferCopy/BubbleExplosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BackBufferCopy/Bubble:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_myrod"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BackBufferCopy/BubbleExplosion:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BackBufferCopy/BubbleExplosion:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BackBufferCopy/Bubble:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fhpgd"]
+_data = {
+"Bubble": SubResource("Animation_t3mjo"),
+"RESET": SubResource("Animation_myrod")
+}
 
 [node name="Bubble" type="RigidBody2D"]
 collision_layer = 0
@@ -50,6 +147,17 @@ texture = SubResource("CanvasTexture_xm2o2")
 [node name="Floater" type="Sprite2D" parent="CollisionShape2D/BackBufferCopy/Bubble"]
 material = SubResource("ShaderMaterial_jlsom")
 texture = ExtResource("2_18qn5")
+
+[node name="BubbleExplosion" type="Sprite2D" parent="CollisionShape2D/BackBufferCopy"]
+visible = false
+texture = ExtResource("7_4boxq")
+hframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CollisionShape2D")
+libraries = {
+"": SubResource("AnimationLibrary_fhpgd")
+}
 
 [connection signal="area_entered" from="CollisionShape2D/Area2D" to="CollisionShape2D/Area2D" method="on_bubble_area_entered"]
 [connection signal="area_exited" from="CollisionShape2D/Area2D" to="CollisionShape2D/Area2D" method="on_bubble_area_exited"]

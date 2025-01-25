@@ -1,15 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://wqr4y4ey6iqx"]
+[gd_scene load_steps=8 format=3 uid="uid://wqr4y4ey6iqx"]
 
 [ext_resource type="Script" path="res://Scripts/Players/PlayerMovement.gd" id="1_aqc0d"]
 [ext_resource type="SpriteFrames" uid="uid://bpusxlts2nqsp" path="res://sprites/PlayerSpriteFrames.tres" id="2_iv45a"]
 [ext_resource type="Script" path="res://Scripts/Players/Player.gd" id="3_hjb84"]
 [ext_resource type="Script" path="res://Scripts/Players/PlayerWeaponState.gd" id="4_twixg"]
 [ext_resource type="Script" path="res://Scripts/AnimationMovement.gd" id="5_11j5d"]
-[ext_resource type="Texture2D" uid="uid://bt2wj2k8b13u3" path="res://sprites/player.png" id="5_u74c5"]
-[ext_resource type="Script" path="res://Scripts/Players/BubbleGun.gd" id="7_gj5ir"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5d186"]
 size = Vector2(12.5, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_owmo4"]
+size = Vector2(9, 8)
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(50, 29)
@@ -44,22 +45,18 @@ mana = 100.0
 [node name="PlayerWeaponState" type="Node" parent="."]
 script = ExtResource("4_twixg")
 
-[node name="InteractionRayCast" type="RayCast2D" parent="."]
+[node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, 32)
 collision_mask = 16
-
-[node name="Sprite2D" type="Sprite2D" parent="InteractionRayCast"]
-visible = false
-texture = ExtResource("5_u74c5")
 
 [node name="AnimationMovement" type="Node" parent="." node_paths=PackedStringArray("character", "sprite", "orientation_node")]
 script = ExtResource("5_11j5d")
 character = NodePath("..")
 sprite = NodePath("../AnimatedSprite2D")
-orientation_node = NodePath("../InteractionRayCast")
+orientation_node = NodePath("../RayCast2D")
 
-[node name="BubbleGun" type="Node2D" parent="."]
-script = ExtResource("7_gj5ir")
+[node name="AttackZone" type="Area2D" parent="."]
 
-[node name="ShootingTimer" type="Timer" parent="BubbleGun"]
-wait_time = 0.2
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone"]
+position = Vector2(9, 3)
+shape = SubResource("RectangleShape2D_owmo4")

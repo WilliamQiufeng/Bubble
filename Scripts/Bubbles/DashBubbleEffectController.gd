@@ -1,6 +1,8 @@
 class_name DashBubbleEffectController
 extends BubbleEffectController
 
+var dash_skill:DashSkill
+
 # Override properties
 func _get_effect_type() -> Constants.EffectType:
 	return Constants.EffectType.DASH
@@ -10,11 +12,17 @@ func get_bubble_color() -> Color:
 
 func _ready() -> void:
 	super._ready()
+	dash_skill = DashSkill.new()
+	dash_skill.set_bubble(self)
+	print("dash skill")
 
 # Handle player entering the bubble
 func _handle_player_enter(player_movement: PlayerMovement) -> void:
-	player_movement.can_dash = true
+	print("giving dash skill")
+	player_movement.owner.add_child(dash_skill)
+	dash_skill.dash.connect(player_movement.OnDash)
 
 # Handle player exiting the bubble
 func _handle_player_exit(player_movement: PlayerMovement) -> void:
-	player_movement.can_dash = false
+	print("removing dash skill")
+	player_movement.owner.remove_child(dash_skill)

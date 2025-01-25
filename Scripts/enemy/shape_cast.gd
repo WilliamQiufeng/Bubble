@@ -1,4 +1,4 @@
-#class_name TargetTracker
+class_name TargetTracker
 extends ShapeCast2D
 
 @onready var raycast_timer: Timer = $Timer
@@ -15,6 +15,7 @@ var last_tracked_endpoint: Vector2:
 
 func forget():
 	if len(player_endpoints) > 0:
+		print("Forget...")
 		player_endpoints.pop_front()
 
 func check_raycast():

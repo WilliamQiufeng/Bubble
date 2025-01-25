@@ -36,13 +36,13 @@ func get_input():
 		print(collider)
 		interact.emit(collider)
 	
-	if can_dash and dashing_cooldown_timer.time_left <= 0 and Input.is_action_just_pressed("dash"):
-		dashing_cooldown_timer.start()
-		dash_vector = idle_direction * speed * 2
 
 func _input(event: InputEvent) -> void:
 	pass
 
+
+func OnDash(mag: float):
+	dash_vector += idle_direction * speed * mag
 
 func _physics_process(delta: float) -> void:
 	get_input()
