@@ -12,7 +12,6 @@ radius = 200.0
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = ExtResource("2_66q0r")
-animation = &"idle_away"
 
 [node name="BTPlayer" parent="." index="2"]
 behavior_tree = ExtResource("3_ed8ky")
@@ -23,3 +22,9 @@ shape = SubResource("CircleShape2D_jy3w7")
 
 [node name="MagicBullet" type="Node" parent="." index="5"]
 script = ExtResource("3_5yih0")
+
+[node name="ChargeTimer" type="Timer" parent="MagicBullet" index="0"]
+wait_time = 0.6
+one_shot = true
+
+[connection signal="timeout" from="MagicBullet/ChargeTimer" to="MagicBullet" method="release_bubble"]
