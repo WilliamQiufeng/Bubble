@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://7beywoj6223j"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/UpgradePopupController.gd" id="1_gmsue"]
+[ext_resource type="Texture2D" uid="uid://ddgu5kc34j6hl" path="res://sprites/banner.png" id="2_nnmo3"]
+
+[node name="UpgradePopup" type="Window"]
+transparent_bg = true
+size = Vector2i(400, 150)
+script = ExtResource("1_gmsue")
+
+[node name="ManaBanner2" type="TextureButton" parent="."]
+offset_left = 160.0
+offset_top = 1.0
+offset_right = 224.0
+offset_bottom = 129.0
+texture_normal = ExtResource("2_nnmo3")
+
+[node name="ManaBanner3" type="TextureButton" parent="."]
+offset_left = 336.0
+offset_right = 400.0
+offset_bottom = 128.0
+texture_normal = ExtResource("2_nnmo3")
+
+[node name="ManaBanner" type="TextureButton" parent="."]
+offset_right = 64.0
+offset_bottom = 128.0
+texture_normal = ExtResource("2_nnmo3")

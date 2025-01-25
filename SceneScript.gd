@@ -7,6 +7,10 @@ func _ready() -> void:
 	#Scenes.switchScene("res://bubble.tscn")
 	await Layers.dialogueBox.setAndDisplayQueueAndEnd(["@{ignoreInput:true}Hello","hello twice"])
 	Layers.dialogueBox.displayQueue()
+	
+	var popup = preload("res://UpgradePopup.tscn").instantiate()
+	add_child(popup)
+	popup.popup_centered()  # Adjust position as neededf
 
 func _physics_process(delta: float) -> void:
 	pass
