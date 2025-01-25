@@ -10,7 +10,7 @@ func _ready() -> void:
 	
 	var popup = preload("res://UpgradePopup.tscn").instantiate()
 	add_child(popup)
-	popup.popup_centered()  # Adjust position as neededf
+	popup.popup_centered()
 
 func _physics_process(delta: float) -> void:
 	pass

@@ -16,7 +16,6 @@ func _ready():
 	
 	#self.resizable = false
 	# Connect signals for all buttons
-	$ManaBanner.connect("pressed", Callable(self, "_on_button_pressed"))
 	#$Button2.connect("pressed", Callable(self, "_on_button_pressed"))
 	#$Button3.connect("pressed", Callable(self, "_on_button_pressed"))
 

@@ -7,3 +7,4 @@ func _init() -> void:
 func upgrade():
 	Game.player.max_hp += 20
 	print("Health increased")
+	destroy_window()
