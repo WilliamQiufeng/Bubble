@@ -8,4 +8,7 @@
 [node name="AnimatedSprite2D" parent="." index="1"]
 animation = &"die_towards"
 
-[node name="Melee" parent="." index="5" instance=ExtResource("2_1o70m")]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." index="5"]
+debug_enabled = true
+
+[node name="Melee" parent="." index="6" instance=ExtResource("2_1o70m")]
