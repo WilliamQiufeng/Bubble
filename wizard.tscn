@@ -33,9 +33,9 @@ script = ExtResource("3_5yih0")
 wait_time = 0.6
 one_shot = true
 
-[node name="Area2D" type="Area2D" parent="." index="6" groups=["Enemy"]]
+[node name="hitbox" type="Area2D" parent="." index="6" groups=["Enemy"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" index="0"]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_4fway")
 

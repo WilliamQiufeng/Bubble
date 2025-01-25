@@ -122,7 +122,7 @@ _data = {
 
 [node name="Bubble" type="RigidBody2D"]
 collision_layer = 0
-collision_mask = 5
+collision_mask = 4
 gravity_scale = 0.0
 script = ExtResource("1_u4fww")
 

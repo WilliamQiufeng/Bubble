@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/AnimationProgressBar.gd" id="8_dsa6g"]
 [ext_resource type="SpriteFrames" uid="uid://crhwmeo5xw80t" path="res://sprites/mana-bar-frames.tres" id="9_c1y8d"]
 [ext_resource type="Script" path="res://Scripts/Level/Spawner.gd" id="9_winy3"]
-[ext_resource type="PackedScene" uid="uid://bxtuafboulrkn" path="res://spawn_marker.tscn" id="10_pux3m"]
+[ext_resource type="PackedScene" path="res://spawn_marker.tscn" id="10_pux3m"]
 [ext_resource type="AudioStream" uid="uid://q7whlo07414u" path="res://Misc/Background music/bubble game background music.wav" id="14_tj5ur"]
 
 [node name="Root" type="Node2D"]
@@ -113,7 +113,7 @@ text = "adgadg"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_tj5ur")
-volume_db = -5.622
+volume_db = -10.308
 autoplay = true
 
 [connection signal="hp_change" from="TileMapLayer/Player/PlayerController" to="CanvasLayer/HP" method="set_progress"]
