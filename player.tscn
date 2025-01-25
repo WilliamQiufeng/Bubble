@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://wqr4y4ey6iqx"]
+[gd_scene load_steps=12 format=3 uid="uid://wqr4y4ey6iqx"]
 
 [ext_resource type="Script" path="res://Scripts/Players/PlayerMovement.gd" id="1_aqc0d"]
 [ext_resource type="SpriteFrames" uid="uid://bpusxlts2nqsp" path="res://sprites/PlayerSpriteFrames.tres" id="2_iv45a"]
@@ -10,8 +10,44 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5d186"]
 size = Vector2(12.5, 8)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_owmo4"]
-size = Vector2(9, 8)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2klx"]
+size = Vector2(10, 16)
+
+[sub_resource type="Animation" id="Animation_adrp8"]
+resource_name = "Attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.166667, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_o2npr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hrn8h"]
+_data = {
+"Attack": SubResource("Animation_adrp8"),
+"RESET": SubResource("Animation_o2npr")
+}
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(50, 29)
@@ -56,17 +92,22 @@ character = NodePath("..")
 sprite = NodePath("../AnimatedSprite2D")
 orientation_node = NodePath("../InteractionRayCast")
 
-[node name="AttackZone" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone"]
-position = Vector2(9, 3)
-shape = SubResource("RectangleShape2D_owmo4")
-
 [node name="BubbleGun" type="Node2D" parent="."]
 script = ExtResource("6_udbq8")
 
 [node name="ShootingTimer" type="Timer" parent="BubbleGun"]
 wait_time = 0.2
+
+[node name="AttackRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_o2klx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AttackRange"]
+libraries = {
+"": SubResource("AnimationLibrary_hrn8h")
+}
 
 [connection signal="player_death" from="PlayerController" to="." method="handle_death"]
 [connection signal="timeout" from="BubbleGun/ShootingTimer" to="BubbleGun" method="fire"]

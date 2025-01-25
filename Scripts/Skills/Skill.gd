@@ -33,9 +33,9 @@ func _physics_process(delta: float) -> void:
 				use_skill()
 				cooldown.start()
 			else:
-				print("dash no mana")
+				print("skill no mana")
 		else:
-			print("dash in cd")
+			print("skill in cd")
 
 func set_bubble(_bubble:BubbleEffectController) -> void:
 	bubble =  _bubble

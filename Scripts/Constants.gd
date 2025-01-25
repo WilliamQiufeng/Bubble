@@ -6,7 +6,8 @@ enum EffectType {
 	FAST = 1 << 2,
 	DASH = 1 << 3,
 	ANTI = 1 << 29,
-	BULLET = 1 << 30
+	BULLET = 1 << 30,
+	SWORD = 1 << 32
 }
 
 enum BulletType {

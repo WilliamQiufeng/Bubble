@@ -37,6 +37,8 @@ func apply(bubble: Bubble) -> BubbleFactory:
 				pass
 			Constants.EffectType.ANTI:
 				bubble.add_child(AntiBubbleEffectController.new())
+			Constants.EffectType.SWORD:
+				bubble.add_child(SwordBubbleEffectController.new())
 			_:
 				push_error("Unexpected EffectType: %s" % effect_type)
 		
@@ -72,6 +74,8 @@ func add_effect(effect_type: int) -> BubbleFactory:
 			mana_cost += 7
 		Constants.EffectType.ANTI:
 			mana_cost -= 3
+		Constants.EffectType.SWORD:
+			mana_cost += 0
 		_:
 			push_error("Unexpected EffectType: %s" % effect_type)
 	return self

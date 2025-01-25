@@ -11,7 +11,7 @@ var current_effect_type: Constants.EffectType
 
 # Available bullet and effect types
 var available_bullet_types := [Constants.BulletType.TINY, Constants.BulletType.SUPPLEMENT]
-var available_effect_types := [Constants.EffectType.THE_WORLD, Constants.EffectType.FAST, Constants.EffectType.TELEPORT]
+var available_effect_types := [Constants.EffectType.THE_WORLD, Constants.EffectType.SWORD, Constants.EffectType.DASH]
 
 # Selected indices for bullet and effect types
 var _selected_bullet_type_index: int = 0

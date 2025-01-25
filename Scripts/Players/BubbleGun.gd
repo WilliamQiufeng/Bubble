@@ -35,12 +35,14 @@ func _process(delta):
 
 func fire() -> void:
 	var target = get_global_mouse_position()
+	print("current effect type: ", player_weapon_state.current_effect_type)
 	var factory = BubbleFactory.new()\
 		.originate_from_player(20)\
 		.add_effect(player_weapon_state.current_effect_type)\
 		.make_bullet(player_weapon_state.current_bullet_type, Game.player_movement.global_position, target)
 	
 	if Game.player.mana < factory.mana_cost:
+		print("no mana to shoot bubbles")
 		return
 	
 	var new_bullet = bubble_scene.instantiate()
