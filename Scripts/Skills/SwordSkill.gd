@@ -6,7 +6,7 @@ func _ready():
 	player = Game.player_movement as PlayerMovement
 
 func _init():
-	set_trigger_key("sword")
+	set_trigger_key(&"sword")
 	set_bubble_cost(10)
 	set_cooldown(2)
 
