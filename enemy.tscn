@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://c0vincv0a17xv"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy/enemy.gd" id="1_kcr3m"]
+[ext_resource type="Script" path="res://Scripts/Enemy/Enemy.gd" id="1_kcr3m"]
 [ext_resource type="SpriteFrames" uid="uid://cb8ii7th20pjg" path="res://sprites/craftpix/enemy_frames_1.tres" id="1_yhytp"]
 [ext_resource type="BehaviorTree" uid="uid://ddtwc6gutesaa" path="res://ai/trees/enemy_1.tres" id="3_7k7hh"]
 [ext_resource type="Texture2D" uid="uid://ewwnvn2axcnk" path="res://sprites/enemy_hp_border.png" id="3_sysld"]

@@ -4,7 +4,6 @@ extends RigidBody2D
 @export var damage: float = 20
 @onready var controller: BubbleController = $CollisionShape2D/Area2D
 @onready var bubble: Sprite2D = $CollisionShape2D/BackBufferCopy/Bubble
-
 @onready var floater: Sprite2D = $CollisionShape2D/BackBufferCopy/Bubble/Floater
 var sprite_path: String 
 
