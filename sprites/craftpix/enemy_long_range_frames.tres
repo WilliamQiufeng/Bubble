@@ -185,8 +185,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mf535")
 }],
-"loop": true,
-"name": &"hit_away",
+"loop": false,
+"name": &"hit_anti_away",
 "speed": 5.0
 }, {
 "frames": [{
@@ -202,8 +202,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kkmn2")
 }],
-"loop": true,
-"name": &"hit_left",
+"loop": false,
+"name": &"hit_anti_left",
 "speed": 5.0
 }, {
 "frames": [{
@@ -219,8 +219,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_365x8")
 }],
-"loop": true,
-"name": &"hit_towards",
+"loop": false,
+"name": &"hit_anti_towards",
 "speed": 5.0
 }, {
 "frames": [{
