@@ -9,6 +9,7 @@ var idle_direction: Vector2 = Vector2.DOWN
 @onready var player_weapon_state: Node = $PlayerWeaponState
 @onready var player: Node = $PlayerController
 @onready var animation_movement : AnimationMovement = $AnimationMovement
+@onready var interaction_raycast = $InteractionRayCast
 var dash_vector: Vector2 = Vector2.ZERO
 var shooting_timer: Timer
 var can_dash: bool = false
@@ -48,6 +49,11 @@ func get_input():
 	elif Input.is_action_just_pressed("bubble_slot_3"):
 		player_weapon_state.selected_effect_type_index = 2
 	
+	if Input.is_action_just_pressed("interact"):
+		var collider = interaction_raycast.get_collider()
+		print(collider)
+		interact.emit(collider)
+	
 	if can_dash and dashing_cooldown_timer.time_left <= 0 and Input.is_action_just_pressed("dash"):
 		dashing_cooldown_timer.start()
 		dash_vector = idle_direction * speed * 2
@@ -82,3 +88,5 @@ func _physics_process(delta: float) -> void:
 
 func fast(multiplier: float) -> void:
 	speed *= multiplier
+
+signal interact(node: Node2D)

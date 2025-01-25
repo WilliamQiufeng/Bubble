@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bs2h21exj5ar"]
+
+[ext_resource type="Texture2D" uid="uid://ddgu5kc34j6hl" path="res://sprites/banner.png" id="1_5dphn"]
+[ext_resource type="Texture2D" uid="uid://dw4ga0f6fvlax" path="res://sprites/buff_mana.png" id="2_l32rb"]
+[ext_resource type="Script" path="res://Scripts/Upgrades/ManaUpgrade.gd" id="3_4m1ue"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pg3mw"]
+size = Vector2(64, 128)
+
+[node name="UpgradeBanner" type="Marker2D"]
+position = Vector2(218, 138)
+
+[node name="Banner" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("1_5dphn")
+
+[node name="BuffType" type="Sprite2D" parent="Banner"]
+texture = ExtResource("2_l32rb")
+
+[node name="Body" type="StaticBody2D" parent="Banner"]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Banner/Body"]
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_pg3mw")
+
+[node name="ManaUpgrade" type="Node" parent="." node_paths=PackedStringArray("collision_object")]
+script = ExtResource("3_4m1ue")
+collision_object = NodePath("../Banner/Body")
