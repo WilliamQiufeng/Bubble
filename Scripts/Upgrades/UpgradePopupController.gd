@@ -12,7 +12,6 @@ func _ready():
 		texture_box.texture_normal = load(upgrades[i].texture_path)  # Load the texture using the sprite_path property
 		texture_box.connect("pressed", upgrades[i].upgrade)
 		# Add the texture box as a child of the current node
-		self.add_child(texture_box)
 		texture_box.add_child(upgrades[i])
 	
 	#self.resizable = false

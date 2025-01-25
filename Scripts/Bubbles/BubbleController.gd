@@ -4,12 +4,21 @@ extends Area2D
 # Properties
 @onready var scale_node: Node2D = $".."
 @onready var collision_shape: CollisionShape2D = $".."
-@onready var animation: AnimationPlayer = $AnimationPlayer
+@onready var animation: AnimationPlayer = $"../../AnimationPlayer"
+var to_be_deleted = false
 
 var bubble: Node2D
 
-func delete():
+func _delete(_name: StringName):
+	bubble.queue_free()
+	to_be_deleted = true
+
+func explode():
+	if to_be_deleted:
+		return
 	animation.play("Bubble")
+	to_be_deleted = true
+	animation.animation_finished.connect(_delete)
 
 func get_effect_type() -> Constants.EffectType:
 	var effect_type = Constants.EffectType.NONE
@@ -29,7 +38,7 @@ func set_area(value: float) -> void:
 	scale_node.scale = Vector2(scale_node.scale.x * scaling_factor, scale_node.scale.y * scaling_factor)
 
 func on_bubble_area_entered(area: Area2D) -> void:
-	if bubble.is_queued_for_deletion():
+	if to_be_deleted:
 		return
 	if area is not BubbleController:
 		return
@@ -47,12 +56,12 @@ func on_bubble_area_entered(area: Area2D) -> void:
 		return
 
 	print(get_effect_type(), "vs", other_bubble_controller.get_effect_type())
-	other_bubble_controller.bubble.queue_free()
+	other_bubble_controller.explode()
 	print("Previous area: %s" % get_area())
 	if other_is_anti and not both_is_anti:
 		set_area(get_area() - other_bubble_controller.get_area())
 		if get_area() < 300:
-			bubble.queue_free()
+			explode()
 	else:
 		set_area(get_area() + other_bubble_controller.get_area())
 		

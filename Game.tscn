@@ -23,9 +23,6 @@ tile_set = ExtResource("3_cype7")
 position = Vector2(196, 190)
 bullet_container = NodePath("../Bubbles")
 
-[node name="AnimatedSprite2D" parent="TileMapLayer/Player" index="2"]
-animation = &"walk_towards"
-
 [node name="Camera2D" parent="TileMapLayer/Player" index="3"]
 zoom = Vector2(2, 2)
 

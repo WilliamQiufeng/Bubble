@@ -15,7 +15,6 @@ var last_tracked_endpoint: Vector2:
 
 func forget():
 	if len(player_endpoints) > 0:
-		print("Forget...")
 		player_endpoints.pop_front()
 
 func check_raycast():
