@@ -6,11 +6,13 @@ extends Node2D
 @onready var attack_range = $"../InteractionRayCast/AttackRange"
 @export var damage: float = 50
 @onready var sprite = $Sprite
+@onready var animation_player = $AnimationPlayer
 
 func melee():
 	if animation_movement.is_attacking() or not swing_timer.is_stopped():
 		return
 	animation_movement.play(melee_hit_anim)
+	animation_player.play(&"swing")
 	swing_timer.start()
 
 func orientate_sword(cur_state: AnimationMovement.AnimationCommand):

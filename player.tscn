@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://wqr4y4ey6iqx"]
+[gd_scene load_steps=14 format=3 uid="uid://wqr4y4ey6iqx"]
 
 [ext_resource type="Script" path="res://Scripts/Players/PlayerMovement.gd" id="1_aqc0d"]
 [ext_resource type="SpriteFrames" uid="uid://bpusxlts2nqsp" path="res://sprites/PlayerSpriteFrames.tres" id="2_iv45a"]
@@ -13,6 +13,42 @@
 size = Vector2(12.5, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_va6nh"]
+
+[sub_resource type="Animation" id="Animation_cjyv0"]
+resource_name = "swing"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, 1.22173, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_rtvql"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ulxs1"]
+_data = {
+"RESET": SubResource("Animation_rtvql"),
+"swing": SubResource("Animation_cjyv0")
+}
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(50, 29)
@@ -69,17 +105,22 @@ script = ExtResource("6_udbq8")
 wait_time = 0.2
 
 [node name="Sword" type="Node2D" parent="."]
-visible = false
 script = ExtResource("7_pkh8x")
 
 [node name="Sprite" type="Sprite2D" parent="Sword"]
-position = Vector2(6, 5)
+position = Vector2(5, 2)
 scale = Vector2(0.364, 0.5)
 texture = ExtResource("8_rne4w")
+centered = false
 
 [node name="SwingTimer" type="Timer" parent="Sword"]
 wait_time = 0.3
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sword"]
+libraries = {
+"": SubResource("AnimationLibrary_ulxs1")
+}
 
 [connection signal="player_death" from="PlayerController" to="." method="handle_death"]
 [connection signal="direction_changed" from="AnimationMovement" to="Sword" method="orientate_sword"]
