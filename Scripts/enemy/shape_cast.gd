@@ -3,9 +3,10 @@ extends ShapeCast2D
 
 @onready var raycast_timer: Timer = $Timer
 @onready var forget_timer: Timer = $ForgetTimer
-@export var max_point_count = 10
+@export var max_point_count = 30
 @export var group_name: StringName = &"Player"
 var player_endpoints: Array[Vector2] = []
+@onready var vision_checker = $"../VisionChecker"
 
 var player_spotted: bool:
 	get: return len(player_endpoints) > 0
@@ -21,7 +22,7 @@ func check_raycast():
 	for i in range(get_collision_count()):
 		var body: Node2D = get_collider(i)
 		#print(body, body.global_position, body.get_groups())
-		if not body.is_in_group(group_name):
+		if not body.is_in_group(group_name) or not vision_checker.check(body):
 			continue
 		player_endpoints.push_back(body.global_position)
 		if (len(player_endpoints)) > max_point_count:
