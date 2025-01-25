@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://7beywoj6223j"]
+
+[ext_resource type="Script" path="res://Scripts/Upgrades/UpgradePopupController.gd" id="1_gmsue"]
+
+[node name="UpgradePopup" type="Window"]
+transparent_bg = true
+size = Vector2i(400, 150)
+script = ExtResource("1_gmsue")

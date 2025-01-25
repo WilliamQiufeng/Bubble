@@ -1,9 +1,9 @@
-class_name ManaUpgrade
+class_name HealthUpgrade
 extends Upgrade
 
 func _init() -> void:
 	texture_path = "res://sprites/banner.png"
 
 func upgrade():
-	Game.player.max_mana += 20
-	print("Mana increased")
+	Game.player.max_hp += 20
+	print("Health increased")

@@ -18,6 +18,7 @@ func _ready():
 	dashing_cooldown_timer.wait_time = 0.8
 	dashing_cooldown_timer.one_shot = true
 	add_child(dashing_cooldown_timer)
+	
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
