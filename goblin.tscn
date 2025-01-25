@@ -1,11 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://4l5jwqk1uaum"]
 
 [ext_resource type="PackedScene" uid="uid://c0vincv0a17xv" path="res://enemy.tscn" id="1_ndbe0"]
-[ext_resource type="PackedScene" path="res://melee.tscn" id="2_1o70m"]
+[ext_resource type="PackedScene" uid="uid://c8vxs024bkulg" path="res://melee.tscn" id="2_1o70m"]
 
-[node name="Enemy" instance=ExtResource("1_ndbe0")]
+[node name="Enemy2" instance=ExtResource("1_ndbe0")]
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 animation = &"die_towards"
+
+[node name="AttackRange" parent="TargetTracker" index="3" groups=["Player"]]
 
 [node name="Melee" parent="." index="5" instance=ExtResource("2_1o70m")]

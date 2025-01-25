@@ -21,6 +21,11 @@ var player_movement: PlayerMovement:
 var player: Player:
 	get: return player_movement.player
 
+var attack_range: ShapeCast2D:
+	get: 
+		print(player_movement.get_child_count())
+		return player_movement.get_child(8).get_child(0)
+
 # Method to control the game speed
 func set_the_world(active: bool) -> void:
 	game_speed = 1.0 if active else 0.5
