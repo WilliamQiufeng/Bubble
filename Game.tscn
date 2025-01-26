@@ -3,12 +3,14 @@
 [ext_resource type="Script" path="res://SceneScript.gd" id="1_cu1t1"]
 [ext_resource type="TileSet" uid="uid://b5diheugfnvke" path="res://sprites/test.tres" id="3_cype7"]
 [ext_resource type="PackedScene" uid="uid://wqr4y4ey6iqx" path="res://player.tscn" id="4_ab4fr"]
+[ext_resource type="PackedScene" uid="uid://4l5jwqk1uaum" path="res://goblin.tscn" id="5_hmcur"]
+[ext_resource type="PackedScene" uid="uid://cujntyyisr5rt" path="res://wizard.tscn" id="6_tqrox"]
 [ext_resource type="SpriteFrames" uid="uid://8sxvvsebyeco" path="res://sprites/health-bar-frames.tres" id="7_lgjr3"]
 [ext_resource type="Script" path="res://Scripts/Level/LevelController.gd" id="8_1qf6o"]
 [ext_resource type="Script" path="res://Scripts/AnimationProgressBar.gd" id="8_dsa6g"]
 [ext_resource type="SpriteFrames" uid="uid://crhwmeo5xw80t" path="res://sprites/mana-bar-frames.tres" id="9_c1y8d"]
 [ext_resource type="Script" path="res://Scripts/Level/Spawner.gd" id="9_winy3"]
-[ext_resource type="PackedScene" uid="uid://bxtuafboulrkn" path="res://spawn_marker.tscn" id="10_pux3m"]
+[ext_resource type="PackedScene" path="res://spawn_marker.tscn" id="10_pux3m"]
 [ext_resource type="AudioStream" uid="uid://q7whlo07414u" path="res://Misc/Background music/bubble game background music.wav" id="14_tj5ur"]
 [ext_resource type="PackedScene" uid="uid://cus3lh1ij01ug" path="res://item_frame.tscn" id="15_sxn0x"]
 [ext_resource type="Texture2D" uid="uid://dpainlftaoxxc" path="res://sprites/sword.png" id="16_nctot"]
@@ -16,7 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://cbuasxfo8w2e1" path="res://sprites/item_frame.png" id="18_1hirt"]
 [ext_resource type="FontFile" uid="uid://dhx7a45n50vym" path="res://Misc/Fonts/ExoBold.otf" id="18_mn3qc"]
 [ext_resource type="Script" path="res://Scripts/Players/BulletTypeFrame.gd" id="19_al47q"]
+[ext_resource type="Texture2D" uid="uid://bt2wj2k8b13u3" path="res://sprites/player.png" id="20_cg4vi"]
 [ext_resource type="Texture2D" uid="uid://dbg40um6x06o2" path="res://Scripts/Bubbles/bubble.png" id="20_mlclf"]
+[ext_resource type="Texture2D" uid="uid://c1ahs4qalfvsu" path="res://sprites/Kurourushi.png" id="21_h0tkm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wf4nt"]
 atlas = ExtResource("16_nctot")
@@ -497,6 +501,27 @@ text = "adgadg"
 stream = ExtResource("14_tj5ur")
 volume_db = -10.0
 autoplay = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1878, 2060)
+scale = Vector2(3.875, 3.1875)
+texture = ExtResource("20_cg4vi")
+
+[node name="Label" type="Label" parent="Sprite2D"]
+offset_left = -12.3871
+offset_top = 4.70586
+offset_right = 27.6129
+offset_bottom = 27.7059
+text = "Hello,
+You found a bug!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+
+[node name="Kurourushi" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(57.8065, 4.39215)
+scale = Vector2(-0.0521559, 0.0448751)
+texture = ExtResource("21_h0tkm")
 
 [connection signal="hp_change" from="TileMapLayer/Player/PlayerController" to="CanvasLayer/HP" method="set_progress"]
 [connection signal="mana_change" from="TileMapLayer/Player/PlayerController" to="CanvasLayer/MP" method="set_progress"]

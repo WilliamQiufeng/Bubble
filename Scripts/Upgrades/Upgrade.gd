@@ -1,7 +1,7 @@
 class_name Upgrade
 extends Node
 var texture_path: String
-@onready var window: UpgradePopup = $"../../.."
+@onready var window = $"../../.."
 @onready var bubble_selection_grid: GridContainer = window.get_node("EquipedBubbles")
 @onready var bubble_selection_grid_label: RichTextLabel = window.get_node("ChangeBubbleLabel")
 func destroy_window():
