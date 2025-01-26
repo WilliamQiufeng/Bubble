@@ -32,7 +32,7 @@ func get_spawnable_enemies() -> Array[Constants.EnemyType]:
 
 func try_spawn() -> SpawnInfo:
 	if not spawning or randf_range(0, 1) > probability or entities_to_spawn <= 0\
-		or len(G.getNodes("enemy_")) > min(5*level,15):
+		or len(G.getNodes("enemy_")) > min(5*level,15) or !Game.afterTutorial:
 		return SpawnInfo.new(Constants.EnemyType.NONE, Vector2.ZERO)
 	var enemy_types = get_spawnable_enemies()
 	var enemy_type = enemy_types[randi_range(0, len(enemy_types) - 1)]
