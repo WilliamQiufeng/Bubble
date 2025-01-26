@@ -1,9 +1,96 @@
-[gd_scene load_steps=5 format=3 uid="uid://jwm8ddmt2kcf"]
+[gd_scene load_steps=9 format=3 uid="uid://dyj6qx26wrcvl"]
 
 [ext_resource type="FontFile" uid="uid://dhx7a45n50vym" path="res://Misc/Fonts/ExoBold.otf" id="1_avx04"]
 [ext_resource type="Script" path="res://Scripts/StartScene/StartScene.gd" id="1_m1qur"]
 [ext_resource type="Texture2D" uid="uid://b27hxccwfn4rw" path="res://Scripts/Bubbles/Sprites/BubbleSword.png" id="2_7uuxc"]
+[ext_resource type="Texture2D" uid="uid://dbg40um6x06o2" path="res://Scripts/Bubbles/bubble.png" id="2_o2bfv"]
 [ext_resource type="Texture2D" uid="uid://bpxo6jbcx77e2" path="res://Scripts/Bubbles/Sprites/BubbleMovement.png" id="3_y8yi1"]
+
+[sub_resource type="Animation" id="Animation_6noi3"]
+resource_name = "new_animation"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.53333, 4),
+"transitions": PackedFloat32Array(0.353553, 1.68179, 2.46229),
+"update": 0,
+"values": [Vector2(4, 125), Vector2(4, 120), Vector2(4, 125)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RichTextLabel:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.53333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.05, 1.05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RichTextLabel:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.53333, 3.4),
+"transitions": PackedFloat32Array(0.68302, 2.14355, 1.51572),
+"update": 0,
+"values": [0.0, 0.0698132, -0.0523599]
+}
+
+[sub_resource type="Animation" id="Animation_g6hc7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 125)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RichTextLabel:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RichTextLabel:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n6pg5"]
+_data = {
+"RESET": SubResource("Animation_g6hc7"),
+"new_animation": SubResource("Animation_6noi3")
+}
 
 [node name="StartScreen" type="Node2D"]
 script = ExtResource("1_m1qur")
@@ -14,6 +101,17 @@ offset_bottom = 40.0
 scale = Vector2(12.84, 11.68)
 color = Color(0.0588235, 0.0588235, 0.223529, 1)
 
+[node name="GPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(258, 491)
+amount = 50
+lifetime = 15.0
+texture = ExtResource("2_o2bfv")
+emission_shape = 3
+emission_rect_extents = Vector2(300, 1)
+spread = 29.38
+gravity = Vector2(0, -15)
+color = Color(1, 1, 1, 0.129412)
+
 [node name="MarginContainer" type="MarginContainer" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
@@ -23,10 +121,18 @@ scale = Vector2(9.57, 12.7147)
 layout_mode = 2
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = 4.0
 offset_top = 125.0
 offset_right = 516.0
 offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(256, 14)
 theme_override_fonts/normal_font = ExtResource("1_avx04")
 theme_override_font_sizes/normal_font_size = 25
 bbcode_enabled = true
@@ -51,3 +157,8 @@ texture = ExtResource("2_7uuxc")
 [node name="BubbleMovement" type="Sprite2D" parent="."]
 position = Vector2(371, 138)
 texture = ExtResource("3_y8yi1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n6pg5")
+}
