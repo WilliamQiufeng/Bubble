@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var bullet_container: Node2D
 
 var idle_direction: Vector2 = Vector2.DOWN
-@onready var player_weapon_state: Node = $PlayerWeaponState
+@onready var player_weapon_state: PlayerWeaponState = $PlayerWeaponState
 @onready var player: Player = $PlayerController
 @onready var animation_movement : AnimationMovement = $AnimationMovement
 @onready var interaction_raycast = $InteractionRayCast

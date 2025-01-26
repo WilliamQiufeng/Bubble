@@ -46,22 +46,10 @@ func pick_random_elements(input_list: Array, count: int) -> Array:
 	# Return the first `count` elements from the shuffled list
 	return shuffled_list.slice(0, count)
 
-func replace_element(my_list: Array, element_to_remove: Variant, new_element: Variant) -> Array:
-	# Find the index of the element to remove
-	var index := my_list.find(element_to_remove)
-	# Check if the element exists in the list
-	if index != -1:
-		# Remove the element
-		my_list.remove_at(index)
-		# Insert the new element at the same index
-		my_list.insert(index, new_element)
-	else:
-		print("Element not found in the list.")
-	return my_list
-
 func swap_bubble(old_bubble: Constants.EffectType, new_bubble: Constants.EffectType):
 	print(Game.equiped_bubbles)
-	Game.equiped_bubbles = replace_element(Game.equiped_bubbles, old_bubble, new_bubble)
+	var idx = Game.equiped_bubbles.find(old_bubble)
+	Game.player_movement.player_weapon_state.change_effect_type(idx, new_bubble)
 	print(Game.equiped_bubbles)
 	
 
