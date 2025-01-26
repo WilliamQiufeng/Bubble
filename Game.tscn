@@ -141,97 +141,6 @@ probability = 0.01
 entities_to_spawn = 5
 level = 2
 
-[node name="SpawnL3x3gw_1" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
-position = Vector2(1478, 46)
-spawnable_enemies = 3
-probability = 0.01
-entities_to_spawn = 3
-level = 3
-
-[node name="SpawnL3x3gw_2" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
-position = Vector2(1479, 160)
-spawnable_enemies = 3
-probability = 0.01
-entities_to_spawn = 3
-level = 3
-
-[node name="SpawnL3x3gw_3" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
-position = Vector2(1544, 217)
-spawnable_enemies = 3
-probability = 0.01
-entities_to_spawn = 3
-level = 3
-
-[node name="SpawnL3x3gw_4" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
-position = Vector2(1620, 217)
-spawnable_enemies = 3
-probability = 0.01
-entities_to_spawn = 3
-level = 3
-
-[node name="SpawnL3x3gw_5" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
-position = Vector2(1705, 214)
-spawnable_enemies = 3
-probability = 0.01
-entities_to_spawn = 3
-level = 3
-
-[node name="SpawnL3x3gw_6" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
-position = Vector2(1544, -7)
-spawnable_enemies = 3
-probability = 0.01
-entities_to_spawn = 3
-level = 3
-
-[node name="SpawnL3x3gw_7" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
-position = Vector2(1623, -9)
-spawnable_enemies = 3
-probability = 0.01
-entities_to_spawn = 3
-level = 3
-
-[node name="SpawnL3x3gw_8" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
-position = Vector2(1704, -9)
-spawnable_enemies = 3
-probability = 0.01
-entities_to_spawn = 3
-level = 3
-
-[node name="SpawnL3x3gs_1" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
-position = Vector2(1768, 8)
-spawnable_enemies = 2
-probability = 0.01
-entities_to_spawn = 3
-level = 3
-
-[node name="SpawnL3x3gs_2" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
-position = Vector2(1767, 200)
-spawnable_enemies = 2
-probability = 0.01
-entities_to_spawn = 3
-level = 3
-
-[node name="SpawnL3x3gs_3" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
-position = Vector2(1769, 156)
-spawnable_enemies = 2
-probability = 0.01
-entities_to_spawn = 3
-level = 3
-
-[node name="SpawnL3x3gs_4" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
-position = Vector2(1768, 47)
-spawnable_enemies = 2
-probability = 0.01
-entities_to_spawn = 3
-level = 3
-
-[node name="SpawnL3x3gs_5" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
-position = Vector2(1767, 105)
-spawnable_enemies = 2
-probability = 0.01
-entities_to_spawn = 3
-level = 3
-
 [node name="Levels" type="Node2D" parent="TileMapLayer"]
 script = ExtResource("8_1qf6o")
 
@@ -242,7 +151,7 @@ position = Vector2(193, 186)
 position = Vector2(857, 160)
 
 [node name="Level3" type="Marker2D" parent="TileMapLayer/Levels"]
-position = Vector2(1687, 200)
+position = Vector2(484, 250)
 
 [node name="Level4" type="Marker2D" parent="TileMapLayer/Levels"]
 position = Vector2(817, 320)
