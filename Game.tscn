@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Scripts/Level/Spawner.gd" id="9_winy3"]
 [ext_resource type="PackedScene" uid="uid://bxtuafboulrkn" path="res://spawn_marker.tscn" id="10_pux3m"]
 [ext_resource type="AudioStream" uid="uid://q7whlo07414u" path="res://Misc/Background music/bubble game background music.wav" id="14_tj5ur"]
+[ext_resource type="PackedScene" uid="uid://cus3lh1ij01ug" path="res://item_frame.tscn" id="15_sxn0x"]
 
 [node name="Root" type="Node2D"]
 script = ExtResource("1_cu1t1")
@@ -127,8 +128,6 @@ probability = 0.01
 entities_to_spawn = 5
 level = 2
 
-<<<<<<< HEAD
-=======
 [node name="SpawnL3x3gw_1" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
 position = Vector2(1478, 46)
 spawnable_enemies = 3
@@ -388,7 +387,6 @@ probability = 0.01
 entities_to_spawn = 3
 level = 4
 
->>>>>>> 5713815 (suicide)
 [node name="Levels" type="Node2D" parent="TileMapLayer"]
 script = ExtResource("8_1qf6o")
 
