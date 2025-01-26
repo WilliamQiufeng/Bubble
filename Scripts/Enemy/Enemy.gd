@@ -31,7 +31,6 @@ func _get_damage(amount: float):
 	hp_bar.value = max(0, hp)
 	if hp <= 0:
 		_die()
-	
 
 func _is_attacking():
 	return animation_movement.is_attacking()

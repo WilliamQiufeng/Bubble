@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/AnimationMovement.gd" id="5_11j5d"]
 [ext_resource type="Script" path="res://Scripts/Players/BubbleGun.gd" id="6_udbq8"]
 [ext_resource type="Script" path="res://Scripts/Players/Sword.gd" id="7_pkh8x"]
-[ext_resource type="Texture2D" uid="uid://bt2wj2k8b13u3" path="res://sprites/player.png" id="8_rne4w"]
+[ext_resource type="Texture2D" uid="uid://dpainlftaoxxc" path="res://sprites/sword.png" id="8_hgoog"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5d186"]
 size = Vector2(12.5, 8)
@@ -41,7 +41,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.3, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.0, -0.174533, 1.22173, 0.0]
+"values": [0.0, -0.174533, 6.28319, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ulxs1"]
@@ -108,10 +108,11 @@ wait_time = 0.2
 script = ExtResource("7_pkh8x")
 
 [node name="Sprite" type="Sprite2D" parent="Sword"]
-position = Vector2(5, 2)
-scale = Vector2(0.364, 0.5)
-texture = ExtResource("8_rne4w")
+position = Vector2(4, 1)
+scale = Vector2(0.3, -0.3)
+texture = ExtResource("8_hgoog")
 centered = false
+offset = Vector2(-36.6667, -26.6667)
 
 [node name="SwingTimer" type="Timer" parent="Sword"]
 wait_time = 0.3
