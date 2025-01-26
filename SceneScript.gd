@@ -8,9 +8,6 @@ func _ready() -> void:
 	await Layers.dialogueBox.setAndDisplayQueueAndEnd(["@{ignoreInput:true}Hello","hello twice"])
 	Layers.dialogueBox.displayQueue()
 	
-	var popup = preload("res://UpgradePopup.tscn").instantiate()
-	add_child(popup)
-	popup.popup_centered()
 
 func _physics_process(delta: float) -> void:
 	pass

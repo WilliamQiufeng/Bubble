@@ -12,6 +12,15 @@ class SpawnInfo:
 @export_flags("Goblin", "Wizard") var spawnable_enemies: int
 @export var probability: float = 0.05
 @export var entities_to_spawn: int = 20
+@onready var levels = $"../../Levels"
+@export var level: int = 1
+var spawning = false
+
+func _check_spawning(current_level: int):
+	spawning = current_level == level
+
+func _ready():
+	levels.on_level_advance.connect(_check_spawning)
 
 func get_spawnable_enemies() -> Array[Constants.EnemyType]:
 	var res: Array[Constants.EnemyType] = []
@@ -19,7 +28,6 @@ func get_spawnable_enemies() -> Array[Constants.EnemyType]:
 		if spawnable_enemies & (1 << i) != 0:
 			res.append((1 << i) as Constants.EnemyType)
 	return res
-
 
 func try_spawn() -> SpawnInfo:
 	if randf_range(0, 1) > probability or entities_to_spawn <= 0:

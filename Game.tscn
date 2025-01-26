@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://tnam1v3fk1e3"]
+[gd_scene load_steps=13 format=4 uid="uid://tnam1v3fk1e3"]
 
 [ext_resource type="Script" path="res://SceneScript.gd" id="1_cu1t1"]
 [ext_resource type="TileSet" uid="uid://b5diheugfnvke" path="res://sprites/test.tres" id="3_cype7"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dmnhnhgq6ls81" path="res://goblin.tscn" id="5_hmcur"]
 [ext_resource type="PackedScene" uid="uid://cujntyyisr5rt" path="res://wizard.tscn" id="6_tqrox"]
 [ext_resource type="SpriteFrames" uid="uid://8sxvvsebyeco" path="res://sprites/health-bar-frames.tres" id="7_lgjr3"]
+[ext_resource type="Script" path="res://Scripts/Level/LevelController.gd" id="8_1qf6o"]
 [ext_resource type="Script" path="res://Scripts/AnimationProgressBar.gd" id="8_dsa6g"]
 [ext_resource type="SpriteFrames" uid="uid://crhwmeo5xw80t" path="res://sprites/mana-bar-frames.tres" id="9_c1y8d"]
 [ext_resource type="Script" path="res://Scripts/Level/Spawner.gd" id="9_winy3"]
@@ -47,9 +48,25 @@ script = ExtResource("9_winy3")
 spawnable_enemies = 3
 probability = 0.0
 
+[node name="Levels" type="Node2D" parent="TileMapLayer"]
+script = ExtResource("8_1qf6o")
+
+[node name="Level1" type="Marker2D" parent="TileMapLayer/Levels"]
+position = Vector2(193, 186)
+
+[node name="Level2" type="Marker2D" parent="TileMapLayer/Levels"]
+position = Vector2(641, 139)
+
+[node name="Level3" type="Marker2D" parent="TileMapLayer/Levels"]
+position = Vector2(484, 250)
+
+[node name="Level4" type="Marker2D" parent="TileMapLayer/Levels"]
+position = Vector2(817, 320)
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
 offset_left = -3.0
 offset_top = 91.0
 offset_right = 55.0
@@ -90,6 +107,7 @@ vertical_alignment = 1
 follow_viewport_enabled = true
 
 [node name="Label" type="Label" parent="CanvasLayer2"]
+visible = false
 offset_left = 98.0
 offset_top = 16.0
 offset_right = 155.0
@@ -103,5 +121,6 @@ autoplay = true
 
 [connection signal="hp_change" from="TileMapLayer/Player/PlayerController" to="CanvasLayer/HP" method="set_progress"]
 [connection signal="mana_change" from="TileMapLayer/Player/PlayerController" to="CanvasLayer/MP" method="set_progress"]
+[connection signal="on_level_advance" from="TileMapLayer/Levels" to="TileMapLayer/Spawner" method="_on_levels_on_level_advance"]
 
 [editable path="TileMapLayer/Player"]
