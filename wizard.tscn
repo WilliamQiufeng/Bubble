@@ -12,13 +12,18 @@ radius = 200.0
 size = Vector2(8, 14)
 
 [node name="Enemy" groups=["Enemy"] instance=ExtResource("1_j5hk6")]
+speed = null
+hp = null
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(1, -2.5)
 
 [node name="AnimatedSprite2D" parent="." index="1"]
+position = Vector2(0, -2)
+scale = Vector2(0.75, 0.75)
 sprite_frames = ExtResource("2_66q0r")
-animation = &"die_away"
+animation = &"move_towards"
+frame_progress = 0.244956
 
 [node name="BTPlayer" parent="." index="2"]
 behavior_tree = ExtResource("3_ed8ky")
