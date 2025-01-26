@@ -6,7 +6,7 @@
 
 [node name="UpgradePopup" type="Window"]
 transparent_bg = true
-position = Vector2i(0, 36)
+initial_position = 2
 size = Vector2i(400, 370)
 script = ExtResource("1_gmsue")
 

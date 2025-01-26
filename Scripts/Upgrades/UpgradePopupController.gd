@@ -15,7 +15,6 @@ func _ready():
 	for effect in bubble_icons:
 		avail_upgrades.append(BubbleUpgrade.new(bubble_icons[effect], effect))
 	
-	
 	var texture_boxes = upgrade_button_container.get_children()
 	var bubble_boxes = equiped_bubbles.get_children()
 	self.borderless = true

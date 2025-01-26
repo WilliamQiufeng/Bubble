@@ -8,6 +8,8 @@ func _ready() -> void:
 	await Layers.dialogueBox.setAndDisplayQueueAndEnd(["@{name:TIP}Hello","hello twice"])
 	Layers.dialogueBox.displayQueue()
 	
+	var upgrade_popup = load("res://UpgradePopup.tscn").instantiate()
+	add_child(upgrade_popup)
 
 func _physics_process(delta: float) -> void:
 	pass
