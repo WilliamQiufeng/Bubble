@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnrqpc2v7uxbe"]
+[gd_scene load_steps=4 format=3 uid="uid://bnrqpc2v7uxbe"]
 
 [ext_resource type="Script" path="res://Scripts/DeathScene/Death.gd" id="1_sfmlo"]
+[ext_resource type="PackedScene" uid="uid://c0vincv0a17xv" path="res://enemy.tscn" id="2_yg3p5"]
+[ext_resource type="PackedScene" uid="uid://cujntyyisr5rt" path="res://wizard.tscn" id="3_0gxnp"]
 
 [node name="Death" type="Node2D"]
 script = ExtResource("1_sfmlo")
@@ -25,3 +27,15 @@ offset_bottom = 290.0
 bbcode_enabled = true
 text = "[center]Click to Try Again
 [/center]"
+
+[node name="Enemy2" parent="." instance=ExtResource("2_yg3p5")]
+position = Vector2(131, 214)
+
+[node name="Enemy3" parent="." instance=ExtResource("2_yg3p5")]
+position = Vector2(238, 221)
+
+[node name="Enemy" parent="." instance=ExtResource("3_0gxnp")]
+position = Vector2(313, 201)
+
+[node name="Enemy4" parent="." instance=ExtResource("3_0gxnp")]
+position = Vector2(202, 188)
