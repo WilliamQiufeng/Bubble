@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://tnam1v3fk1e3"]
+[gd_scene load_steps=23 format=4 uid="uid://tnam1v3fk1e3"]
 
 [ext_resource type="Script" path="res://SceneScript.gd" id="1_cu1t1"]
 [ext_resource type="TileSet" uid="uid://b5diheugfnvke" path="res://sprites/test.tres" id="3_cype7"]
@@ -16,6 +16,15 @@
 [ext_resource type="PackedScene" uid="uid://bxtuafboulrkn" path="res://spawn_marker.tscn" id="10_pux3m"]
 [ext_resource type="AudioStream" uid="uid://q7whlo07414u" path="res://Misc/Background music/bubble game background music.wav" id="14_tj5ur"]
 [ext_resource type="PackedScene" uid="uid://cus3lh1ij01ug" path="res://item_frame.tscn" id="15_sxn0x"]
+[ext_resource type="Texture2D" uid="uid://dpainlftaoxxc" path="res://sprites/sword.png" id="16_nctot"]
+[ext_resource type="Script" path="res://Scripts/Players/SwordGui.gd" id="17_i6488"]
+[ext_resource type="Texture2D" uid="uid://cbuasxfo8w2e1" path="res://sprites/item_frame.png" id="18_1hirt"]
+[ext_resource type="Script" path="res://Scripts/Players/BulletTypeFrame.gd" id="19_al47q"]
+[ext_resource type="Texture2D" uid="uid://dbg40um6x06o2" path="res://Scripts/Bubbles/bubble.png" id="20_mlclf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wf4nt"]
+atlas = ExtResource("16_nctot")
+region = Rect2(31, 1, 29, 31)
 
 [node name="Root" type="Node2D"]
 script = ExtResource("1_cu1t1")
@@ -189,7 +198,7 @@ offset_top = 12.0
 offset_right = 157.0
 offset_bottom = 44.0
 scale = Vector2(0.555, 0.555)
-columns = 3
+columns = 4
 
 [node name="Item1" parent="CanvasLayer/GridContainer" instance=ExtResource("15_sxn0x")]
 layout_mode = 2
@@ -201,6 +210,33 @@ slot_number = 1
 [node name="Item3" parent="CanvasLayer/GridContainer" instance=ExtResource("15_sxn0x")]
 layout_mode = 2
 slot_number = 2
+
+[node name="Control" type="Control" parent="CanvasLayer/GridContainer"]
+layout_mode = 2
+
+[node name="Sword" type="TextureRect" parent="CanvasLayer/GridContainer/Control"]
+layout_mode = 2
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_wf4nt")
+expand_mode = 2
+script = ExtResource("17_i6488")
+
+[node name="BulletTypeFrame" type="TextureRect" parent="CanvasLayer/GridContainer"]
+layout_mode = 2
+texture = ExtResource("18_1hirt")
+script = ExtResource("19_al47q")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GridContainer/BulletTypeFrame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(16, 16)
+texture = ExtResource("20_mlclf")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
