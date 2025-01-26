@@ -6,7 +6,7 @@ func _ready() -> void:
 	await G.createTimer(3).timeout
 	#Scenes.switchScene("res://bubble.tscn")
 	await Layers.dialogueBox.setAndDisplayQueueAndEnd(["@{name:SYSTEM}YOU'VE LANDED ON THE ENEMY MOTHERSHIP",
-		"ELIMINATE ALL ENEMIES ON THE SHIP","@{name:TUTORIAL}Left click to fire bubble, E to change fire mode",
+		"ELIMINATE ALL ENEMIES ON THE SHIP","@{name:TUTORIAL}Left click to fire bubbles, E to change fire mode",
 		"Press 1/2/3 to select bubble type"]).dialogueEnded
 	Game.afterTutorial = true
 	Game.player.connect("player_death", display_death_screen)
