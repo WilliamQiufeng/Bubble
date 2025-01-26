@@ -18,6 +18,7 @@ var spawning = false
 
 func _check_spawning(current_level: int):
 	spawning = current_level == level
+	print(self, " spawning: ", spawning)
 
 func _ready():
 	levels.on_level_advance.connect(_check_spawning)
@@ -40,5 +41,6 @@ func try_spawn() -> SpawnInfo:
 	var rand_point = global_position + Vector2(x,y)
 	entities_to_spawn -= 1
 	if entities_to_spawn <= 0:
+		print(self, "stops spawning")
 		spawning = false
 	return SpawnInfo.new(enemy_type, rand_point)

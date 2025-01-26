@@ -12,8 +12,8 @@ func release_bubble():
 		.add_effect(Constants.EffectType.ANTI)\
 		.make_bullet(Constants.BulletType.TINY, character.global_position, Game.player_movement.global_position)
 	var bubble = bubble_scene.instantiate()
-	bullet_container.add_child(bubble)
 	factory.apply(bubble)
+	bullet_container.add_child(bubble)
 
 func attack():
 	if animation_movement.is_attacking():

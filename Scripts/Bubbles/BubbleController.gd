@@ -43,7 +43,7 @@ func on_bubble_area_entered(area: Area2D) -> void:
 	var other_bubble_controller = area as BubbleController
 	var this_effect = get_effect_type()
 	var other_effect = other_bubble_controller.get_effect_type()
-	print("%s hit with %s" % [get_effect_type(), other_effect])
+	#print("%s hit with %s" % [get_effect_type(), other_effect])
 
 	var other_is_anti = Constants.is_anti(other_effect)
 	var both_is_anti = Constants.is_anti(this_effect) and other_is_anti
@@ -53,16 +53,16 @@ func on_bubble_area_entered(area: Area2D) -> void:
 		return
 
 	print(get_effect_type(), "vs", other_bubble_controller.get_effect_type())
-	other_bubble_controller.explode()
-	print("Previous area: %s" % get_area())
+	other_bubble_controller._delete("")
+	#print("Previous area: %s" % get_area())
 	if other_is_anti and not both_is_anti:
 		set_area(get_area() - other_bubble_controller.get_area())
 		if get_area() < 300:
-			explode()
+			_delete(&"")
 	else:
 		set_area(get_area() + other_bubble_controller.get_area())
 		
-	print("Now area: %s" % get_area())
+	#print("Now area: %s" % get_area())
 
 func on_bubble_area_exited(area: Area2D) -> void:
 	pass

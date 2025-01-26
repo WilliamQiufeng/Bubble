@@ -24,7 +24,6 @@ tile_map_data = PackedByteArray("AAACAAEAAwAEAAQAAAACAAIAAwAEAAQAAAACAAMAAwAEAAM
 tile_set = ExtResource("3_cype7")
 
 [node name="Player" parent="TileMapLayer" node_paths=PackedStringArray("bullet_container") instance=ExtResource("4_ab4fr")]
-z_index = 1
 position = Vector2(196, 190)
 bullet_container = NodePath("../Bubbles")
 
@@ -41,6 +40,8 @@ position = Vector2(272, 156)
 
 [node name="Enemy2" parent="TileMapLayer/Enemies" instance=ExtResource("6_tqrox")]
 position = Vector2(128, 132)
+speed = 40
+hp = 100
 
 [node name="Bubbles" type="Node2D" parent="TileMapLayer"]
 
@@ -152,5 +153,6 @@ autoplay = true
 
 [connection signal="hp_change" from="TileMapLayer/Player/PlayerController" to="CanvasLayer/HP" method="set_progress"]
 [connection signal="mana_change" from="TileMapLayer/Player/PlayerController" to="CanvasLayer/MP" method="set_progress"]
+[connection signal="on_level_advance" from="TileMapLayer/Levels" to="TileMapLayer/Spawner" method="_on_levels_on_level_advance"]
 
 [editable path="TileMapLayer/Player"]

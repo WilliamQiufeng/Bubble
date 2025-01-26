@@ -34,6 +34,8 @@ func set_bubble_appearance():
 # Deferred body enters
 var deferred_body_enters: Array = []
 
+var bodies: Array[Node2D] = []
+
 func _ready() -> void:
 	set_bubble_appearance()
 
@@ -47,24 +49,41 @@ func _physics_process(delta: float) -> void:
 			_on_body_entered(deferred_body)
 		deferred_body_enters.clear()
 
+func _exit_tree():
+	for node in bodies:
+		if not node:
+			continue
+		if node is PlayerMovement:
+			#print("Exit ", node)
+			_handle_player_exit(node)
+		if node is Enemy:
+			_handle_enemy_exit(node)
+		
+
 func _on_body_entered(node: Node2D) -> void:
+	if bubble_controller.to_be_deleted:
+		return
+	bodies.append(node)
 	if Constants.is_bullet(effect_type):
 		deferred_body_enters.append(node)
 		return
 
 	if node is PlayerMovement:
-		print("Enter ", node)
+		#print("Enter ", node)
 		_handle_player_enter(node)
 	if node is Enemy:
 		_handle_enemy_enter(node)
 
 func _on_body_exited(node: Node2D) -> void:
+	if bubble_controller.to_be_deleted:
+		return
+	bodies.remove_at(bodies.find(node))
 	if Constants.is_bullet(effect_type):
 		deferred_body_enters.erase(node)
 		return
 
 	if node is PlayerMovement:
-		print("Exit ", node)
+		#print("Exit ", node)
 		_handle_player_exit(node)
 	if node is Enemy:
 		_handle_enemy_exit(node)
