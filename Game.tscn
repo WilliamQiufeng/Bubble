@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://Scripts/Level/Spawner.gd" id="9_winy3"]
 [ext_resource type="PackedScene" uid="uid://bxtuafboulrkn" path="res://spawn_marker.tscn" id="10_pux3m"]
 [ext_resource type="AudioStream" uid="uid://q7whlo07414u" path="res://Misc/Background music/bubble game background music.wav" id="14_tj5ur"]
-[ext_resource type="PackedScene" uid="uid://cus3lh1ij01ug" path="res://item_frame.tscn" id="15_sxn0x"]
+[ext_resource type="PackedScene" path="res://item_frame.tscn" id="15_sxn0x"]
 
 [node name="Root" type="Node2D"]
 script = ExtResource("1_cu1t1")
