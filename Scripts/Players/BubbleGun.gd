@@ -34,6 +34,7 @@ func _process(delta):
 	pass
 
 func fire() -> void:
+	Audio.playEffect(preload("res://Misc/Effects/BubbleCreate.wav"), 0.01)
 	var target = get_global_mouse_position()
 	print("current effect type: ", player_weapon_state.current_effect_type)
 	var factory = BubbleFactory.new()\

@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://Scripts/Level/Spawner.gd" id="9_winy3"]
 [ext_resource type="PackedScene" uid="uid://bxtuafboulrkn" path="res://spawn_marker.tscn" id="10_pux3m"]
 [ext_resource type="AudioStream" uid="uid://q7whlo07414u" path="res://Misc/Background music/bubble game background music.wav" id="14_tj5ur"]
-[ext_resource type="PackedScene" uid="uid://cus3lh1ij01ug" path="res://item_frame.tscn" id="15_sxn0x"]
+[ext_resource type="PackedScene" path="res://item_frame.tscn" id="15_sxn0x"]
 [ext_resource type="Texture2D" uid="uid://dpainlftaoxxc" path="res://sprites/sword.png" id="16_nctot"]
 [ext_resource type="Script" path="res://Scripts/Players/SwordGui.gd" id="17_i6488"]
 [ext_resource type="Texture2D" uid="uid://cbuasxfo8w2e1" path="res://sprites/item_frame.png" id="18_1hirt"]
