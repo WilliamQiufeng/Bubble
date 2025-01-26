@@ -22,6 +22,7 @@ func _ready():
 	Layers.sky.updateSkyBackground()
 
 func _physics_process(delta):
+	time = 0
 	G.diagnose()
 	if T.canAdvance(self,T.TZ.WORLD) && canAdvanceTime:
 		assert(date>=0,"Date cannot be negative")
