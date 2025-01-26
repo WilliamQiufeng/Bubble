@@ -11,7 +11,7 @@ var current_effect_type: Constants.EffectType
 
 # Available bullet and effect types
 var available_bullet_types : Array[Constants.BulletType]= [Constants.BulletType.TINY, Constants.BulletType.SUPPLEMENT]
-var available_effect_types : Array[Constants.EffectType]= [Constants.EffectType.THE_WORLD, Constants.EffectType.SWORD, Constants.EffectType.DASH]
+var available_effect_types : Array[Constants.EffectType]= [Constants.EffectType.THE_WORLD, Constants.EffectType.SWORD, Constants.EffectType.TELEPORT]
 
 func bullet_type_at(index: int):
 	return available_bullet_types[index]

@@ -24,13 +24,9 @@ func get_cooldown() -> float:
 
 # Calls use skill whenever the trigger key is pressed
 func _physics_process(delta: float) -> void:
-	if bubble == null:
-		print("no bubbles")
-		return
-		
 	if Input.is_action_just_pressed(trigger_key):
 		print("cooldown is ", cooldown.time_left)
-		if cooldown.is_stopped() and bubble.mana > bubble_cost:
+		if cooldown.is_stopped():
 			print("using skill from ", bubble)
 			use_skill()
 			cooldown.start()
