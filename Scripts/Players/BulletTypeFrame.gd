@@ -17,3 +17,4 @@ func _check(_index: int, type: Constants.BulletType):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+  
