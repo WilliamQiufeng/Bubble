@@ -7,7 +7,7 @@
 [node name="UpgradePopup" type="Window"]
 transparent_bg = true
 initial_position = 2
-size = Vector2i(400, 370)
+size = Vector2i(400, 200)
 script = ExtResource("1_gmsue")
 
 [node name="UpgradeLabel" type="RichTextLabel" parent="."]
@@ -20,6 +20,7 @@ bbcode_enabled = true
 text = "[center]Select your upgrade[/center]"
 
 [node name="ChangeBubbleLabel" type="RichTextLabel" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -48,7 +49,7 @@ size_flags_horizontal = 6
 texture_normal = ExtResource("2_jdwrw")
 
 [node name="Sprite2D" type="Sprite2D" parent="GridContainer/UpgradeButton1"]
-position = Vector2(62, 50)
+position = Vector2(64, 50)
 texture = ExtResource("3_yu5tw")
 
 [node name="UpgradeButton2" type="TextureButton" parent="GridContainer"]
@@ -57,7 +58,7 @@ size_flags_horizontal = 6
 texture_normal = ExtResource("2_jdwrw")
 
 [node name="Sprite2D" type="Sprite2D" parent="GridContainer/UpgradeButton2"]
-position = Vector2(62, 50)
+position = Vector2(64, 50)
 texture = ExtResource("3_yu5tw")
 
 [node name="UpgradeButton3" type="TextureButton" parent="GridContainer"]
@@ -66,10 +67,11 @@ size_flags_horizontal = 6
 texture_normal = ExtResource("2_jdwrw")
 
 [node name="Sprite2D" type="Sprite2D" parent="GridContainer/UpgradeButton3"]
-position = Vector2(62, 50)
+position = Vector2(64, 50)
 texture = ExtResource("3_yu5tw")
 
 [node name="EquipedBubbles" type="GridContainer" parent="."]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -87,7 +89,7 @@ size_flags_horizontal = 6
 texture_normal = ExtResource("2_jdwrw")
 
 [node name="Sprite2D" type="Sprite2D" parent="EquipedBubbles/EquipedBubble1"]
-position = Vector2(31, 50)
+position = Vector2(64, 50)
 texture = ExtResource("3_yu5tw")
 
 [node name="EquipedBubble2" type="TextureButton" parent="EquipedBubbles"]
@@ -96,7 +98,7 @@ size_flags_horizontal = 6
 texture_normal = ExtResource("2_jdwrw")
 
 [node name="Sprite2D" type="Sprite2D" parent="EquipedBubbles/EquipedBubble2"]
-position = Vector2(31, 50)
+position = Vector2(64, 50)
 texture = ExtResource("3_yu5tw")
 
 [node name="EquipedBubble3" type="TextureButton" parent="EquipedBubbles"]
@@ -105,5 +107,5 @@ size_flags_horizontal = 6
 texture_normal = ExtResource("2_jdwrw")
 
 [node name="Sprite2D" type="Sprite2D" parent="EquipedBubbles/EquipedBubble3"]
-position = Vector2(31, 50)
+position = Vector2(64, 50)
 texture = ExtResource("3_yu5tw")

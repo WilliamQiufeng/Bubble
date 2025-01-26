@@ -8,6 +8,7 @@ func _init(path: String, effect_type: Constants.EffectType) -> void:
 	bubble_effect_type = effect_type
 
 func upgrade():
-	Game.player.hp = max(Game.player.hp + 10, Game.player.max_hp)
-	print("Health regenerated")
-	destroy_window()
+	window.generate_equiped_bubbles_selection(bubble_effect_type)
+	display_bubble_selection()
+	print("you chose a bubble upgrade")
+	#destroy_window()

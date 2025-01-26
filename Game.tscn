@@ -147,7 +147,7 @@ text = "adgadg"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_tj5ur")
-volume_db = -10.308
+volume_db = -80.0
 autoplay = true
 
 [connection signal="hp_change" from="TileMapLayer/Player/PlayerController" to="CanvasLayer/HP" method="set_progress"]
