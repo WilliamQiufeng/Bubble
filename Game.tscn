@@ -1,13 +1,10 @@
-[gd_scene load_steps=23 format=4 uid="uid://tnam1v3fk1e3"]
+[gd_scene load_steps=20 format=4 uid="uid://tnam1v3fk1e3"]
 
 [ext_resource type="Script" path="res://SceneScript.gd" id="1_cu1t1"]
 [ext_resource type="TileSet" uid="uid://b5diheugfnvke" path="res://sprites/test.tres" id="3_cype7"]
-[ext_resource type="PackedScene" uid="uid://cr0wfkkhkvskc" path="res://bubble.tscn" id="4_4of4y"]
 [ext_resource type="PackedScene" uid="uid://wqr4y4ey6iqx" path="res://player.tscn" id="4_ab4fr"]
 [ext_resource type="PackedScene" uid="uid://dmnhnhgq6ls81" path="res://goblin.tscn" id="5_hmcur"]
-[ext_resource type="Script" path="res://Scripts/Bubbles/FastBubbleEffectController.gd" id="6_shgmp"]
 [ext_resource type="PackedScene" uid="uid://cujntyyisr5rt" path="res://wizard.tscn" id="6_tqrox"]
-[ext_resource type="Script" path="res://Scripts/Bubbles/TheWorldBubbleEffectController.gd" id="6_wh7vc"]
 [ext_resource type="SpriteFrames" uid="uid://8sxvvsebyeco" path="res://sprites/health-bar-frames.tres" id="7_lgjr3"]
 [ext_resource type="Script" path="res://Scripts/Level/LevelController.gd" id="8_1qf6o"]
 [ext_resource type="Script" path="res://Scripts/AnimationProgressBar.gd" id="8_dsa6g"]
@@ -53,18 +50,6 @@ position = Vector2(128, 132)
 
 [node name="Bubbles" type="Node2D" parent="TileMapLayer"]
 
-[node name="FastBubble" parent="TileMapLayer/Bubbles" instance=ExtResource("4_4of4y")]
-position = Vector2(164, 60)
-
-[node name="FastBubbleEffectController" type="Node" parent="TileMapLayer/Bubbles/FastBubble"]
-script = ExtResource("6_shgmp")
-
-[node name="Bubble" parent="TileMapLayer/Bubbles" instance=ExtResource("4_4of4y")]
-position = Vector2(100, 61)
-
-[node name="TheWorldBubbleEffectController" type="Node" parent="TileMapLayer/Bubbles/Bubble"]
-script = ExtResource("6_wh7vc")
-
 [node name="Spawner" type="Node2D" parent="TileMapLayer"]
 position = Vector2(208, 97)
 script = ExtResource("9_winy3")
@@ -73,20 +58,6 @@ script = ExtResource("9_winy3")
 spawnable_enemies = 3
 probability = 0.01
 entities_to_spawn = 5
-
-[node name="Marker2D2" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
-position = Vector2(387, 21)
-spawnable_enemies = 2
-probability = 0.01
-entities_to_spawn = 5
-level = 2
-
-[node name="Marker2D3" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
-position = Vector2(379, 154)
-spawnable_enemies = 1
-probability = 0.01
-entities_to_spawn = 5
-level = 3
 
 [node name="SpawnL2x3" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
 position = Vector2(695, 36)
@@ -406,12 +377,14 @@ position = Vector2(193, 186)
 position = Vector2(857, 160)
 
 [node name="Level3" type="Marker2D" parent="TileMapLayer/Levels"]
-position = Vector2(484, 250)
+position = Vector2(1687, 202)
 
 [node name="Level4" type="Marker2D" parent="TileMapLayer/Levels"]
 position = Vector2(305, 555)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 visible = false
@@ -481,12 +454,16 @@ texture = SubResource("AtlasTexture_wf4nt")
 expand_mode = 2
 script = ExtResource("17_i6488")
 
-[node name="BulletTypeFrame" type="TextureRect" parent="CanvasLayer/GridContainer"]
-layout_mode = 2
+[node name="BulletTypeFrame" type="TextureRect" parent="CanvasLayer"]
+offset_left = 4.5
+offset_top = 42.5
+offset_right = 36.5
+offset_bottom = 74.5
+scale = Vector2(0.55, 0.55)
 texture = ExtResource("18_1hirt")
 script = ExtResource("19_al47q")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GridContainer/BulletTypeFrame"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BulletTypeFrame"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
