@@ -36,6 +36,10 @@ func _physics_process(delta):
 func get_area() -> float:
 	return collision_shape.shape.get_rect().get_area() * scale_node.scale.x
 
+func get_radius() -> float:
+	print("radius is " + str(collision_shape.shape.radius))
+	return collision_shape.shape.radius
+
 func set_area(value: float) -> void:
 	var scaling_factor = sqrt(value / get_area())
 	scale_node.scale = Vector2(scale_node.scale.x * scaling_factor, scale_node.scale.y * scaling_factor)
