@@ -17,6 +17,7 @@ func _ready() -> void:
 	super._ready()
 	dash_skill = DashSkill.new()
 	dash_skill.set_bubble(self)
+	Sfx.affect(RefSfxTrail,{"target":$AnimatedSprite2D,"container":get_parent()})
 	print("dash skill")
 
 # Handle player entering the bubble

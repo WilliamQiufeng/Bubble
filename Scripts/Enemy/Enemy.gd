@@ -14,6 +14,8 @@ func can_reach_player() -> bool:
 	return vision_checker.check(Game.player_movement)
 
 func _ready():
+	speed = 40
+	hp = 100
 	hp_bar.max_value = hp
 	hp_bar.value = hp
 	add_to_group("enemy_")

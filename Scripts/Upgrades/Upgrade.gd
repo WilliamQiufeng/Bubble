@@ -1,5 +1,5 @@
-extends Node
 class_name Upgrade
+extends Node
 var texture_path: String
 @onready var window: UpgradePopup = $"../../.."
 @onready var bubble_selection_grid: GridContainer = window.get_node("EquipedBubbles")
