@@ -16,6 +16,7 @@ func can_reach_player() -> bool:
 func _ready():
 	hp_bar.max_value = hp
 	hp_bar.value = hp
+	add_to_group("enemy_")
 
 func _die():
 	if is_dead:

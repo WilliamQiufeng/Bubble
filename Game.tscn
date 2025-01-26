@@ -86,13 +86,6 @@ probability = 0.01
 entities_to_spawn = 3
 level = 2
 
-[node name="SpawnL2x3_2" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
-position = Vector2(695, 89)
-spawnable_enemies = 1
-probability = 0.01
-entities_to_spawn = 3
-level = 2
-
 [node name="SpawnL2x1" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
 position = Vector2(650, 0)
 spawnable_enemies = 1
@@ -105,13 +98,6 @@ position = Vector2(650, 119)
 spawnable_enemies = 1
 probability = 0.01
 entities_to_spawn = 1
-level = 2
-
-[node name="SpawnL2x5gw" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
-position = Vector2(728, 53)
-spawnable_enemies = 3
-probability = 0.01
-entities_to_spawn = 5
 level = 2
 
 [node name="SpawnL2x5gw_2" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
