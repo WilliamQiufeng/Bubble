@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://jwm8ddmt2kcf"]
+[gd_scene load_steps=10 format=3 uid="uid://dw3ljtecgekjr"]
 
 [ext_resource type="FontFile" uid="uid://dhx7a45n50vym" path="res://Misc/Fonts/ExoBold.otf" id="1_avx04"]
 [ext_resource type="Script" path="res://Scripts/StartScene/StartScene.gd" id="1_m1qur"]
