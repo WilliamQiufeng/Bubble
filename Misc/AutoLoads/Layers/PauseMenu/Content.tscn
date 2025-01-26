@@ -1,9 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cr68pk2tlkr6h"]
+[gd_scene load_steps=4 format=3 uid="uid://cr68pk2tlkr6h"]
 
-[ext_resource type="Texture2D" uid="uid://bb2w7awechktt" path="res://Assets/Standalone/Abstract/Pointer/Pointer.png" id="1"]
-[ext_resource type="AudioStream" uid="uid://psaaohh5o3m" path="res://Assets/Audio/Effects/ShakeQuick.wav" id="2"]
-[ext_resource type="FontFile" path="res://Assets/Standalone/Abstract/AutoLoads/Layers/PauseMenu/PauseMenuFont.tres" id="3"]
-[ext_resource type="Script" path="res://Assets/Standalone/Abstract/Pointer/Pointer.gd" id="4"]
+[ext_resource type="AudioStream" uid="uid://psaaohh5o3m" path="res://Misc/Effects/ShakeQuick.wav" id="2"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "show"
@@ -39,49 +36,6 @@ libraries = {
 }
 autoplay = "show"
 
-[node name="Buttons" type="Node2D" parent="."]
-position = Vector2(0, 70)
-
-[node name="Resume" type="RichTextLabel" parent="Buttons"]
-offset_left = 500.0
-offset_top = 211.0
-offset_right = 900.0
-offset_bottom = 311.0
-theme_override_fonts/normal_font = ExtResource("3")
-theme_override_font_sizes/normal_font_size = 64
-bbcode_enabled = true
-text = "[center]RESUME"
-scroll_active = false
-
-[node name="ExitToMenu" type="RichTextLabel" parent="Buttons"]
-offset_left = 300.0
-offset_top = 311.0
-offset_right = 1100.0
-offset_bottom = 439.0
-theme_override_fonts/normal_font = ExtResource("3")
-theme_override_font_sizes/normal_font_size = 64
-bbcode_enabled = true
-text = "[center]EXIT TO MENU"
-scroll_active = false
-
-[node name="QuitGame" type="RichTextLabel" parent="Buttons"]
-offset_left = 300.0
-offset_top = 411.0
-offset_right = 1100.0
-offset_bottom = 492.0
-theme_override_fonts/normal_font = ExtResource("3")
-theme_override_font_sizes/normal_font_size = 64
-bbcode_enabled = true
-text = "[center]QUIT GAME"
-scroll_active = false
-
-[node name="Pointer" type="Sprite2D" parent="."]
-position = Vector2(-100, 305)
-scale = Vector2(4, 4)
-texture = ExtResource("1")
-script = ExtResource("4")
-
 [node name="ShakeQuickPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2")
 autoplay = true
-bus = &"Effects"
