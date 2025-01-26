@@ -128,7 +128,7 @@ func pauseGame(caller:Object) -> void:
 	savedGameTimeScale = gameTimeScale
 	gameTimeScale = 0
 	gamePaused = true
-#	if pauseTree: G.pauseTree(true)
+	G.pauseTree(true)
 func resumeGame(caller:Object) -> void:
 	if !gamePaused: return
 	if !(caller in pauseList): return
@@ -136,7 +136,7 @@ func resumeGame(caller:Object) -> void:
 	if len(pauseList)>0: return
 	gameTimeScale = savedGameTimeScale
 	gamePaused = false
-#	if resumeTree: G.pauseTree(false)
+	G.pauseTree(false)
 func setTimer(timeF,persistent:bool=false)->Object: return createTimer(timeF,true,T.TZ.NONE,persistent)
 func createTimer(timeF:int,oneshot:bool=true,timeZone:int=T.TZ.WORLD,persistent:bool=false)->Object:
 	var t:RefTimer = RefTimer.new()

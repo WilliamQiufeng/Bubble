@@ -6,6 +6,7 @@ func get_bubble_cost(): return 20
 func get_cooldown(): return 3
 
 func use_skill():
+	Audio.playEffect(preload("res://Misc/Effects/Use.wav"))
 	var mouse_pos = Game.player_movement.get_global_mouse_position()
 	for bubble in Game.teleport_bubbles:
 		if bubble != null:

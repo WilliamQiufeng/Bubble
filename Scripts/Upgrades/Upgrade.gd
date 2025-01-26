@@ -8,6 +8,7 @@ func destroy_window():
 	window.close()
 
 func click():
+	Audio.playEffect(preload("res://Misc/Effects/Confirm.wav"))
 	upgrade()
 
 func display_bubble_selection():
