@@ -7,16 +7,28 @@
 [node name="UpgradePopup" type="Window"]
 transparent_bg = true
 position = Vector2i(0, 36)
-size = Vector2i(400, 180)
+size = Vector2i(400, 370)
 script = ExtResource("1_gmsue")
 
-[node name="Label" type="RichTextLabel" parent="."]
+[node name="UpgradeLabel" type="RichTextLabel" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "							Select your upgrade"
+bbcode_enabled = true
+text = "[center]Select your upgrade[/center]"
+
+[node name="ChangeBubbleLabel" type="RichTextLabel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 180.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]Choose the bubble to swap from[/center]"
 
 [node name="GridContainer" type="GridContainer" parent="."]
 anchors_preset = 15
@@ -54,5 +66,44 @@ size_flags_horizontal = 6
 texture_normal = ExtResource("2_jdwrw")
 
 [node name="Sprite2D" type="Sprite2D" parent="GridContainer/UpgradeButton3"]
+position = Vector2(31, 50)
+texture = ExtResource("3_yu5tw")
+
+[node name="EquipedBubbles" type="GridContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 220.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+columns = 3
+
+[node name="EquipedBubble1" type="TextureButton" parent="EquipedBubbles"]
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("2_jdwrw")
+
+[node name="Sprite2D" type="Sprite2D" parent="EquipedBubbles/EquipedBubble1"]
+position = Vector2(31, 50)
+texture = ExtResource("3_yu5tw")
+
+[node name="EquipedBubble2" type="TextureButton" parent="EquipedBubbles"]
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("2_jdwrw")
+
+[node name="Sprite2D" type="Sprite2D" parent="EquipedBubbles/EquipedBubble2"]
+position = Vector2(31, 50)
+texture = ExtResource("3_yu5tw")
+
+[node name="EquipedBubble3" type="TextureButton" parent="EquipedBubbles"]
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("2_jdwrw")
+
+[node name="Sprite2D" type="Sprite2D" parent="EquipedBubbles/EquipedBubble3"]
 position = Vector2(31, 50)
 texture = ExtResource("3_yu5tw")

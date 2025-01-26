@@ -23,6 +23,9 @@ var teleport_bubbles: Array[Bubble] = []
 var player: Player:
 	get: return player_movement.player
 
+var equiped_bubbles:
+	get: return player_movement.player_weapon_state.available_effect_types
+
 var attack_range: ShapeCast2D:
 	get: return player_movement.attack_range
 

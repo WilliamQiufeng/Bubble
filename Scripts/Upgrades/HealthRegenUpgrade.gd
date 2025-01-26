@@ -1,4 +1,4 @@
-class_name HealthRegenUpdate
+class_name HealthRegenUpgrade
 extends Upgrade
 
 func _init() -> void:
