@@ -36,6 +36,7 @@ var selected_bullet_type_index: int:
 			value += available_bullet_types.size()
 		_selected_bullet_type_index = value % available_bullet_types.size()
 		current_bullet_type = available_bullet_types[_selected_bullet_type_index]
+		active_bullet_type_change.emit(_selected_bullet_type_index, current_bullet_type)
 		print("Selected Bullet Type =", str(current_bullet_type))
 
 # Selected effect type index with setter and getter
@@ -52,6 +53,7 @@ var selected_effect_type_index: int:
 
 signal effect_type_change(index: int, type: Constants.EffectType)
 signal active_effect_type_change(index: int, type: Constants.EffectType)
+signal active_bullet_type_change(index: int, type: Constants.BulletType)
 
 # Called when the node is ready
 func _ready() -> void:

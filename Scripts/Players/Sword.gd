@@ -9,13 +9,16 @@ extends Node2D
 @onready var animation_player = $AnimationPlayer
 var activation_count: int = 0
 
+func _set_visibility():
+	visible = activation_count > 0
+
 func activate():
 	activation_count += 1
-	visible = activation_count > 0
+	_set_visibility()
 
 func deactivate():
 	activation_count -= 1
-	visible = activation_count > 0
+	_set_visibility()
 	
 
 func melee():
