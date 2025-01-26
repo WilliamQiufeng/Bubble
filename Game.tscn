@@ -61,7 +61,22 @@ script = ExtResource("9_winy3")
 
 [node name="Marker2D" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
 spawnable_enemies = 3
-probability = 0.0
+probability = 0.01
+entities_to_spawn = 5
+
+[node name="Marker2D2" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
+position = Vector2(387, 21)
+spawnable_enemies = 2
+probability = 0.01
+entities_to_spawn = 5
+level = 2
+
+[node name="Marker2D3" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
+position = Vector2(379, 154)
+spawnable_enemies = 1
+probability = 0.01
+entities_to_spawn = 5
+level = 3
 
 [node name="Levels" type="Node2D" parent="TileMapLayer"]
 script = ExtResource("8_1qf6o")

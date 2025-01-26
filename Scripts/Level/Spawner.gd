@@ -25,6 +25,7 @@ func _physics_process(delta):
 	for child in get_children():
 		if child is not SpawnMarker:
 			continue
+		spawning = spawning or child.spawning
 		var info: SpawnMarker.SpawnInfo = child.try_spawn()
 		if info.enemy_type == Constants.EnemyType.NONE: 
 			continue
@@ -36,7 +37,6 @@ func _physics_process(delta):
 				enemy = wizard_template.instantiate()
 			_:
 				continue
-		spawning = true
 		enemy_container.add_child(enemy)
 		enemy.position = info.position
 	if not spawning and enemy_container.get_child_count() == 0:
@@ -44,4 +44,5 @@ func _physics_process(delta):
 		levels.show_upgrade_popup()
 
 func _on_levels_on_level_advance(level):
+	print("Level advanced to", level)
 	active = true
