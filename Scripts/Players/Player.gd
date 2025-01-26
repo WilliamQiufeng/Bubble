@@ -19,6 +19,8 @@ var _mana: float = 100
 		var old_value = _hp
 		_hp = clamp(value, 0, max_hp)
 		hp_change.emit(old_value / max_hp, _hp / max_hp)
+		if (old_value > _hp):
+			Audio.playEffect(preload("res://Misc/Effects/Hurt.wav"))
 		if _hp <= 0:
 			player_death.emit()
 

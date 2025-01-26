@@ -66,6 +66,7 @@ func swap_bubble(old_bubble: Constants.EffectType, new_bubble: Constants.EffectT
 	
 
 func bubble_swap_click_handler(old_bubble: Constants.EffectType, new_bubble: Constants.EffectType):
+	Audio.playEffect(preload("res://Misc/Effects/Confirm.wav"))
 	swap_bubble(old_bubble, new_bubble)
 	close()
 
