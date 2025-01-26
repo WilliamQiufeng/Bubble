@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cbuasxfo8w2e1" path="res://sprites/item_frame.png" id="18_1hirt"]
 [ext_resource type="Script" path="res://Scripts/Players/BulletTypeFrame.gd" id="19_al47q"]
 [ext_resource type="Texture2D" uid="uid://dbg40um6x06o2" path="res://Scripts/Bubbles/bubble.png" id="20_mlclf"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_wf4nt"]
 atlas = ExtResource("16_nctot")
 region = Rect2(31, 1, 29, 31)
