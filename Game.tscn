@@ -1,10 +1,13 @@
-[gd_scene load_steps=12 format=4 uid="uid://tnam1v3fk1e3"]
+[gd_scene load_steps=15 format=4 uid="uid://tnam1v3fk1e3"]
 
 [ext_resource type="Script" path="res://SceneScript.gd" id="1_cu1t1"]
 [ext_resource type="TileSet" uid="uid://b5diheugfnvke" path="res://sprites/test.tres" id="3_cype7"]
+[ext_resource type="PackedScene" uid="uid://cr0wfkkhkvskc" path="res://bubble.tscn" id="4_4of4y"]
 [ext_resource type="PackedScene" uid="uid://wqr4y4ey6iqx" path="res://player.tscn" id="4_ab4fr"]
 [ext_resource type="PackedScene" uid="uid://dmnhnhgq6ls81" path="res://goblin.tscn" id="5_hmcur"]
+[ext_resource type="Script" path="res://Scripts/Bubbles/FastBubbleEffectController.gd" id="6_shgmp"]
 [ext_resource type="PackedScene" uid="uid://cujntyyisr5rt" path="res://wizard.tscn" id="6_tqrox"]
+[ext_resource type="Script" path="res://Scripts/Bubbles/TheWorldBubbleEffectController.gd" id="6_wh7vc"]
 [ext_resource type="SpriteFrames" uid="uid://8sxvvsebyeco" path="res://sprites/health-bar-frames.tres" id="7_lgjr3"]
 [ext_resource type="Script" path="res://Scripts/AnimationProgressBar.gd" id="8_dsa6g"]
 [ext_resource type="SpriteFrames" uid="uid://crhwmeo5xw80t" path="res://sprites/mana-bar-frames.tres" id="9_c1y8d"]
@@ -38,6 +41,18 @@ position = Vector2(272, 156)
 position = Vector2(128, 132)
 
 [node name="Bubbles" type="Node2D" parent="TileMapLayer"]
+
+[node name="FastBubble" parent="TileMapLayer/Bubbles" instance=ExtResource("4_4of4y")]
+position = Vector2(164, 60)
+
+[node name="FastBubbleEffectController" type="Node" parent="TileMapLayer/Bubbles/FastBubble"]
+script = ExtResource("6_shgmp")
+
+[node name="Bubble" parent="TileMapLayer/Bubbles" instance=ExtResource("4_4of4y")]
+position = Vector2(100, 61)
+
+[node name="TheWorldBubbleEffectController" type="Node" parent="TileMapLayer/Bubbles/Bubble"]
+script = ExtResource("6_wh7vc")
 
 [node name="Spawner" type="Node2D" parent="TileMapLayer"]
 position = Vector2(208, 97)

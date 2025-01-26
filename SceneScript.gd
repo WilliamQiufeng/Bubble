@@ -5,7 +5,7 @@ func _ready() -> void:
 	print("Loaded game scene")
 	await G.createTimer(3).timeout
 	#Scenes.switchScene("res://bubble.tscn")
-	await Layers.dialogueBox.setAndDisplayQueueAndEnd(["@{ignoreInput:true}Hello","hello twice"])
+	await Layers.dialogueBox.setAndDisplayQueueAndEnd(["@{name:TIP}Hello","hello twice"])
 	Layers.dialogueBox.displayQueue()
 	
 	var popup = preload("res://UpgradePopup.tscn").instantiate()
