@@ -53,12 +53,12 @@ func on_bubble_area_entered(area: Area2D) -> void:
 		return
 
 	print(get_effect_type(), "vs", other_bubble_controller.get_effect_type())
-	other_bubble_controller.explode()
+	other_bubble_controller._delete("")
 	#print("Previous area: %s" % get_area())
 	if other_is_anti and not both_is_anti:
 		set_area(get_area() - other_bubble_controller.get_area())
 		if get_area() < 300:
-			explode()
+			_delete(&"")
 	else:
 		set_area(get_area() + other_bubble_controller.get_area())
 		
