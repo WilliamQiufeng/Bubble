@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://tnam1v3fk1e3"]
+[gd_scene load_steps=21 format=4 uid="uid://tnam1v3fk1e3"]
 
 [ext_resource type="Script" path="res://SceneScript.gd" id="1_cu1t1"]
 [ext_resource type="TileSet" uid="uid://b5diheugfnvke" path="res://sprites/test.tres" id="3_cype7"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dpainlftaoxxc" path="res://sprites/sword.png" id="16_nctot"]
 [ext_resource type="Script" path="res://Scripts/Players/SwordGui.gd" id="17_i6488"]
 [ext_resource type="Texture2D" uid="uid://cbuasxfo8w2e1" path="res://sprites/item_frame.png" id="18_1hirt"]
+[ext_resource type="FontFile" uid="uid://dhx7a45n50vym" path="res://Misc/Fonts/ExoBold.otf" id="18_mn3qc"]
 [ext_resource type="Script" path="res://Scripts/Players/BulletTypeFrame.gd" id="19_al47q"]
 [ext_resource type="Texture2D" uid="uid://dbg40um6x06o2" path="res://Scripts/Bubbles/bubble.png" id="20_mlclf"]
 
@@ -473,6 +474,21 @@ grow_vertical = 2
 scale = Vector2(0.25, 0.25)
 pivot_offset = Vector2(16, 16)
 texture = ExtResource("20_mlclf")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 144.5
+offset_top = 7.5
+offset_right = 360.5
+offset_bottom = 75.5
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/normal_font = ExtResource("18_mn3qc")
+bbcode_enabled = true
+text = "[right]right click in Sword bubble
+Press T when outside to teleport into Cyber bubble
+Press space in Dash bubble
+"
+fit_content = true
+scroll_active = false
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
