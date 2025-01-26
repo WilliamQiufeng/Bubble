@@ -50,7 +50,7 @@ script = ExtResource("9_winy3")
 [node name="Marker2D" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
 spawnable_enemies = 3
 probability = 0.01
-entities_to_spawn = 5
+entities_to_spawn = 10
 
 [node name="SpawnL2x3" parent="TileMapLayer/Spawner" instance=ExtResource("10_pux3m")]
 position = Vector2(695, 36)

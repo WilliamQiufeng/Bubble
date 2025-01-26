@@ -77,7 +77,7 @@ func add_effect(effect_type: int) -> BubbleFactory:
 		Constants.EffectType.ANTI:
 			mana_cost -= 3
 		Constants.EffectType.SWORD:
-			mana_cost += 0
+			mana_cost += 5
 		_:
 			push_error("Unexpected EffectType: %s" % effect_type)
 	return self
@@ -91,7 +91,7 @@ func make_bullet(bullet_type: int, position: Vector2, target: Vector2) -> Bubble
 		Constants.BulletType.NONE:
 			mana_cost *= 0
 		Constants.BulletType.TINY:
-			mana_cost *= 0.1
+			mana_cost *= 0.25
 		Constants.BulletType.SUPPLEMENT:
 			mana_cost *= 1
 		_:
