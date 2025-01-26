@@ -82,7 +82,6 @@ func _deferredSwitchScene(sceneInstance):
 	get_tree().set_current_scene(currentScene)
 	get_tree().get_root().add_child(currentScene)
 	
-	G.allNodes.append_array(G.getSubNodes(currentScene))
 	G.updateVars()
 	#call nodes to ready up for scene
 	sceneEntered.emit()

@@ -80,7 +80,8 @@ signal trigger
 #triggers some function or some action
 func __________TRIGGERS(): pass
 func updateVars() -> void:
-	allNodes = getAllNodes()
+	pass
+	#allNodes = getAllNodes()
 func diagnose(): return
 func logMessage(s:String,level:int=0) -> void: #for diagnostic purposes
 	diagnose()
