@@ -36,7 +36,7 @@ size_flags_horizontal = 6
 texture_normal = ExtResource("2_jdwrw")
 
 [node name="Sprite2D" type="Sprite2D" parent="GridContainer/UpgradeButton1"]
-position = Vector2(31, 50)
+position = Vector2(62, 50)
 texture = ExtResource("3_yu5tw")
 
 [node name="UpgradeButton2" type="TextureButton" parent="GridContainer"]
@@ -45,7 +45,7 @@ size_flags_horizontal = 6
 texture_normal = ExtResource("2_jdwrw")
 
 [node name="Sprite2D" type="Sprite2D" parent="GridContainer/UpgradeButton2"]
-position = Vector2(31, 50)
+position = Vector2(62, 50)
 texture = ExtResource("3_yu5tw")
 
 [node name="UpgradeButton3" type="TextureButton" parent="GridContainer"]
@@ -54,5 +54,5 @@ size_flags_horizontal = 6
 texture_normal = ExtResource("2_jdwrw")
 
 [node name="Sprite2D" type="Sprite2D" parent="GridContainer/UpgradeButton3"]
-position = Vector2(31, 50)
+position = Vector2(62, 50)
 texture = ExtResource("3_yu5tw")

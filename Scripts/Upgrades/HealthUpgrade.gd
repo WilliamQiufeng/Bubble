@@ -2,7 +2,7 @@ class_name HealthUpgrade
 extends Upgrade
 
 func _init() -> void:
-	texture_path = "res://sprites/buff_hp.png"
+	texture_path = "res://sprites/BuffHp.png"
 
 func upgrade():
 	Game.player.max_hp += 20
