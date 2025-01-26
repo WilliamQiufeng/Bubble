@@ -20,10 +20,11 @@ func _ready() -> void:
 
 # Handle player entering the bubble
 func _handle_player_enter(player_movement: PlayerMovement) -> void:
-	player_movement.sword.visible = true
+	player_movement.sword.activate()
 	player_movement.owner.add_child(sword_skill)
 
 # Handle player exiting the bubble
 func _handle_player_exit(player_movement: PlayerMovement) -> void:
 	player_movement.sword.visible = false
+	player_movement.sword.deactivate()
 	player_movement.owner.remove_child(sword_skill)
