@@ -20,7 +20,7 @@ radius = 80.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wa0fb"]
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("animation_movement")]
+[node name="Enemy2" type="CharacterBody2D" node_paths=PackedStringArray("animation_movement")]
 collision_layer = 8
 collision_mask = 33
 script = ExtResource("1_kcr3m")

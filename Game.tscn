@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://tnam1v3fk1e3"]
+[gd_scene load_steps=17 format=4 uid="uid://tnam1v3fk1e3"]
 
 [ext_resource type="Script" path="res://SceneScript.gd" id="1_cu1t1"]
 [ext_resource type="TileSet" uid="uid://b5diheugfnvke" path="res://sprites/test.tres" id="3_cype7"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Scripts/Level/Spawner.gd" id="9_winy3"]
 [ext_resource type="PackedScene" uid="uid://bxtuafboulrkn" path="res://spawn_marker.tscn" id="10_pux3m"]
 [ext_resource type="AudioStream" uid="uid://q7whlo07414u" path="res://Misc/Background music/bubble game background music.wav" id="14_tj5ur"]
+[ext_resource type="PackedScene" uid="uid://cus3lh1ij01ug" path="res://item_frame.tscn" id="15_sxn0x"]
 
 [node name="Root" type="Node2D"]
 script = ExtResource("1_cu1t1")
@@ -132,6 +133,25 @@ layout_mode = 2
 text = "You ded lol"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer"]
+offset_left = 53.0
+offset_top = 12.0
+offset_right = 157.0
+offset_bottom = 44.0
+scale = Vector2(0.555, 0.555)
+columns = 3
+
+[node name="Item1" parent="CanvasLayer/GridContainer" instance=ExtResource("15_sxn0x")]
+layout_mode = 2
+
+[node name="Item2" parent="CanvasLayer/GridContainer" instance=ExtResource("15_sxn0x")]
+layout_mode = 2
+slot_number = 1
+
+[node name="Item3" parent="CanvasLayer/GridContainer" instance=ExtResource("15_sxn0x")]
+layout_mode = 2
+slot_number = 2
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
