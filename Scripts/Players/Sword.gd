@@ -20,6 +20,7 @@ func orientate_sword(cur_state: AnimationMovement.AnimationCommand):
 	if cur_state.dir_str == &"away":
 		new_scale.y = -1
 		new_scale.x = -1
+	sprite.flip_h = cur_state.flip_h
 	scale = new_scale
 	
 

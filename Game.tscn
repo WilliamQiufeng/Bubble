@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://tnam1v3fk1e3"]
+[gd_scene load_steps=16 format=4 uid="uid://tnam1v3fk1e3"]
 
 [ext_resource type="Script" path="res://SceneScript.gd" id="1_cu1t1"]
 [ext_resource type="TileSet" uid="uid://b5diheugfnvke" path="res://sprites/test.tres" id="3_cype7"]
