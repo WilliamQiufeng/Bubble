@@ -117,6 +117,7 @@ _data = {
 }
 
 [node name="Bubble" type="RigidBody2D"]
+process_mode = 1
 collision_layer = 0
 collision_mask = 4
 gravity_scale = 0.0
@@ -126,6 +127,7 @@ script = ExtResource("1_u4fww")
 shape = SubResource("CircleShape2D_xkbat")
 
 [node name="Area2D" type="Area2D" parent="CollisionShape2D" groups=["Bubble"]]
+process_mode = 1
 collision_layer = 4
 collision_mask = 12
 script = ExtResource("2_smpfk")
