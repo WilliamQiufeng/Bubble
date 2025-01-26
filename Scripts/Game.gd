@@ -2,7 +2,8 @@
 extends Node
 
 var afterTutorial:bool = false
-
+func _ready() -> void:
+	afterTutorial = false
 # Exported property for GameSpeed with setter and getter
 @export var game_speed: float:
 	get:

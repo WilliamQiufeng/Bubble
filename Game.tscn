@@ -43,10 +43,10 @@ bullet_container = NodePath("../../Bubbles")
 [node name="Enemies" type="Node2D" parent="TileMapLayer"]
 
 [node name="Enemy" parent="TileMapLayer/Enemies" instance=ExtResource("5_hmcur")]
-position = Vector2(272, 156)
+position = Vector2(334, 67)
 
 [node name="Enemy2" parent="TileMapLayer/Enemies" instance=ExtResource("6_tqrox")]
-position = Vector2(128, 132)
+position = Vector2(190, 43)
 
 [node name="Bubbles" type="Node2D" parent="TileMapLayer"]
 
