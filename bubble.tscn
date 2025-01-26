@@ -1,25 +1,21 @@
-[gd_scene load_steps=15 format=3 uid="uid://cr0wfkkhkvskc"]
+[gd_scene load_steps=12 format=3 uid="uid://cr0wfkkhkvskc"]
 
 [ext_resource type="Shader" path="res://bubblerefract.gdshader" id="1_p6kar"]
 [ext_resource type="Script" path="res://Scripts/Bubbles/Bubble.gd" id="1_u4fww"]
-[ext_resource type="Texture2D" uid="uid://dbg40um6x06o2" path="res://Scripts/Bubbles/bubble.png" id="2_18qn5"]
 [ext_resource type="Script" path="res://Scripts/Bubbles/BubbleController.gd" id="2_smpfk"]
-[ext_resource type="Texture2D" uid="uid://b7rbqaeohji7w" path="res://Scripts/Bubbles/bubble-normal.png" id="3_1paw5"]
 [ext_resource type="Shader" path="res://bubbletest.gdshader" id="4_xi0on"]
 [ext_resource type="Texture2D" uid="uid://c84ioy463b1iq" path="res://sprites/bubble_explosion.png" id="7_4boxq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xkbat"]
 radius = 16.0312
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e3i1b"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qmo7m"]
 shader = ExtResource("1_p6kar")
 shader_parameter/refractionMagnitude = 30.0
+shader_parameter/timeScale = 2.0
+shader_parameter/amplitude = 1.0
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_xm2o2"]
-diffuse_texture = ExtResource("2_18qn5")
-normal_texture = ExtResource("3_1paw5")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jlsom"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_axg0o"]
 shader = ExtResource("4_xi0on")
 shader_parameter/timeScale = 2.0
 shader_parameter/amplitude = 1.0
@@ -141,12 +137,10 @@ shape = SubResource("CircleShape2D_xkbat")
 copy_mode = 2
 
 [node name="Bubble" type="Sprite2D" parent="CollisionShape2D/BackBufferCopy"]
-material = SubResource("ShaderMaterial_e3i1b")
-texture = SubResource("CanvasTexture_xm2o2")
+material = SubResource("ShaderMaterial_qmo7m")
 
 [node name="Floater" type="Sprite2D" parent="CollisionShape2D/BackBufferCopy/Bubble"]
-material = SubResource("ShaderMaterial_jlsom")
-texture = ExtResource("2_18qn5")
+material = SubResource("ShaderMaterial_axg0o")
 
 [node name="BubbleExplosion" type="Sprite2D" parent="CollisionShape2D/BackBufferCopy"]
 visible = false
