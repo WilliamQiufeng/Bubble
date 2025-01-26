@@ -483,9 +483,9 @@ offset_bottom = 75.5
 scale = Vector2(0.5, 0.5)
 theme_override_fonts/normal_font = ExtResource("18_mn3qc")
 bbcode_enabled = true
-text = "[right]right click in Sword bubble
-Press T when outside to teleport into Cyber bubble
-Press space in Dash bubble
+text = "[right]Right click in [color=red]Sword bubble[/color]
+Press T when outside to Teleport into [color=green]Cyber bubble[/color]
+Press space in [color=yellow]Dash bubble[/color][/right]
 "
 fit_content = true
 scroll_active = false
