@@ -3,7 +3,6 @@ extends Window # Use Control if your root is a Control node
 
 @onready var upgrade_button_container = $GridContainer
 @onready var equiped_bubbles_container: GridContainer = $EquipedBubbles
-var selected_bubble: Constants.EffectType
 var bubble_icons = {
 		Constants.EffectType.THE_WORLD: "res://Scripts/Bubbles/Sprites/Icons/BubbleIconClock.png",
 		Constants.EffectType.TELEPORT: "res://Scripts/Bubbles/Sprites/Icons/BubbleIconTp.png",

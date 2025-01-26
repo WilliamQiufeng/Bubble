@@ -22,6 +22,12 @@ scale = Vector2(0.75, 0.75)
 sprite_frames = ExtResource("2_66q0r")
 animation = &"die_away"
 
+[node name="HpBar" parent="AnimatedSprite2D" index="0"]
+offset_left = -16.0
+offset_top = -33.3333
+offset_right = 16.0
+offset_bottom = -23.3333
+
 [node name="BTPlayer" parent="." index="2"]
 behavior_tree = ExtResource("3_ed8ky")
 

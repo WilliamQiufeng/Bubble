@@ -40,8 +40,6 @@ position = Vector2(272, 156)
 
 [node name="Enemy2" parent="TileMapLayer/Enemies" instance=ExtResource("6_tqrox")]
 position = Vector2(128, 132)
-speed = 40
-hp = 100
 
 [node name="Bubbles" type="Node2D" parent="TileMapLayer"]
 
