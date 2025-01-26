@@ -8,7 +8,7 @@ func _ready():
 	on_level_advance.emit(1)
 
 func show_upgrade_popup():
-	var new_popup: UpgradePopup = popup.instantiate()
+	var new_popup = popup.instantiate()
 	new_popup.popup_closed.connect(next_level)
 	get_tree().root.add_child(new_popup)
 	new_popup.popup_centered()

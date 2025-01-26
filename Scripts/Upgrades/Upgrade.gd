@@ -1,7 +1,7 @@
-extends Node
 class_name Upgrade
+extends Node
 var texture_path: String
-@onready var window: UpgradePopup = $"../../.."
+@onready var window = $"../../.."
 
 func destroy_window():
 	window.close()

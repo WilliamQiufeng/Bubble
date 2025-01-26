@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c8vxs024bkulg" path="res://melee.tscn" id="2_1o70m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ovas1"]
-size = Vector2(7, 14)
+size = Vector2(11, 10)
 
 [node name="Enemy2" groups=["Enemy"] instance=ExtResource("1_ndbe0")]
 
@@ -12,7 +12,16 @@ size = Vector2(7, 14)
 unique_name_in_owner = true
 
 [node name="AnimatedSprite2D" parent="." index="1"]
-animation = &"die_towards"
+position = Vector2(-1, -1)
+scale = Vector2(0.75, 0.75)
+animation = &"move_away"
+frame_progress = 0.411079
+
+[node name="HpBar" parent="AnimatedSprite2D" index="0"]
+offset_left = -14.6667
+offset_top = -29.3333
+offset_right = 17.3333
+offset_bottom = -19.3333
 
 [node name="AttackRange" parent="TargetTracker" index="3" groups=["Player"]]
 
@@ -21,5 +30,5 @@ animation = &"die_towards"
 [node name="hitbox" type="Area2D" parent="." index="6" groups=["Enemy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" index="0"]
-position = Vector2(-0.5, -2)
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_ovas1")
