@@ -40,6 +40,7 @@ func _physics_process(delta):
 		enemy_container.add_child(enemy)
 		enemy.position = info.position
 	if not spawning and enemy_container.get_child_count() == 0:
+		print("not active now")
 		active = false
 		levels.show_upgrade_popup()
 

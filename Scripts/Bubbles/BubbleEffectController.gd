@@ -53,7 +53,7 @@ func _on_body_entered(node: Node2D) -> void:
 		return
 
 	if node is PlayerMovement:
-		print("Enter ", node)
+		#print("Enter ", node)
 		_handle_player_enter(node)
 	if node is Enemy:
 		_handle_enemy_enter(node)
@@ -64,7 +64,7 @@ func _on_body_exited(node: Node2D) -> void:
 		return
 
 	if node is PlayerMovement:
-		print("Exit ", node)
+		#print("Exit ", node)
 		_handle_player_exit(node)
 	if node is Enemy:
 		_handle_enemy_exit(node)

@@ -16,9 +16,11 @@ func show_upgrade_popup():
 func next_level():
 	current_level += 1
 	if current_level > len(get_children()):
+		on_all_level_finish.emit()
 		return
 	var marker: Marker2D = get_node(&"Level{level}".format({"level": current_level}))
 	Game.player_movement.position = marker.global_position
 	on_level_advance.emit(current_level)
 
 signal on_level_advance(level: int)
+signal on_all_level_finish()

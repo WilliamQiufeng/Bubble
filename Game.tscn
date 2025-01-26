@@ -152,5 +152,6 @@ autoplay = true
 
 [connection signal="hp_change" from="TileMapLayer/Player/PlayerController" to="CanvasLayer/HP" method="set_progress"]
 [connection signal="mana_change" from="TileMapLayer/Player/PlayerController" to="CanvasLayer/MP" method="set_progress"]
+[connection signal="on_level_advance" from="TileMapLayer/Levels" to="TileMapLayer/Spawner" method="_on_levels_on_level_advance"]
 
 [editable path="TileMapLayer/Player"]

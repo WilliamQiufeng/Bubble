@@ -7,4 +7,3 @@ func _init() -> void:
 func upgrade():
 	Game.player.max_mana += 20
 	print("Mana increased")
-	destroy_window()
