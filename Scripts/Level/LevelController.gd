@@ -15,7 +15,7 @@ func show_upgrade_popup():
 
 func next_level():
 	current_level += 1
-	if current_level > len(get_children()) || true:
+	if current_level > len(get_children()):
 		on_all_level_finish.emit()
 		await Layers.dialogueBox.setAndDisplayQueueAndEnd(["@{name:SYSTEM}ALL ENEMIES DEFEATED","ALL THEIR BASE ARE BELONG TO US",
 			"THANKS FOR PLAYING"])
