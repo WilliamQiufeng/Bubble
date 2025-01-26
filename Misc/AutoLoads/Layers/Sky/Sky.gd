@@ -106,11 +106,11 @@ func _physics_process(delta):
 	stars.self_modulate.a = starAlpha
 	
 	clouds.modulate = cloudsGradient.sample(dayOffset).lerp(tint,tintWeight)
-	clouds.position.x = move_toward(clouds.position.x,-7000+1400,0.2)
-	if clouds.position.x<=-7000+1400: clouds.position.x = 7000
+	clouds.position.x = move_toward(clouds.position.x,(-7000+1400)*(3/4.0),0.5)
+	if clouds.position.x<=(-7000+1400)*(3/4.0): clouds.position.x = (7000)*(3/4.0)
 	hiddenClouds.modulate = clouds.modulate.lerp(tint,tintWeight)
-	hiddenClouds.position.x = move_toward(hiddenClouds.position.x,-7000+1400,0.05)
-	if hiddenClouds.position.x<=-7000+1400: hiddenClouds.position.x = 7000
+	hiddenClouds.position.x = move_toward(hiddenClouds.position.x,(-7000+1400)*(3/4.0),0.05)
+	if hiddenClouds.position.x<=(-7000+1400)*(3/4.0): hiddenClouds.position.x = (7000)*(3/4.0)
 	
 func updateSkyBackground():
 	dayOffset = Story.time
