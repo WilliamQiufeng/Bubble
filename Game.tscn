@@ -1,10 +1,8 @@
-[gd_scene load_steps=21 format=4 uid="uid://tnam1v3fk1e3"]
+[gd_scene load_steps=19 format=4 uid="uid://tnam1v3fk1e3"]
 
 [ext_resource type="Script" path="res://SceneScript.gd" id="1_cu1t1"]
 [ext_resource type="TileSet" uid="uid://b5diheugfnvke" path="res://sprites/test.tres" id="3_cype7"]
 [ext_resource type="PackedScene" uid="uid://wqr4y4ey6iqx" path="res://player.tscn" id="4_ab4fr"]
-[ext_resource type="PackedScene" uid="uid://dmnhnhgq6ls81" path="res://goblin.tscn" id="5_hmcur"]
-[ext_resource type="PackedScene" uid="uid://cujntyyisr5rt" path="res://wizard.tscn" id="6_tqrox"]
 [ext_resource type="SpriteFrames" uid="uid://8sxvvsebyeco" path="res://sprites/health-bar-frames.tres" id="7_lgjr3"]
 [ext_resource type="Script" path="res://Scripts/Level/LevelController.gd" id="8_1qf6o"]
 [ext_resource type="Script" path="res://Scripts/AnimationProgressBar.gd" id="8_dsa6g"]
@@ -12,7 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/Level/Spawner.gd" id="9_winy3"]
 [ext_resource type="PackedScene" uid="uid://bxtuafboulrkn" path="res://spawn_marker.tscn" id="10_pux3m"]
 [ext_resource type="AudioStream" uid="uid://q7whlo07414u" path="res://Misc/Background music/bubble game background music.wav" id="14_tj5ur"]
-[ext_resource type="PackedScene" path="res://item_frame.tscn" id="15_sxn0x"]
+[ext_resource type="PackedScene" uid="uid://cus3lh1ij01ug" path="res://item_frame.tscn" id="15_sxn0x"]
 [ext_resource type="Texture2D" uid="uid://dpainlftaoxxc" path="res://sprites/sword.png" id="16_nctot"]
 [ext_resource type="Script" path="res://Scripts/Players/SwordGui.gd" id="17_i6488"]
 [ext_resource type="Texture2D" uid="uid://cbuasxfo8w2e1" path="res://sprites/item_frame.png" id="18_1hirt"]
@@ -42,12 +40,6 @@ zoom = Vector2(2, 2)
 bullet_container = NodePath("../../Bubbles")
 
 [node name="Enemies" type="Node2D" parent="TileMapLayer"]
-
-[node name="Enemy" parent="TileMapLayer/Enemies" instance=ExtResource("5_hmcur")]
-position = Vector2(334, 67)
-
-[node name="Enemy2" parent="TileMapLayer/Enemies" instance=ExtResource("6_tqrox")]
-position = Vector2(190, 43)
 
 [node name="Bubbles" type="Node2D" parent="TileMapLayer"]
 
