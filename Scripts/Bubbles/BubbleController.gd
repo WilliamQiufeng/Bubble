@@ -27,12 +27,20 @@ func get_effect_type() -> Constants.EffectType:
 			effect_type |= child.effect_type
 	return effect_type
 
+func _physics_process(delta):
+	if Constants.is_bullet(get_effect_type()):
+		set_area(get_area() - delta * 50)
+	else:
+		set_area(get_area() - delta * 200)
+
 func get_area() -> float:
 	return collision_shape.shape.get_rect().get_area() * scale_node.scale.x
 
 func set_area(value: float) -> void:
 	var scaling_factor = sqrt(value / get_area())
 	scale_node.scale = Vector2(scale_node.scale.x * scaling_factor, scale_node.scale.y * scaling_factor)
+	if get_area() < 300 and not Constants.is_bullet(get_effect_type()):
+		_delete(&"")
 
 func on_bubble_area_entered(area: Area2D) -> void:
 	if to_be_deleted:
@@ -57,8 +65,6 @@ func on_bubble_area_entered(area: Area2D) -> void:
 	#print("Previous area: %s" % get_area())
 	if other_is_anti and not both_is_anti:
 		set_area(get_area() - other_bubble_controller.get_area())
-		if get_area() < 300:
-			_delete(&"")
 	else:
 		set_area(get_area() + other_bubble_controller.get_area())
 		
