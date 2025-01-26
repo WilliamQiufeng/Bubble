@@ -1,6 +1,9 @@
 @tool
 extends Node
 
+var afterTutorial:bool = false
+func _ready() -> void:
+	afterTutorial = false
 # Exported property for GameSpeed with setter and getter
 @export var game_speed: float:
 	get:
@@ -23,7 +26,7 @@ var teleport_bubbles: Array[Bubble] = []
 var player: Player:
 	get: return player_movement.player
 
-var equiped_bubbles:
+var equiped_bubbles: Array[Constants.EffectType]:
 	get: return player_movement.player_weapon_state.available_effect_types
 
 var attack_range: ShapeCast2D:

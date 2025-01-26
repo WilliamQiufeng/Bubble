@@ -12,8 +12,6 @@ radius = 200.0
 size = Vector2(8, 14)
 
 [node name="Enemy" groups=["Enemy"] instance=ExtResource("1_j5hk6")]
-speed = null
-hp = null
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(1, -2.5)
@@ -22,8 +20,13 @@ position = Vector2(1, -2.5)
 position = Vector2(0, -2)
 scale = Vector2(0.75, 0.75)
 sprite_frames = ExtResource("2_66q0r")
-animation = &"move_towards"
-frame_progress = 0.244956
+animation = &"die_away"
+
+[node name="HpBar" parent="AnimatedSprite2D" index="0"]
+offset_left = -16.0
+offset_top = -33.3333
+offset_right = 16.0
+offset_bottom = -23.3333
 
 [node name="BTPlayer" parent="." index="2"]
 behavior_tree = ExtResource("3_ed8ky")

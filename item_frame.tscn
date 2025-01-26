@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cus3lh1ij01ug"]
+
+[ext_resource type="Texture2D" uid="uid://cbuasxfo8w2e1" path="res://sprites/item_frame.png" id="1_dqekc"]
+[ext_resource type="Script" path="res://Scripts/ItemFrame.gd" id="2_pdu86"]
+[ext_resource type="Texture2D" uid="uid://b27hxccwfn4rw" path="res://Scripts/Bubbles/Sprites/BubbleSword.png" id="2_wh2fy"]
+[ext_resource type="Texture2D" uid="uid://bl88d5c514kpl" path="res://sprites/item_frame_selected.png" id="3_guvic"]
+
+[node name="Item1" type="TextureRect"]
+texture = ExtResource("1_dqekc")
+script = ExtResource("2_pdu86")
+selected_texture = ExtResource("3_guvic")
+unselected_texture = ExtResource("1_dqekc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.695, 0.695)
+pivot_offset = Vector2(16, 16)
+texture = ExtResource("2_wh2fy")

@@ -15,8 +15,11 @@ func show_upgrade_popup():
 
 func next_level():
 	current_level += 1
-	if current_level > len(get_children()):
+	if current_level > len(get_children()) || true:
 		on_all_level_finish.emit()
+		await Layers.dialogueBox.setAndDisplayQueueAndEnd(["@{name:SYSTEM}ALL ENEMIES DEFEATED","ALL THEIR BASE ARE BELONG TO US",
+			"THANKS FOR PLAYING"])
+		Scenes.switchScene("res://Start.tscn")
 		return
 	var marker: Marker2D = get_node(&"Level{level}".format({"level": current_level}))
 	Game.player_movement.position = marker.global_position

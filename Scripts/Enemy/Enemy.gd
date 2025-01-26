@@ -18,6 +18,7 @@ func _ready():
 	hp = 100
 	hp_bar.max_value = hp
 	hp_bar.value = hp
+	add_to_group("enemy_")
 
 func _die():
 	if is_dead:

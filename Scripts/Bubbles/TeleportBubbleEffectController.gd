@@ -22,7 +22,6 @@ func _ready() -> void:
 	super._ready()
 	Game.teleport_bubbles.append(bubble_controller.bubble)
 	teleport_skill = TeleportSkill.new()
-	teleport_skill.set_bubble(self)
 	print("teleport skill")
 
 # Handle player entering the bubble

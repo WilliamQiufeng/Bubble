@@ -7,6 +7,19 @@ extends Node2D
 @export var damage: float = 50
 @onready var sprite = $Sprite
 @onready var animation_player = $AnimationPlayer
+var activation_count: int = 0
+
+func _set_visibility():
+	visible = activation_count > 0
+
+func activate():
+	activation_count += 1
+	_set_visibility()
+
+func deactivate():
+	activation_count -= 1
+	_set_visibility()
+	
 
 func melee():
 	if animation_movement.is_attacking() or not swing_timer.is_stopped():

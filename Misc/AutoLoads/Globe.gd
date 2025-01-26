@@ -59,9 +59,9 @@ func _physics_process(delta):
 	bin.clear()
 	diagnose()
 	
-	for n in allNodes:
-		for c in callOnAllNodes:
-			c.call(n)
+	#for n in allNodes:
+		#for c in callOnAllNodes:
+			#c.call(n)
 	for a in inputActionFrames:
 		if pressed(a): #DO NOT put the two ifs on one line, IT BREAKS
 			if inputActionNotDeprecated(a): inputActionFrames[a] += 1
@@ -80,7 +80,8 @@ signal trigger
 #triggers some function or some action
 func __________TRIGGERS(): pass
 func updateVars() -> void:
-	allNodes = getAllNodes()
+	pass
+	#allNodes = getAllNodes()
 func diagnose(): return
 func logMessage(s:String,level:int=0) -> void: #for diagnostic purposes
 	diagnose()
@@ -153,7 +154,7 @@ func getNodes(group:String) -> Array[Node]: #returns all nodes (not queued for f
 	return get_tree().get_nodes_in_group(group).filter(func(n): return !n.is_queued_for_deletion())
 func cameraBoxExists() -> bool: return len(getNodes("cameraBox"))>0
 func fps() -> int: return Engine.get_frames_per_second()#returns current fps
-func getAllNodes() -> Array[Node]: return getSubNodes(get_tree().get_root())
+func getAllNodes() -> Array[Node]: return  [] # getSubNodes(get_tree().get_root())
 func getSubNodes(node:Node) -> Array[Node]: #the node + all descendents
 	var r:Array[Node] = []
 	r.append(node)

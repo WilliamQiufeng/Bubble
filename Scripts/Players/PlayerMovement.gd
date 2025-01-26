@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var bullet_container: Node2D
 
 var idle_direction: Vector2 = Vector2.DOWN
-@onready var player_weapon_state: Node = $PlayerWeaponState
+@onready var player_weapon_state: PlayerWeaponState = $PlayerWeaponState
 @onready var player: Player = $PlayerController
 @onready var animation_movement : AnimationMovement = $AnimationMovement
 @onready var interaction_raycast = $InteractionRayCast
@@ -17,7 +17,7 @@ var dash_vector: Vector2 = Vector2.ZERO
 var is_dead: bool = false
 
 func _ready():
-	Sfx.affect(RefSfxTrail,{"target":$AnimatedSprite2D,"container":get_parent()}) # sample code to apply trail sfx
+	pass
 		   
 
 func get_input():
