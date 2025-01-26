@@ -13,7 +13,7 @@ func _physics_process(delta):
 		linear_velocity = linear_velocity.bounce(collision.get_normal())
 		
 func _ready():
-	bubble.texture = load(sprite_path) # both needed
+	bubble.texture = load(sprite_path)
 	floater.texture = load(sprite_path)
 func change_sprite(path: String):
 	sprite_path = path

@@ -1,6 +1,8 @@
 @tool
 extends Node
 
+var afterTutorial:bool = false
+
 # Exported property for GameSpeed with setter and getter
 @export var game_speed: float:
 	get:
