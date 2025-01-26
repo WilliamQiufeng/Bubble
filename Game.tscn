@@ -510,30 +510,6 @@ stream = ExtResource("14_tj5ur")
 volume_db = -10.0
 autoplay = true
 
-<<<<<<< HEAD
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-11, 2489)
-scale = Vector2(3.875, 3.1875)
-texture = ExtResource("20_cg4vi")
-
-[node name="Label" type="Label" parent="Sprite2D"]
-offset_left = -12.3871
-offset_top = 4.70586
-offset_right = 27.6129
-offset_bottom = 27.7059
-text = "Hello,
-You found a bug!"
-metadata/_edit_use_anchors_ = true
-
-[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
-
-[node name="Kurourushi" type="Sprite2D" parent="Sprite2D"]
-position = Vector2(57.8065, 4.39215)
-scale = Vector2(-0.0521559, 0.0448751)
-texture = ExtResource("21_h0tkm")
-
-=======
->>>>>>> 5df8c0a (w)
 [connection signal="hp_change" from="TileMapLayer/Player/PlayerController" to="CanvasLayer/HP" method="set_progress"]
 [connection signal="mana_change" from="TileMapLayer/Player/PlayerController" to="CanvasLayer/MP" method="set_progress"]
 [connection signal="on_level_advance" from="TileMapLayer/Levels" to="TileMapLayer/Spawner" method="_on_levels_on_level_advance"]
